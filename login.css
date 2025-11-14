@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  background: linear-gradient(135deg, #96c8f8, #5a9df8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+.logo h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.logo .blue {
+  color: #1e6ef7;
+}
+
+.logo p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 10px;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.card {
+  background-color: #fff;
+  padding: 40px;
+  width: 360px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  font-size: 24px;
+  color: #1e6ef7;
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  background: linear-gradient(to right, #1e6ef7, #4da9ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.register {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.register a {
+  color: #1e6ef7;
+  text-decoration: none;
+}
+
+.register a:hover {
+  text-decoration: underline;
+}
