@@ -40,7 +40,8 @@ body {
 .logo {
   font-size: 28px;
   font-weight: bold;
-  background: linear-gradient(to right, #0157AD, #4E9CFF); 
+  margin-left: -100px;
+  background: linear-gradient(90deg, #4E9CFF 0%, #0157AD 120%); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -48,12 +49,14 @@ body {
 
 nav ul {
   list-style: none;
+  margin-right: -100px;
   display: flex;
   gap: 32px;
 }
 
 nav a {
   color: #527E90;
+  margin-left: -10px;
   text-decoration: none;
   font-weight: 500;
   transition: 0.3s;
