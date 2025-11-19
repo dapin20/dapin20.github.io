@@ -109,7 +109,8 @@ input {
   font-size: 14px;
 }
 
-button {
+.btn-submit {
+  display: block;
   width: 100%;
   background: linear-gradient(to right, #1e6ef7, #4da9ff);
   color: #fff;
@@ -119,9 +120,12 @@ button {
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 16px;
 }
 
-button:hover {
+.btn-submit:hover {
   opacity: 0.9;
 }
 
