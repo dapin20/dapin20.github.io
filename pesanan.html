@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataKu - Pesanan Saya</title>
+  <link rel="stylesheet" href="pesanan.css" />
+</head>
+<body>
+  <div class="profile-container">
+    <!-- LEFT SIDEBAR: Menu Navigasi -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">WisataKu</h2>
+      </div>
+
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="profile.html" class="menu-item">Profil Saya</a></li>
+          <li><a href="pesanan.html" class="menu-item active">Pesanan Saya</a></li>
+          <li><a href="riwayat.html" class="menu-item">Riwayat Transaksi</a></li>
+          <li><a href="pembayaran.html" class="menu-item">Metode Pembayaran</a></li>
+          <li><a href="#" class="menu-item">Wishlist</a></li>
+          <li><a href="akun.html" class="menu-item">Pengaturan Akun</a></li>
+          <li><a href="bantuan.html" class="menu-item">Bantuan & Dukungan</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-logout">Keluar</button>
+    </aside>
+
+    <!-- RIGHT CONTENT: Konten Pesanan -->
+    <main class="profile-content">
+      <!-- Header Pesanan -->
+      <div class="profile-header">
+        <a href="home.html" class="btn-back">← Kembali ke Halaman Utama</a>
+      </div>
+
+      <!-- Title Pesanan -->
+      <div class="pesanan-header">
+        <h1 class="pesanan-title">Pesanan Saya</h1>
+        <p class="pesanan-subtitle">Kelola dan pantau semua pesanan tiket wisata Anda</p>
+      </div>
+
+      <!-- Pesanan Aktif -->
+      <section class="pesanan-section">
+        <h2 class="section-title">Pesanan Aktif</h2>
+        <div class="pesanan-list">
+          <!-- Pesanan 1 -->
+          <div class="pesanan-card">
+            <div class="pesanan-card-header">
+              <h3 class="pesanan-nama">Tiket Bromo</h3>
+              <span class="status-badge status-confirmed">Dikonfirmasi</span>
+            </div>
+            <div class="pesanan-card-body">
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Pesan:</span>
+                <span class="detail-value">20 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Kunjungan:</span>
+                <span class="detail-value">22 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Jumlah Tiket:</span>
+                <span class="detail-value">2 tiket</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Total Harga:</span>
+                <span class="detail-value-price">Rp 200.000</span>
+              </div>
+            </div>
+            <div class="pesanan-card-footer">
+              <button class="btn-action btn-detail">Lihat Detail</button>
+              <button class="btn-action btn-cancel">Batalkan</button>
+            </div>
+          </div>
+
+          <!-- Pesanan 2 -->
+          <div class="pesanan-card">
+            <div class="pesanan-card-header">
+              <h3 class="pesanan-nama">Tiket Coban Rondo</h3>
+              <span class="status-badge status-pending">Menunggu Pembayaran</span>
+            </div>
+            <div class="pesanan-card-body">
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Pesan:</span>
+                <span class="detail-value">18 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Kunjungan:</span>
+                <span class="detail-value">25 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Jumlah Tiket:</span>
+                <span class="detail-value">4 tiket</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Total Harga:</span>
+                <span class="detail-value-price">Rp 400.000</span>
+              </div>
+            </div>
+            <div class="pesanan-card-footer">
+              <button class="btn-action btn-detail">Lihat Detail</button>
+              <button class="btn-action btn-pay">Bayar Sekarang</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pesanan Riwayat -->
+      <section class="pesanan-section">
+        <h2 class="section-title">Riwayat Pesanan</h2>
+        <div class="pesanan-list">
+          <!-- Pesanan 3 -->
+          <div class="pesanan-card">
+            <div class="pesanan-card-header">
+              <h3 class="pesanan-nama">Tiket Jatim Park 2</h3>
+              <span class="status-badge status-completed">Selesai</span>
+            </div>
+            <div class="pesanan-card-body">
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Pesan:</span>
+                <span class="detail-value">10 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Kunjungan:</span>
+                <span class="detail-value">15 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Jumlah Tiket:</span>
+                <span class="detail-value">3 tiket</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Total Harga:</span>
+                <span class="detail-value-price">Rp 300.000</span>
+              </div>
+            </div>
+            <div class="pesanan-card-footer">
+              <button class="btn-action btn-detail">Lihat Detail</button>
+              <button class="btn-action btn-review">Beri Ulasan</button>
+            </div>
+          </div>
+
+          <!-- Pesanan 4 -->
+          <div class="pesanan-card">
+            <div class="pesanan-card-header">
+              <h3 class="pesanan-nama">Tiket Batu Malang</h3>
+              <span class="status-badge status-cancelled">Dibatalkan</span>
+            </div>
+            <div class="pesanan-card-body">
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Pesan:</span>
+                <span class="detail-value">05 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Tanggal Kunjungan:</span>
+                <span class="detail-value">08 November 2025</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Jumlah Tiket:</span>
+                <span class="detail-value">1 tiket</span>
+              </div>
+              <div class="pesanan-detail">
+                <span class="detail-label">Total Harga:</span>
+                <span class="detail-value-price">Rp 100.000</span>
+              </div>
+            </div>
+            <div class="pesanan-card-footer">
+              <button class="btn-action btn-detail">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataKu - Pengaturan Akun</title>
+  <link rel="stylesheet" href="akun.css" />
+</head>
+<body>
+  <div class="profile-container">
+    <!-- LEFT SIDEBAR: Menu Navigasi -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">WisataKu</h2>
+      </div>
+
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="profile.html" class="menu-item">Profil Saya</a></li>
+          <li><a href="pesanan.html" class="menu-item">Pesanan Saya</a></li>
+          <li><a href="riwayat.html" class="menu-item">Riwayat Transaksi</a></li>
+          <li><a href="pembayaran.html" class="menu-item">Metode Pembayaran</a></li>
+          <li><a href="#" class="menu-item">Wishlist</a></li>
+          <li><a href="akun.html" class="menu-item active">Pengaturan Akun</a></li>
+          <li><a href="bantuan.html" class="menu-item">Bantuan & Dukungan</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-logout">Keluar</button>
+    </aside>
+
+    <!-- RIGHT CONTENT: Konten Pengaturan Akun -->
+    <main class="profile-content">
+      <!-- Header Pengaturan -->
+      <div class="profile-header">
+        <a href="home.html" class="btn-back">← Kembali ke Halaman Utama</a>
+      </div>
+
+      <!-- Title Pengaturan -->
+      <div class="akun-header">
+        <h1 class="akun-title">Pengaturan Akun</h1>
+        <p class="akun-subtitle">Kelola preferensi dan keamanan akun Anda</p>
+      </div>
+
+      <!-- Pengaturan Umum -->
+      <section class="akun-section">
+        <h2 class="section-title">Pengaturan Umum</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Bahasa</h3>
+            <p class="setting-desc">Pilih bahasa yang ingin Anda gunakan</p>
+          </div>
+          <select class="setting-input">
+            <option value="id">Bahasa Indonesia</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Tema</h3>
+            <p class="setting-desc">Pilih tema aplikasi Anda</p>
+          </div>
+          <div class="theme-buttons">
+            <button class="theme-btn active">Terang</button>
+            <button class="theme-btn">Gelap</button>
+            <button class="theme-btn">Otomatis</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Notifikasi Email</h3>
+            <p class="setting-desc">Terima pembaruan tentang pesanan dan promosi</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Notifikasi Push</h3>
+            <p class="setting-desc">Terima notifikasi real-time di perangkat Anda</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Pengaturan Keamanan -->
+      <section class="akun-section">
+        <h2 class="section-title">Keamanan</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Ubah Password</h3>
+            <p class="setting-desc">Perbarui password akun Anda secara berkala</p>
+          </div>
+          <button class="btn-action btn-ubah">Ubah Password</button>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Verifikasi Dua Faktor</h3>
+            <p class="setting-desc">Tingkatkan keamanan dengan verifikasi SMS atau autentikator</p>
+          </div>
+          <button class="btn-action btn-aktifkan">Aktifkan 2FA</button>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Sesi Aktif</h3>
+            <p class="setting-desc">Kelola perangkat yang terhubung dengan akun Anda</p>
+          </div>
+          <button class="btn-action btn-lihat">Lihat Sesi</button>
+        </div>
+      </section>
+
+      <!-- Pengaturan Privasi -->
+      <section class="akun-section">
+        <h2 class="section-title">Privasi & Data</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Visibilitas Profil</h3>
+            <p class="setting-desc">Kontrol siapa yang bisa melihat profil Anda</p>
+          </div>
+          <select class="setting-input">
+            <option value="public">Publik</option>
+            <option value="private">Pribadi</option>
+            <option value="friends">Hanya Teman</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Izinkan Rekomendasi Berdasarkan Riwayat</h3>
+            <p class="setting-desc">Tingkatkan pengalaman dengan rekomendasi yang dipersonalisasi</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Bagikan Data untuk Riset</h3>
+            <p class="setting-desc">Bantu kami meningkatkan layanan dengan berbagi data anonim</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Pengaturan Akun Lanjutan -->
+      <section class="akun-section akun-section-danger">
+        <h2 class="section-title section-danger">Pengaturan Lanjutan</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Hapus Riwayat Pencarian</h3>
+            <p class="setting-desc">Hapus semua riwayat pencarian Anda</p>
+          </div>
+          <button class="btn-action btn-warning">Hapus</button>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Unduh Data Saya</h3>
+            <p class="setting-desc">Dapatkan salinan semua data pribadi Anda</p>
+          </div>
+          <button class="btn-action btn-download">Unduh</button>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3 class="setting-label">Hapus Akun</h3>
+            <p class="setting-desc">Hapus akun Anda secara permanen (tidak dapat dibatalkan)</p>
+          </div>
+          <button class="btn-action btn-danger">Hapus Akun</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

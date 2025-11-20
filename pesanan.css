@@ -1,0 +1,353 @@
+/* ===== RESET & DASAR ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* ===== LAYOUT UTAMA ===== */
+.profile-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* ===== SIDEBAR KIRI ===== */
+.sidebar {
+  width: 200px;
+  background: linear-gradient(135deg, #0157AD 0%, #4E9CFF 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4E9CFF 40%, #0157AD 120%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Menu navigasi sidebar */
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-menu li {
+  margin: 8px 0;
+}
+
+.menu-item {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* Tombol logout di bawah sidebar */
+.btn-logout {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+  margin-top: auto;
+}
+
+.btn-logout:hover {
+  background-color: rgba(255,255,255,0.3);
+}
+
+/* ===== KONTEN PESANAN KANAN ===== */
+.profile-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+/* Tombol kembali di atas */
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  display: inline-block;
+  background: linear-gradient(to right, #0157AD, #4E9CFF);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  opacity: 0.9;
+}
+
+/* ===== HEADER PESANAN ===== */
+.pesanan-header {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.pesanan-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0157AD;
+  margin-bottom: 8px;
+}
+
+.pesanan-subtitle {
+  font-size: 14px;
+  color: #999;
+}
+
+/* ===== SECTION TITLE ===== */
+.pesanan-section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0157AD;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #0157AD;
+  padding-bottom: 8px;
+}
+
+/* ===== PESANAN CARD ===== */
+.pesanan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pesanan-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden;
+  border-left: 4px solid #4E9CFF;
+}
+
+.pesanan-card-header {
+  padding: 16px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.pesanan-nama {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0157AD;
+  margin: 0;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-confirmed {
+  background-color: #d4f4dd;
+  color: #27ae60;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-completed {
+  background-color: #d4f4dd;
+  color: #27ae60;
+}
+
+.status-cancelled {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.pesanan-card-body {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.pesanan-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.detail-value-price {
+  font-size: 16px;
+  color: #0157AD;
+  font-weight: 700;
+}
+
+.pesanan-card-footer {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* ===== BUTTONS AKSI ===== */
+.btn-action {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-detail {
+  background-color: #e3f2fd;
+  color: #0157AD;
+  border: 1px solid #0157AD;
+}
+
+.btn-detail:hover {
+  background-color: #0157AD;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #721c24;
+}
+
+.btn-cancel:hover {
+  background-color: #721c24;
+  color: white;
+}
+
+.btn-pay {
+  background: linear-gradient(to right, #0157AD, #4E9CFF);
+  color: white;
+  border: none;
+}
+
+.btn-pay:hover {
+  opacity: 0.9;
+}
+
+.btn-review {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #856404;
+}
+
+.btn-review:hover {
+  background-color: #856404;
+  color: white;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .profile-content {
+    flex: 1;
+    height: auto;
+  }
+
+  .pesanan-card-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pesanan-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .status-badge {
+    align-self: flex-start;
+  }
+
+  .pesanan-card-footer {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .btn-action {
+    width: 100%;
+  }
+}

@@ -39,6 +39,9 @@ body {
 .sidebar-title {
   font-size: 20px;
   font-weight: 700;
+  background: linear-gradient(90deg, #4E9CFF 40%, #0157AD 120%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Menu navigasi sidebar */

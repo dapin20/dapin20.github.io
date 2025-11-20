@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataKu - Bantuan & Dukungan</title>
+  <link rel="stylesheet" href="bantuan.css" />
+</head>
+<body>
+  <div class="profile-container">
+    <!-- LEFT SIDEBAR: Menu Navigasi -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">WisataKu</h2>
+      </div>
+
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="profile.html" class="menu-item">Profil Saya</a></li>
+          <li><a href="pesanan.html" class="menu-item">Pesanan Saya</a></li>
+          <li><a href="riwayat.html" class="menu-item">Riwayat Transaksi</a></li>
+          <li><a href="pembayaran.html" class="menu-item">Metode Pembayaran</a></li>
+          <li><a href="#" class="menu-item">Wishlist</a></li>
+          <li><a href="akun.html" class="menu-item">Pengaturan Akun</a></li>
+          <li><a href="bantuan.html" class="menu-item active">Bantuan & Dukungan</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-logout">Keluar</button>
+    </aside>
+
+    <!-- RIGHT CONTENT: Konten Bantuan -->
+    <main class="profile-content">
+      <!-- Header Bantuan -->
+      <div class="profile-header">
+        <a href="home.html" class="btn-back">← Kembali ke Halaman Utama</a>
+      </div>
+
+      <!-- Title Bantuan -->
+      <div class="bantuan-header">
+        <h1 class="bantuan-title">Bantuan & Dukungan</h1>
+        <p class="bantuan-subtitle">Kami siap membantu Anda mengatasi masalah apapun</p>
+      </div>
+
+      <!-- Search Bantuan -->
+      <div class="bantuan-search">
+        <input type="text" class="search-input" placeholder="Cari bantuan atau topik...">
+        <button class="search-btn">Cari</button>
+      </div>
+
+      <!-- Kategori Bantuan -->
+      <section class="bantuan-section">
+        <h2 class="section-title">Kategori Populer</h2>
+        <div class="kategori-grid">
+          <a href="#" class="kategori-card">
+            <div class="kategori-icon">📋</div>
+            <h3>Pemesanan Tiket</h3>
+            <p>Panduan cara memesan tiket wisata</p>
+          </a>
+          <a href="#" class="kategori-card">
+            <div class="kategori-icon">💳</div>
+            <h3>Pembayaran</h3>
+            <p>Bantuan metode pembayaran & transaksi</p>
+          </a>
+          <a href="#" class="kategori-card">
+            <div class="kategori-icon">📦</div>
+            <h3>Pesanan & Pengiriman</h3>
+            <p>Info status pesanan Anda</p>
+          </a>
+          <a href="#" class="kategori-card">
+            <div class="kategori-icon">🔐</div>
+            <h3>Keamanan Akun</h3>
+            <p>Lindungi akun Anda dengan aman</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ Tanya Jawab -->
+      <section class="bantuan-section">
+        <h2 class="section-title">Pertanyaan Umum (FAQ)</h2>
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question">Bagaimana cara memesan tiket wisata?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Untuk memesan tiket wisata, ikuti langkah berikut:</p>
+              <ol>
+                <li>Pilih destinasi wisata yang Anda inginkan</li>
+                <li>Pilih tanggal kunjungan dan jumlah tiket</li>
+                <li>Klik tombol "Pesan Sekarang"</li>
+                <li>Isi data diri Anda dengan lengkap</li>
+                <li>Pilih metode pembayaran dan selesaikan transaksi</li>
+                <li>Tiket akan dikirim ke email Anda</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question">Berapa lama proses pembayaran diproses?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Waktu pemrosesan pembayaran tergantung metode yang Anda pilih:</p>
+              <ul>
+                <li><strong>Transfer Bank:</strong> 1-2 jam</li>
+                <li><strong>E-Wallet:</strong> Langsung terproses (realtime)</li>
+                <li><strong>Kartu Kredit:</strong> 5-15 menit</li>
+              </ul>
+              <p>Anda akan menerima konfirmasi melalui email dan notifikasi SMS.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question">Bisakah saya membatalkan pesanan?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Pesanan dapat dibatalkan dengan syarat dan ketentuan berikut:</p>
+              <ul>
+                <li>Pembatalan harus dilakukan paling lambat 3 hari sebelum tanggal kunjungan</li>
+                <li>Akan dikenakan biaya pembatalan sebesar 10% dari total harga</li>
+                <li>Dana akan dikembalikan ke metode pembayaran awal dalam 3-5 hari kerja</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question">Bagaimana cara mengubah password akun?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Untuk mengubah password akun Anda:</p>
+              <ol>
+                <li>Masuk ke akun WisataKu Anda</li>
+                <li>Klik menu "Pengaturan Akun"</li>
+                <li>Pilih "Ubah Password"</li>
+                <li>Masukkan password lama Anda</li>
+                <li>Masukkan password baru (minimal 8 karakter)</li>
+                <li>Konfirmasi password baru dan klik "Simpan"</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question">Apakah data saya aman di WisataKu?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Ya, keamanan data Anda adalah prioritas utama kami. WisataKu menggunakan:</p>
+              <ul>
+                <li>Enkripsi SSL 256-bit untuk semua transaksi</li>
+                <li>Sistem keamanan berlapis dengan proteksi fraud detection</li>
+                <li>Compliance dengan standar PCI DSS untuk keamanan data kartu kredit</li>
+                <li>Audit keamanan berkala oleh pihak ketiga independen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Support -->
+      <section class="bantuan-section">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <h3>Live Chat</h3>
+            <p>Hubungi tim support kami langsung</p>
+            <button class="btn-contact">Mulai Chat</button>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Email</h3>
+            <p>support@wisataku.com</p>
+            <button class="btn-contact">Kirim Email</button>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <h3>Telepon</h3>
+            <p>+62 857-9287-4948</p>
+            <button class="btn-contact">Hubungi</button>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <h3>WhatsApp</h3>
+            <p>Hubungi melalui WhatsApp</p>
+            <button class="btn-contact">Chat WhatsApp</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // FAQ Toggle Script
+    document.querySelectorAll('.faq-trigger').forEach(button => {
+      button.addEventListener('click', function() {
+        const faqItem = this.closest('.faq-item');
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Open clicked FAQ item if it wasn't active
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

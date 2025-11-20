@@ -1,0 +1,382 @@
+/* ===== RESET & DASAR ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* ===== LAYOUT UTAMA ===== */
+.profile-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* ===== SIDEBAR KIRI ===== */
+.sidebar {
+  width: 200px;
+  background: linear-gradient(135deg, #0157AD 0%, #4E9CFF 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4E9CFF 40%, #0157AD 120%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Menu navigasi sidebar */
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-menu li {
+  margin: 8px 0;
+}
+
+.menu-item {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* Tombol logout di bawah sidebar */
+.btn-logout {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+  margin-top: auto;
+}
+
+.btn-logout:hover {
+  background-color: rgba(255,255,255,0.3);
+}
+
+/* ===== KONTEN PEMBAYARAN KANAN ===== */
+.profile-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+/* Tombol kembali di atas */
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  display: inline-block;
+  background: linear-gradient(to right, #0157AD, #4E9CFF);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  opacity: 0.9;
+}
+
+/* ===== HEADER PEMBAYARAN ===== */
+.pembayaran-header {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pembayaran-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0157AD;
+  margin-bottom: 8px;
+}
+
+.pembayaran-subtitle {
+  font-size: 14px;
+  color: #999;
+}
+
+.btn-tambah {
+  background: linear-gradient(to right, #0157AD, #4E9CFF);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+
+.btn-tambah:hover {
+  opacity: 0.9;
+}
+
+/* ===== SECTION TITLE ===== */
+.pembayaran-section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0157AD;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #0157AD;
+  padding-bottom: 8px;
+}
+
+/* ===== PEMBAYARAN LIST ===== */
+.pembayaran-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.payment-card {
+  background-color: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-left: 4px solid #4E9CFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.payment-icon {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+.transfer-icon {
+  background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+}
+
+.ewallet-icon {
+  background: linear-gradient(135deg, #74b9ff, #a29bfe);
+}
+
+.kartu-icon {
+  background: linear-gradient(135deg, #81ecec, #55efc4);
+}
+
+.payment-info {
+  flex: 1;
+}
+
+.payment-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0157AD;
+  margin-bottom: 4px;
+}
+
+.payment-detail {
+  font-size: 12px;
+  color: #999;
+}
+
+.badge-utama {
+  background: linear-gradient(to right, #0157AD, #4E9CFF);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+.btn-action {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-edit {
+  background-color: #e3f2fd;
+  color: #0157AD;
+  border: 1px solid #0157AD;
+}
+
+.btn-edit:hover {
+  background-color: #0157AD;
+  color: white;
+}
+
+.btn-hapus {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #721c24;
+}
+
+.btn-hapus:hover {
+  background-color: #721c24;
+  color: white;
+}
+
+/* ===== METODE TERSEDIA ===== */
+.available-payment {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.available-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.available-icon {
+  font-size: 40px;
+}
+
+.available-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0157AD;
+}
+
+.btn-tambah-kecil {
+  background-color: #e3f2fd;
+  color: #0157AD;
+  border: 1px solid #0157AD;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.btn-tambah-kecil:hover {
+  background-color: #0157AD;
+  color: white;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .profile-content {
+    flex: 1;
+    height: auto;
+  }
+
+  .pembayaran-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .btn-tambah {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .payment-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .payment-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .btn-action {
+    flex: 1;
+  }
+
+  .available-payment {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
