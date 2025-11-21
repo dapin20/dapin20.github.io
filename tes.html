@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataKu - Jelajahi Keindahan Malang Raya</title>
+  <link rel="stylesheet" href="tes.css" />
+</head>
+<body> 
+  <!-- ==================== NAVIGASI HEADER ==================== -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">WisataKu</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Destinasi</a></li>
+          <li><a href="#">Tentang Kami</a></li>
+        </ul>
+      </nav>
+      
+      <!-- ==================== HAMBURGER MENU ==================== -->
+      <div class="hamburger-menu">
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div id="hamburgerPanel" class="hamburger-panel" aria-hidden="true">
+          <button id="hamburgerClose" class="hamburger-close" aria-label="Close menu">✕</button>
+          <nav class="hamburger-nav">
+            <a href="#" class="hamburger-link">Profil</a>
+            <a href="#" class="hamburger-link">Pengaturan</a>
+            <a href="#" class="hamburger-link">Login Admin</a>
+            <a href="#" class="hamburger-link">Bantuan</a>
+          </nav>
+        </div>
+      </div>
+      <div id="hamburgerOverlay" class="hamburger-overlay" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero" aria-label="Hero section dengan background pemandangan">
+    <div class="hero-content">
+      <h2>Jelajahi Keindahan <br> <span>Malang Raya</span></h2>
+      <p>Temukan berbagai destinasi wisata menarik di area Malang dan sekitarnya</p>
+      <a href="#" class="button">Pesan Tiket Sekarang</a>
+    </div>
+  </section>
+
+  <!-- ==================== SEARCH SECTION ==================== -->
+  <section class="search-section" aria-label="Pencarian destinasi wisata">
+    <div class="container">
+      <input type="text" placeholder="Cari Destinasi Wisata..." aria-label="Masukkan nama destinasi wisata" />
+      <button class="btn">Cari</button>
+    </div>
+  </section>
+
+  <!-- ==================== KATEGORI WISATA ==================== -->
+  <section class="kategori" aria-label="Kategori jenis wisata">
+    <div class="container">
+      <h2>Kategori Wisata</h2>
+      <div class="kategori-grid">
+        <div class="card">
+          <img src="Wisata Alam.png" alt="Wisata Alam - Pemandangan alam Malang Raya" />
+          <h3>Wisata Alam</h3>
+          <p>Menikmati pesona alam indah di area Malang Raya.</p>
+        </div>
+        <div class="card">
+          <img src="Wisata Buatan.png" alt="Wisata Buatan - Wahana hiburan keluarga" />
+          <h3>Wisata Buatan</h3>
+          <p>Menikmati wahana buatan modern dan beragam hiburan keluarga.</p>
+        </div>
+        <div class="card">
+          <img src="Wisata Edukasi.png" alt="Wisata Edukasi - Tempat belajar sambil berwisata" />
+          <h3>Wisata Edukasi</h3>
+          <p>Wisata sambil belajar di berbagai lokasi menarik di Malang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DESTINASI POPULER ==================== -->
+  <section class="populer" aria-label="Destinasi wisata populer">
+    <div class="container">
+      <h2>Destinasi Populer</h2>
+      <div class="populer-grid">
+        <div class="card">
+          <img src="Bromo.png" alt="Gunung Bromo - Destinasi wisata alam terkenal Jawa Timur" />
+          <h3>Gunung Bromo</h3>
+          <p>Destinasi wisata alam paling terkenal di Jawa Timur.</p>
+        </div>
+        <div class="card">
+          <img src="Kondang.png" alt="Pantai Balekambang - Pantai indah dengan suasana tenang" />
+          <h3>Pantai Balekambang</h3>
+          <p>Pantai indah dengan suasana tenang dan pemandangan menakjubkan.</p>
+        </div>
+        <div class="card">
+          <img src="Tumpak.png" alt="Tumpak Sewu - Air terjun megah ikon Malang Selatan" />
+          <h3>Tumpak Sewu</h3>
+          <p>Air terjun megah yang menjadi ikon wisata Malang Selatan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONI PENGUNJUNG ==================== -->
+  <section class="testimoni" aria-label="Testimoni dari pengunjung">
+    <div class="container">
+      <h2>Apa Kata Mereka?</h2>
+      <div class="testi-grid">
+        <div class="testi">
+          <p>"Pengalaman berwisata di Malang sangat berkesan! Banyak tempat yang indah."</p>
+          <span>- Anjani, Jakarta</span>
+        </div>
+        <div class="testi">
+          <p>"Tempat wisatanya sangat lengkap dan mudah diakses dengan aplikasi ini."</p>
+          <span>- Bima, Surabaya</span>
+        </div>
+        <div class="testi">
+          <p>"Website-nya membantu sekali untuk merencanakan liburan keluarga kami."</p>
+          <span>- Nita, Sidoarjo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TENTANG KAMI ==================== -->
+  <section class="about" aria-label="Informasi tentang perusahaan">
+    <div class="container">
+      <h2>Tentang Kami</h2>
+      <p>WisataKu adalah platform pemesanan tiket wisata Malang Raya. Kami berkomitmen untuk memberikan kemudahan dalam menemukan dan memesan destinasi wisata terbaik di Malang.</p>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-box">
+        <h3>Navigasi</h3>
+        <ul>
+          <li><a href="#">Beranda</a></li>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Layanan</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-box">
+        <h3>Kontak</h3>
+        <ul>
+          <li>Email: davinadityasaputra20@gmail.com</li>
+          <li>Telp: +62 857 9287 4948</li>
+        </ul>
+      </div>
+
+      <div class="footer-box">
+        <h3>Ikuti Kami</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/dpinnn20?igsh=aHQ5NnYwbnFxNnI4" aria-label="Instagram WisataKu"><img src="Instagram.png" alt="Instagram"></a>
+          <a href="#" aria-label="Facebook WisataKu"><img src="Facebook.png" alt="Facebook"></a>
+          <a href="#" aria-label="Twitter WisataKu"><img src="Twitter.png" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-bottom">&copy; 2025 WisataKu. All rights reserved.</p>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerPanel = document.getElementById('hamburgerPanel');
+    const hamburgerClose = document.getElementById('hamburgerClose');
+    const hamburgerOverlay = document.getElementById('hamburgerOverlay');
+
+    function openPanel() {
+      if (hamburgerPanel && hamburgerOverlay) {
+        hamburgerBtn.classList.add('active');
+        hamburgerPanel.classList.add('open');
+        hamburgerOverlay.classList.add('open');
+        hamburgerPanel.setAttribute('aria-hidden', 'false');
+        hamburgerOverlay.setAttribute('aria-hidden', 'false');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closePanel() {
+      if (hamburgerPanel && hamburgerOverlay) {
+        hamburgerBtn.classList.remove('active');
+        hamburgerPanel.classList.remove('open');
+        hamburgerOverlay.classList.remove('open');
+        hamburgerPanel.setAttribute('aria-hidden', 'true');
+        hamburgerOverlay.setAttribute('aria-hidden', 'true');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', openPanel);
+    }
+    if (hamburgerClose) {
+      hamburgerClose.addEventListener('click', closePanel);
+    }
+    if (hamburgerOverlay) {
+      hamburgerOverlay.addEventListener('click', closePanel);
+    }
+
+    // Tutup panel ketika menekan Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePanel();
+    });
+  </script>
+</body> 
+</html>

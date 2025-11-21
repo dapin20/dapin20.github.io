@@ -129,6 +129,21 @@ input {
   opacity: 0.9;
 }
 
+.lupa {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.lupa a {
+  color: #1e6ef7;
+  text-decoration: none;
+}
+
+.lupa a:hover {
+  text-decoration: underline;
+}
+
 .register {
   text-align: center;
   margin-top: 10px;

@@ -1,0 +1,583 @@
+/* =============================================
+   RESET DASAR & VARIABEL GLOBAL
+   ============================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --primary-color: #0157AD;
+  --secondary-color: #4E9CFF;
+  --text-color: #333;
+  --light-gray: #f8f9fa;
+  --white: #ffffff;
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =============================================
+   NAVIGATION BAR STYLES
+   ============================================= */
+.navbar {
+  background: linear-gradient(90deg, #ffffff, #ffffff);
+  color: #527E90;
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #4E9CFF 0%, #0157AD 120%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  color: #527E90;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #000000;
+}
+
+/* =============================================
+   HAMBURGER MENU STYLES
+   ============================================= */
+.hamburger-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  transform: scale(1.1);
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background-color: #527E90;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Hamburger animation saat aktif */
+.hamburger-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Panel hamburger di sebelah kanan */
+.hamburger-panel {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100vh;
+  background: linear-gradient(135deg, #0157AD 0%, #4E9CFF 100%);
+  padding: 20px;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+  z-index: 999;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+}
+
+.hamburger-panel.open {
+  right: 0;
+}
+
+.hamburger-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.hamburger-close:hover {
+  opacity: 0.7;
+}
+
+.hamburger-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hamburger-link {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  padding: 12px 16px;
+  display: block;
+  border-radius: 6px;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.hamburger-link:hover {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* Overlay untuk hamburger menu */
+.hamburger-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.hamburger-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--white);
+  min-width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.dropdown-content.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px 16px;
+  color: #527E90;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: var(--primary-color);
+  padding-left: 20px;
+}
+
+/* =============================================
+   HERO SECTION STYLES
+   ============================================= */
+.hero {
+  background: url('background.png') center/cover no-repeat;
+  height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+}
+
+/* Overlay gelap untuk kontras teks */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.hero span {
+  color: var(--white);
+  font-weight: bold;
+}
+
+.hero p {
+  margin-bottom: 32px;
+  font-size: 18px;
+}
+
+/* Button dengan gradient biru */
+.button {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.button:hover {
+  background: var(--white);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* =============================================
+   SEARCH SECTION STYLES
+   ============================================= */
+.search-section {
+  background: var(--white);
+  padding: 32px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.search-section input {
+  padding: 12px 16px;
+  width: 60%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-section input:focus {
+  border-color: var(--primary-color);
+}
+
+.search-section .btn {
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.search-section .btn:hover {
+  background-color: #014a96;
+}
+
+/* =============================================
+   SECTION SPACING & HEADINGS
+   ============================================= */
+section {
+  padding: 64px 0;
+}
+
+.kategori h2, 
+.populer h2, 
+.testimoni h2, 
+.about h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  color: var(--primary-color);
+}
+
+/* =============================================
+   CARD GRID LAYOUTS
+   ============================================= */
+.kategori-grid, 
+.populer-grid, 
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* =============================================
+   CARD COMPONENT STYLES
+   ============================================= */
+.card {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  margin: 16px 0 8px;
+  color: var(--primary-color);
+  font-size: 20px;
+}
+
+.card p {
+  padding: 0 16px;
+  font-size: 15px;
+  color: #555;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* =============================================
+   TESTIMONIAL STYLES
+   ============================================= */
+.testi {
+  background: var(--white);
+  padding: 24px;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.testi:hover {
+  transform: translateY(-3px);
+}
+
+.testi p {
+  font-style: italic;
+  margin-bottom: 16px;
+  color: #444;
+  font-size: 15px;
+}
+
+.testi span {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* =============================================
+   ABOUT SECTION STYLES
+   ============================================= */
+.about p {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* =============================================
+   FOOTER STYLES
+   ============================================= */
+footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 40px 80px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-box {
+  width: 30%;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-box h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.footer-box h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 3px;
+  height: 18px;
+  background-color: #004C99;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box li {
+  margin-bottom: 8px;
+}
+
+.footer-box a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-box a:hover {
+  text-decoration: underline;
+  color: #e0e0e0;
+}
+
+.social-icons img {
+  width: 22px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+@media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .logo {
+    margin-left: 0;
+  }
+  
+  nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  nav ul {
+    margin-right: 0;
+    gap: 20px;
+  }
+  
+  .hero {
+    height: 500px;
+  }
+  
+  .hero h2 {
+    font-size: 32px;
+  }
+  
+  .footer-container {
+    flex-direction: column;
+  }
+  
+  .footer-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    gap: 15px;
+  }
+  
+  .hamburger-menu {
+    margin-left: auto;
+  }
+}
