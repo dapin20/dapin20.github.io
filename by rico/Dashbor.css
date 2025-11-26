@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6f9ff;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #0d47c8;
+    color: white;
+    padding: 25px 20px;
+    position: fixed;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.menu-item.active {
+    background: #ffffff;
+    color: #0d47c8;
+    font-weight: bold;
+}
+
+.logout {
+    margin-top: 40px;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    color: #0d47c8;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* KONTEN */
+.content {
+    margin-left: 270px;
+    padding: 25px;
+}
+
+.back-btn {
+    background: #e8f0ff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    color: #0d47c8;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+/* STATISTIK */
+.stats {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    width: 200px;
+    padding: 18px;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+}
+
+.card small {
+    color: #666;
+}
+
+.card h2 {
+    margin-top: 8px;
+}
+
+/* BOX UMUM */
+.box {
+    background: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+}
+
+/* TABEL */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th {
+    background: #eef5ff;
+    padding: 10px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 12px;
+}
+
+.sukses { background: #28a745; }
+.proses { background: #f0ad4e; }
+
+/* GRAFIK IMAGE */
+.chart-img {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
