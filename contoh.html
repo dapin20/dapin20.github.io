@@ -1,4 +1,11 @@
- * {
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataKu - Jelajahi Keindahan Malang Raya</title>
+  <style>
+    * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -48,6 +55,7 @@ body {
   flex-direction: column;
   cursor: pointer;
   z-index: 1001;
+  margin-left: auto;
 }
 
 .hamburger span {
@@ -76,6 +84,8 @@ body {
   display: flex;
   align-items: center;
   gap: 24px;
+  margin-left: auto;
+  margin-right: 16px;
 }
 
 nav ul {
@@ -96,53 +106,56 @@ nav a:hover {
   color: #000000;
 }
 
-/* === AUTH BUTTONS === */
-.auth-buttons {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.btn-masuk {
-  display: inline-block;
-  padding: 10px 24px;
+/* === PROFILE PHOTO ICON === */
+.profile-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
   border: 2px solid #0157AD;
-  border-radius: 25px;
-  color: #0157AD;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 13px;
   transition: all 0.3s ease;
-  background-color: transparent;
+  flex-shrink: 0;
+  display: block;
 }
 
-.btn-masuk:hover {
-  background-color: #0157AD;
-  color: white;
+.profile-icon:hover {
+  transform: scale(1.05);
+  border-color: #4E9CFF;
+  box-shadow: 0 2px 8px rgba(1, 87, 173, 0.3);
 }
 
-.btn-daftar {
-  display: inline-block;
-  padding: 10px 24px;
-  background: linear-gradient(to right, #0157AD, #4E9CFF);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 13px;
-  transition: all 0.3s ease;
-}
-
-.btn-daftar:hover {
-  opacity: 0.9;
+/* Profile Link in Menu (Hidden by default) */
+.profile-link {
+  display: none;
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
+  }
+
+  /* Hide desktop profile icon */
+  .navbar .container > a .profile-icon {
+    display: none;
+  }
+
+  /* Show profile link in menu */
+  .profile-link {
+    display: block;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .profile-link a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 15px;
+    color: #527E90;
+    text-decoration: none;
+    font-weight: 500;
   }
 
   .nav-menu {
@@ -155,7 +168,6 @@ nav a:hover {
     min-width: 200px;
     text-align: left;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
     gap: 0;
     border-radius: 0 0 15px 15px;
     max-height: 0;
@@ -187,21 +199,6 @@ nav a:hover {
     font-size: 15px;
   }
 
-  .auth-buttons {
-    flex-direction: column;
-    width: 100%;
-    padding: 10px 20px 15px;
-    gap: 10px;
-  }
-
-  .btn-masuk,
-  .btn-daftar {
-    width: 100%;
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 13px;
-  }
-
   .logo {
     font-size: 24px;
   }
@@ -214,10 +211,6 @@ nav a:hover {
   
   .logo {
     font-size: 22px;
-  }
-
-  .nav-menu {
-    top: 65px;
   }
 }
 
@@ -624,3 +617,192 @@ footer {
     font-size: 12px;
   }
 }
+  </style>
+</head>
+<body> 
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">WisataKu</h1>
+      
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="nav-menu">
+        <nav>
+          <ul>
+            <li class="profile-link"><a href="profile.html" onclick="closeMenu()">Profil</a></li>
+            <li><a href="home.html" onclick="closeMenu()">Home</a></li>
+            <li><a href="whistlist.html" onclick="closeMenu()">Favorite</a></li>
+            <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Profile Icon (Visible on Desktop Only) -->
+      <a href="profile.html"><img src="dapin kecil.jpg" alt="Profile" class="profile-icon"></a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Jelajahi Keindahan <br> <span>Malang Raya</span></h2>
+      <p>Temukan berbagai destinasi wisata menarik di area Malang dan sekitarnya</p>
+      <a href="#" class="button">Pesan Tiket Sekarang</a>
+    </div>
+  </section>
+
+  <!-- Search -->
+  <section class="search-section">
+    <div class="container">
+      <input type="text" placeholder="Cari Destinasi Wisata..." />
+      <button class="btn">Cari</button>
+    </div>
+  </section>
+
+  <!-- Kategori Wisata -->
+  <section class="kategori">
+    <div class="container">
+      <h2>Kategori Wisata</h2>
+      <div class="kategori-grid">
+        <div class="card">
+          <a href="../PJBL/PJBL WEB/WisataAlam.html"><img src="Wisata Alam.png" alt="Wisata Alam"></a>
+          <h3>Wisata Alam</h3>
+          <p>Menikmati pesona alam indah di area Malang Raya.</p>
+        </div>
+        <div class="card">
+          <a href="../PJBL/PJBL WEB/WisataBuatan.html"><img src="Wisata Buatan.png" alt="Wisata Buatan"></a>
+          <h3>Wisata Buatan</h3>
+          <p>Menikmati wahana buatan modern dan beragam hiburan keluarga.</p>
+        </div>
+        <div class="card">
+          <a href="../PJBL/PJBL WEB/WisataEdukasi.html"><img src="Wisata Edukasi.png" alt="Wisata Edukasi"></a>
+          <h3>Wisata Edukasi</h3>
+          <p>Wisata sambil belajar di berbagai lokasi menarik di Malang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinasi Populer -->
+  <section class="populer">
+    <div class="container">
+      <h2>Destinasi Populer</h2>
+      <div class="populer-grid">
+        <div class="card">
+          <a href="../PJBL/PJBL WEB/Bromo.html"><img src="Bromo.png" alt="Gunung Bromo"></a>
+          <h3>Gunung Bromo</h3>
+          <p>Destinasi wisata alam paling terkenal di Jawa Timur.</p>
+        </div>
+        <div class="card">
+          <a href="../PJBL/PJBL WEB/Balekambang.html"><img src="Kondang.png" alt="Pantai Balekambang"></a>
+          <h3>Pantai Balekambang</h3>
+          <p>Pantai indah dengan suasana tenang dan pemandangan menakjubkan.</p>
+        </div>
+          <div class="card">
+            <a href="../PJBL/PJBL WEB/TumpakSewu.html"><img src="Tumpak.png" alt="Tumpak Sewu"></a>
+          <h3>Tumpak Sewu</h3>
+          <p>Air terjun megah yang menjadi ikon wisata Malang Selatan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimoni -->
+  <section class="testimoni">
+    <div class="container">
+      <h2>Apa Kata Mereka?</h2>
+      <div class="testi-grid">
+        <div class="testi">
+          <p>"Pengalaman berwisata di Malang sangat berkesan! Banyak tempat yang indah."</p>
+          <span>- Anjani, Jakarta</span>
+        </div>
+        <div class="testi">
+          <p>"Tempat wisatanya sangat lengkap dan mudah diakses dengan aplikasi ini."</p>
+          <span>- Bima, Surabaya</span>
+        </div>
+        <div class="testi">
+          <p>"Website-nya membantu sekali untuk merencanakan liburan keluarga kami."</p>
+          <span>- Nita, Sidoarjo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tentang Kami -->
+  <section class="about">
+    <div class="container">
+      <h2>Tentang Kami</h2>
+      <p>WisataKu adalah platform pemesanan tiket wisata Malang Raya. Kami berkomitmen untuk memberikan kemudahan dalam menemukan dan memesan destinasi wisata terbaik di Malang.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+  <div class="footer-container">
+    <div class="footer-box">
+      <h3>Navigasi</h3>
+      <ul>
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Layanan</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-box">
+      <h3>Kontak</h3>
+      <ul>
+        <li>Email: davinadityasaputra20@gmai.com</li>
+        <li>Telp: +62 857 9287 4948</li>
+      </ul>
+    </div>
+
+    <div class="footer-box">
+      <h3>Ikuti Kami</h3>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/dpinnn20?igsh=aHQ5NnYwbnFxNnI4"><img src="Instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="Facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="Twitter.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-bottom">&copy; 2025 WisataKu. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  }
+
+  function closeMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
+    
+    if (!navbar.contains(event.target) && navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  });
+</script>
+</body> 
+</html>

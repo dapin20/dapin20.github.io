@@ -1,0 +1,152 @@
+/* --- General Reset & Styling --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body {
+    background-color: #f0f4f8;
+    display: flex;
+    min-height: 100vh;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* --- Main Layout Container --- */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+
+/* --- Sidebar Styling (Sama seperti sebelumnya) --- */
+.sidebar {
+    width: 250px;
+    background-color: #007bff; 
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+}
+.sidebar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.sidebar-nav a {
+    display: block;
+    padding: 12px 20px;
+    color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+.sidebar-nav a.active,
+.sidebar-nav a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+.sidebar-logout {
+    margin-top: auto;
+    padding: 15px 20px;
+    background-color: #fdfdfd;
+    text-align: center;
+    cursor: pointer;
+    margin: 20px;
+    border-radius: 5px;
+    color: #0056b3;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px;
+.page-title {
+    margin-bottom: 20px;
+    color: #333;
+}
+.back-link {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #007bff;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+/* --- Stats Cards --- */
+.stats-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.stat-card {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.stat-card h4 {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+.stat-value, .stat-value-rp {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* --- Table Styling --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+th {
+    background-color: #f4f4f4;
+    color: #555;
+}
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.lunas {
+    background-color: #d4edda;
+    color: #155724;
+}
+.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* --- Chart Styling --- */
+.chart-card h3 {
+    margin-bottom: 15px;
+}
+.chart-placeholder {
+    /* Hanya sebagai placeholder visual */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}}

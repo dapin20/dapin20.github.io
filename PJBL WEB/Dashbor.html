@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WisataKu Dashboard Admin</title>
+    <!-- Menghubungkan file HTML dengan file CSS -->
+    <link rel="stylesheet" href="Dashbor.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">WisataKu</div>
+            <nav class="sidebar-nav">
+                <a href="DashborAdmin.html">Profil Admin</a>
+                <a href="Dashbor.html" class="active">Dashboard</a>
+            </nav>
+            <div class="sidebar-logout">
+                Keluar
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <a href="#" class="back-link">← Kembali ke Halaman Utama</a>
+            <h1 class="page-title">Dashboard Admin</h1>
+
+            <!-- Stats Cards Container -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h4>Total Tiket Terjual</h4>
+                    <p class="stat-value">1,245</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Destinasi Aktif</h4>
+                    <p class="stat-value">32</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Pengguna</h4>
+                    <p class="stat-value">5,678</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Pendapatan</h4>
+                    <p class="stat-value-rp">Rp 120 Juta</p>
+                </div>
+            </div>
+
+            <!-- Pesanan Terbaru Table -->
+            <div class="card table-card">
+                <h3>Pesanan Terbaru</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Pesanan</th>
+                            <th>Nama</th>
+                            <th>Destinasi</th>
+                            <th>Tanggal</th>
+                            <th>Jumlah Tiket</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#00123</td>
+                            <td>Sarah</td>
+                            <td>Bromo</td>
+                            <td>2025-09-20</td>
+                            <td>2</td>
+                            <td>Rp 200.000</td>
+                            <td><span class="status-badge lunas">Lunas</span></td>
+                        </tr>
+                        <tr>
+                            <td>#00124</td>
+                            <td>Andi</td>
+                            <td>Pantai Malang</td>
+                            <td>2025-09-21</td>
+                            <td>3</td>
+                            <td>Rp 300.000</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Grafik Transaksi Bulanan -->
+            <div class="card chart-card">
+                <h3>Grafik Transaksi Bulanan</h3>
+                <!-- Placeholder untuk Grafik (anda bisa ganti ini dengan library chart.js) -->
+                <div class="chart-placeholder">
+                    <!-- Grafik garis di sini -->
+                    <img src="Data.png" alt="Grafik Transaksi Bulanan" style="width:100%; height:auto;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

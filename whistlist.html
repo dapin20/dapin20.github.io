@@ -1,12 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WisataKu - Whistlist</title>
-    <link rel="stylesheet" href="whistlist.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WisataKu - Wishlist</title>
+    <link rel="stylesheet" href="whistlist.css" />
 </head>
 <body>
-    
-</body>
-</html>
+    <div class="profile-container">
+        <!-- LEFT SIDEBAR: Menu Navigasi (TIDAK DIUBAH) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">WisataKu</h2>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="profile.html" class="menu-item">Profil Saya</a></li>
+                    <li><a href="pesanan.html" class="menu-item">Pesanan Saya</a></li>
+                    <li><a href="riwayat.html" class="menu-item">Riwayat Transaksi</a></li>
+                    <li><a href="pembayaran.html" class="menu-item">Metode Pembayaran</a></li>
+                    <li><a href="whistlist.html" class="menu-item active">Wishlist</a></li>
+                    <li><a href="akun.html" class="menu-item">Pengaturan Akun</a></li>
+                    <li><a href="bantuan.html" class="menu-item">Bantuan & Dukungan</a></li>
+                </ul>
+            </nav>
+            <button class="btn-logout">Keluar</button>
+        </aside>
+
+        <!-- RIGHT CONTENT: Wishlist Content -->
+        <main class="profile-content">
+            <!-- Header -->
+            <div class="profile-header">
+                <a href="home.html" class="btn-back">← Kembali ke Halaman Utama</a>
+            </div>
+
+            <!-- Wishlist Header -->
+            <div class="wishlist-header">
+                <h1 class="wishlist-title">Wishlist Saya</h1>
+                <p class="wishlist-subtitle">Destinasi favorit yang ingin Anda kunjungi</p>
+                <span class="wishlist-count">6 Destinasi Tersimpan</span>
+            </div>
+
+            <!-- Wishlist Grid -->
+            <div class="wishlist-grid">
+                <!-- Card 1 -->
+                <div class="wishlist-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=300&fit=crop" alt="Gunung Bromo" class="card-image">
+                        <div class="badge-promo">PROMO</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Paket Wisata Gunung Bromo Sunrise</h3>
+                        <p class="card-location">Probolinggo, Jawa Timur</p>
+                        <div class="card-rating">
+                            <div class="stars">
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                            </div>
+                            <span class="rating-count">(1.2k)</span>
+                        </div>
+                        <div class="card-price-wrapper">
+                            <div>
+                                <div class="price-label">Mulai dari</div>
+                                <div class="card-price">Rp 450K <span class="price-small">/ orang</span></div>
+                            </div>
+                            <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="wishlist-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Raja Ampat" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Snorkeling & Island Hopping Raja Ampat</h3>
+                        <p class="card-location">Papua Barat</p>
+                        <div class="card-rating">
+                            <div class="stars">
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                            </div>
+                            <span class="rating-count">(856)</span>
+                        </div>
+                        <div class="card-price-wrapper">
+                            <div>
+                                <div class="price-label">Mulai dari</div>
+                                <div class="card-price">Rp 3.5Jt <span class="price-small">/ orang</span></div>
+                            </div>
+                            <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="wishlist-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1555400082-1bbda9926c13?w=400&h=300&fit=crop" alt="Borobudur" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Tur Candi Borobudur & Prambanan</h3>
+                        <p class="card-location">Magelang, Jawa Tengah</p>
+                        <div class="card-rating">
+                            <div class="stars">
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-empty" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                            </div>
+                            <span class="rating-count">(2.1k)</span>
+                        </div>
+                        <div class="card-price-wrapper">
+                            <div>
+                                <div class="price-label">Mulai dari</div>
+                                <div class="card-price">Rp 350K <span class="price-small">/ orang</span></div>
+                            </div>
+                            <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="wishlist-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?w=400&h=300&fit=crop" alt="Danau Toba" class="card-image">
+                        <div class="badge-promo">PROMO</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Paket Tour Danau Toba & Pulau Samosir</h3>
+                        <p class="card-location">Sumatera Utara</p>
+                        <div class="card-rating">
+                            <div class="stars">
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                <svg class="star-icon star-filled" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                            </div>
+                            <span class="rating-count">(674)</span>
+                        </div>
+                        <div class="card-price-wrapper">
+                            <div>
+                                <div class="price-label">Mulai dari</div>
+                                <div class="card-price">Rp 850K <span class="price-small">/ orang</span></div>
+                            </div>
+                            <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <script>
+                        function toggleBookmark(el) {
+                            // toggle class
+                            el.classList.toggle("saved");
+                            el.classList.toggle("unsaved");                 
+
+                            // optional: animasi kecil
+                            el.style.transform = "scale(1.2)";
+                            setTimeout(() => {
+                                el.style.transform = "scale(1)";
+                            }, 150);
+                        }
+                    </script>
+                    </body>
+                    </html>

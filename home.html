@@ -10,13 +10,27 @@
   <header class="navbar">
     <div class="container">
       <h1 class="logo">WisataKu</h1>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="">Favorite</a></li>
-          <li><a href="#">Tentang Kami</a></li>
-        </ul>
-      </nav>
+      
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="nav-menu">
+        <nav>
+          <ul>
+            <li class="profile-link"><a href="profile.html" onclick="closeMenu()">Profil</a></li>
+            <li><a href="home.html" onclick="closeMenu()">Home</a></li>
+            <li><a href="whistlist.html" onclick="closeMenu()">Favorite</a></li>
+            <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Profile Icon (Visible on Desktop Only) -->
       <a href="profile.html"><img src="dapin kecil.jpg" alt="Profile" class="profile-icon"></a>
     </div>
   </header>
@@ -44,17 +58,17 @@
       <h2>Kategori Wisata</h2>
       <div class="kategori-grid">
         <div class="card">
-          <a href="#"><img src="Wisata Alam.png" alt="Wisata Alam"></a>
+          <a href="../PJBL/PJBL WEB/WisataAlam.html"><img src="Wisata Alam.png" alt="Wisata Alam"></a>
           <h3>Wisata Alam</h3>
           <p>Menikmati pesona alam indah di area Malang Raya.</p>
         </div>
         <div class="card">
-          <a href="#"><img src="Wisata Buatan.png" alt="Wisata Buatan"></a>
+          <a href="../PJBL/PJBL WEB/WisataBuatan.html"><img src="Wisata Buatan.png" alt="Wisata Buatan"></a>
           <h3>Wisata Buatan</h3>
           <p>Menikmati wahana buatan modern dan beragam hiburan keluarga.</p>
         </div>
         <div class="card">
-          <a href="#"><img src="Wisata Edukasi.png" alt="Wisata Edukasi"></a>
+          <a href="../PJBL/PJBL WEB/WisataEdukasi.html"><img src="Wisata Edukasi.png" alt="Wisata Edukasi"></a>
           <h3>Wisata Edukasi</h3>
           <p>Wisata sambil belajar di berbagai lokasi menarik di Malang.</p>
         </div>
@@ -68,17 +82,17 @@
       <h2>Destinasi Populer</h2>
       <div class="populer-grid">
         <div class="card">
-          <a href="regrist.html"><img src="Bromo.png" alt="Gunung Bromo"></a>
+          <a href="../PJBL/PJBL WEB/Bromo.html"><img src="Bromo.png" alt="Gunung Bromo"></a>
           <h3>Gunung Bromo</h3>
           <p>Destinasi wisata alam paling terkenal di Jawa Timur.</p>
         </div>
         <div class="card">
-          <a href=""><img src="Kondang.png" alt="Pantai Balekambang"></a>
+          <a href="../PJBL/PJBL WEB/Balekambang.html"><img src="Kondang.png" alt="Pantai Balekambang"></a>
           <h3>Pantai Balekambang</h3>
           <p>Pantai indah dengan suasana tenang dan pemandangan menakjubkan.</p>
         </div>
           <div class="card">
-            <a href=""><img src="Tumpak.png" alt="Tumpak Sewu"></a>
+            <a href="../PJBL/PJBL WEB/TumpakSewu.html"><img src="Tumpak.png" alt="Tumpak Sewu"></a>
           <h3>Tumpak Sewu</h3>
           <p>Air terjun megah yang menjadi ikon wisata Malang Selatan.</p>
         </div>
@@ -147,5 +161,35 @@
 
   <p class="footer-bottom">&copy; 2025 WisataKu. All rights reserved.</p>
 </footer>
+
+<script>
+  function toggleMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  }
+
+  function closeMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
+    
+    if (!navbar.contains(event.target) && navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  });
+</script>
 </body> 
 </html>

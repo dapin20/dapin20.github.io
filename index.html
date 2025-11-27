@@ -10,17 +10,29 @@
   <header class="navbar">
     <div class="container">
       <h1 class="logo">WisataKu</h1>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="login.html">Favorite</a></li>
-          <li><a href="#">Tentang Kami</a></li>
-        </ul>
-      </nav>
-      <!-- Auth Buttons -->
-      <div class="auth-buttons">
-        <a href="login.html" class="btn-masuk">Masuk</a>
-        <a href="regrist.html" class="btn-daftar">Daftar</a>
+      
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="nav-menu">
+        <nav>
+          <ul>
+            <li><a href="#" onclick="closeMenu()">Home</a></li>
+            <li><a href="login.html" onclick="closeMenu()">Favorite</a></li>
+            <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
+          </ul>
+        </nav>
+        
+        <!-- Auth Buttons -->
+        <div class="auth-buttons">
+          <a href="login.html" class="btn-masuk" onclick="closeMenu()">Masuk</a>
+          <a href="regrist.html" class="btn-daftar" onclick="closeMenu()">Daftar</a>
+        </div>
       </div>
     </div>
   </header>
@@ -151,5 +163,35 @@
 
   <p class="footer-bottom">&copy; 2025 WisataKu. All rights reserved.</p>
 </footer>
+
+<script>
+  function toggleMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  }
+
+  function closeMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
+    
+    if (!navbar.contains(event.target) && navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  });
+</script>
 </body> 
 </html>
