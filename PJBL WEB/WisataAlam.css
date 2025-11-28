@@ -63,7 +63,7 @@ nav a:hover {
 
 /* HERO */
 .hero {
-  background: url('Bunga\ Crocosmia\ di\ Danau\ Berkilau.png') center/cover no-repeat;
+  background: url('Bromo.png') center/cover no-repeat;
   height: 680px;
   display: flex;
   align-items: center;
@@ -137,6 +137,9 @@ nav a:hover {
     box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
     overflow: hidden;
     text-align: left;
+    /* --- INI PERBAIKANNYA --- */
+    position: relative; 
+    /* Menjadikan .card sebagai anchor untuk .bookmark-icon */
 }
 
 .card img {
@@ -173,6 +176,46 @@ nav a:hover {
   box-shadow: 5px 5px 10px rgb(156, 205, 225);
   border-radius: 10px;
 }
+
+/* ===== NEW BOOKMARK ICON STYLE (Bottom-right) ===== */
+        .bookmark-icon {
+            position: absolute;
+            bottom: 18px;
+            right: 18px;
+            width: 32px;
+            height: 32px;
+            background-color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .bookmark-icon:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: scale(1.1);
+        }
+
+        .bookmark-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .bookmark-icon.saved svg {
+            fill: #1E88E5;
+            stroke: none; /* Pastikan tidak ada goresan saat disimpan */
+        }
+
+        .bookmark-icon.unsaved svg {
+            fill: none;
+            stroke: #757575;
+            stroke-width: 2;
+        }
+        
 
 /* FOOTER */
 footer {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WisataKu - Wisata Edukasi Malang Raya</title>
-    <link rel="stylesheet" href="WisataBuatan.css">
+    <link rel="stylesheet" href="WisataAlam.css">
 </head>
 <body>
 
@@ -14,8 +14,8 @@
         <h1 class="logo">WisataKu</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Favorit</a></li>
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="../whistlist.html">Favorit</a></li>
                 <li><a href="#">Tentang Kami</a></li>
             </ul>
         </nav>
@@ -41,10 +41,16 @@
             <div class="card">
                 <div class="box:active">
                 <img src="Edukasi.png" alt="">
-                <h3>Jatim Park 1 </h3>
+                <h3>Jatim Park 1</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 65.000–170.000 / tiket</p>
+                <p><b>Rp 65.000–170.000 / tiket</b></p>
                  <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
                 </div>
             </div>
 
@@ -53,8 +59,14 @@
                 <img src="Buatan2.png" alt="">
                 <h3>Malang Night Paradise</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 220.000 / orang</p>
+                <p><b>Rp 220.000 / orang</b></p>
                  <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
             </div>
 
             <!-- CARD 3 -->
@@ -62,8 +74,14 @@
                 <img src="Buatan3.png" alt="">
                 <h3>Hawai Water Park</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 15.000 / tiket</p>
+                <p><b>Rp 15.000 / tiket</b></p>
                  <button class="buy-btn" onclick="location.href='Hawai.html'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
             </div>
 
             <!-- CARD 4 -->
@@ -71,8 +89,14 @@
                 <img src="buatan4.png" alt="">
                 <h3>Kesembon Park</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 100.000–150.000 / tiket</p>
+                <p><b>Rp 100.000–150.000 / tiket</b></p>
                  <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
             </div>
 
             <!-- CARD 5 -->
@@ -80,8 +104,14 @@
                 <img src="buatan5.png" alt="">
                 <h3>Fantasy Land</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
+                <p><b>Rp 10.000 / tiket</b></p>
                  <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
             </div>
 
             <!-- CARD 6 -->
@@ -89,8 +119,14 @@
                 <img src="buatan6.png" alt="">
                 <h3>Kampung Tridi</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 20.000 / tiket</p>
+                <p><b>Rp 20.000 / tiket</b></p>
                  <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
             </div>
 
             <!-- CARD 7 -->
@@ -98,8 +134,14 @@
                 <img src="https://selectawisata.id/wp-content/uploads/2023/12/20230105-DSC04944-scaled.jpg" alt="">
                 <h3>Taman Rekreasi Selecta</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
+                <p><b>Rp 10.000 / tiket</b></p>
                  <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
         </div>
 
         <!-- CARD 8 -->
@@ -107,9 +149,28 @@
                 <img src="https://asset.kompas.com/crops/qVZ7dLMU2uwDODrZrSWLni3yUkI=/0x363:765x873/1200x800/data/photo/2023/12/26/658a7bf12e3f1.jpeg" alt=""> 
                 <h3>Malang Skyland</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
+                <p><b>Rp 45.000 / tiket</b></p>
                  <button class="buy-btn" onclick="location.href='MalangSky.html'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Path ini adalah versi 'outline' yang bisa diisi atau diberi goresan -->
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
     </div>
+     <script>
+                        function toggleBookmark(el) {
+                            // toggle class
+                            el.classList.toggle("saved");
+                            el.classList.toggle("unsaved");                 
+
+                            // optional: animasi kecil
+                            el.style.transform = "scale(1.2)";
+                            setTimeout(() => {
+                                el.style.transform = "scale(1)";
+                            }, 150);
+                        }
+                    </script>
 </section>
 
 <!-- FOOTER -->
@@ -119,7 +180,7 @@
         <div>
             <h3>Navigasi</h3>
             <ul>
-                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#">Wisata Malang Raya</a></li>
                 <li><a href="#">Tentang Kami</a></li>
                 <li><a href="#">Kontak</a></li>

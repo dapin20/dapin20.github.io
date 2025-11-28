@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataKu - Tentang Kami</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* === NAVBAR === */
+    .navbar {
+      background: linear-gradient(90deg, #ffffff, #ffffff);
+      color: #527E90;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .navbar .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #4E9CFF 0%, #0157AD 120%); 
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      flex-shrink: 0;
+      z-index: 1001;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1001;
+      margin-left: auto;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #0157AD;
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 3px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Navigation Menu */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-left: auto;
+      margin-right: 16px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      margin: 0;
+    }
+
+    nav a {
+      color: #527E90;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #000000;
+    }
+
+    /* === PROFILE PHOTO ICON === */
+    .profile-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid #0157AD;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .profile-icon:hover {
+      transform: scale(1.05);
+      border-color: #4E9CFF;
+      box-shadow: 0 2px 8px rgba(1, 87, 173, 0.3);
+    }
+
+    /* Profile Link in Menu (Hidden by default) */
+    .profile-link {
+      display: none;
+    }
+
+    /* === RESPONSIVE NAVBAR === */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar .container > a .profile-icon {
+        display: none;
+      }
+
+      .profile-link {
+        display: block;
+        padding: 0;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .profile-link a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 15px;
+        color: #527E90;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .nav-menu {
+        position: absolute;
+        right: 0;
+        top: 100%;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: auto;
+        min-width: 200px;
+        text-align: left;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
+        gap: 0;
+        border-radius: 0 0 15px 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+      }
+
+      .nav-menu.active {
+        max-height: 500px;
+        padding: 15px 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+      }
+
+      nav ul li {
+        padding: 0;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      nav a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar .container {
+        width: 95%;
+      }
+      
+      .logo {
+        font-size: 22px;
+      }
+    }
+
+    /* === HERO SECTION === */
+    .hero {
+      background: linear-gradient(135deg, rgba(1, 87, 173, 0.9), rgba(78, 156, 255, 0.9)),
+                  url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 350px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+    }
+
+    /* === MAIN CONTENT === */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 48px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 32px 0;
+      }
+    }
+
+    /* === ABOUT STORY === */
+    .about-story {
+      background: white;
+      padding: 60px 0;
+    }
+
+    .story-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .story-text h2 {
+      color: #0157AD;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .story-text p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .story-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .story-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .story-text h2 {
+        font-size: 28px;
+      }
+    }
+
+    /* === VALUES SECTION === */
+    .values-section {
+      background: #f8f9fa;
+    }
+
+    .values-section h2 {
+      text-align: center;
+      color: #0157AD;
+      font-size: 36px;
+      margin-bottom: 50px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .value-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .value-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .value-card h3 {
+      color: #0157AD;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .value-card p {
+      color: #666;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .values-section h2 {
+        font-size: 28px;
+        margin-bottom: 35px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* === TEAM SECTION === */
+    .team-section {
+      background: white;
+    }
+
+    .team-section h2 {
+      text-align: center;
+      color: #0157AD;
+      font-size: 36px;
+      margin-bottom: 50px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .team-card {
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .team-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #4E9CFF, #0157AD);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: white;
+      box-shadow: 0 5px 20px rgba(1, 87, 173, 0.3);
+    }
+
+    .team-card h3 {
+      color: #0157AD;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .team-card .role {
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .team-card p {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .team-section h2 {
+        font-size: 28px;
+        margin-bottom: 35px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    /* === STATS SECTION === */
+    .stats-section {
+      background: linear-gradient(135deg, #0157AD, #4E9CFF);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .stat-item {
+      padding: 20px;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .stat-number {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* === CTA SECTION === */
+    .cta-section {
+      background: white;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .cta-section h2 {
+      color: #0157AD;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #0157AD, #4E9CFF);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s;
+      box-shadow: 0 5px 20px rgba(1, 87, 173, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(1, 87, 173, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .cta-section {
+        padding: 60px 0;
+      }
+
+      .cta-section h2 {
+        font-size: 28px;
+      }
+
+      .cta-section p {
+        font-size: 16px;
+      }
+    }
+
+    /* === FOOTER === */
+    footer {
+      background-color: #0157AD;
+      color: white;
+      padding: 40px 80px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-box {
+      width: 30%;
+      min-width: 200px;
+    }
+
+    .footer-box h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 10px;
+      font-weight: bold;
+    }
+
+    .footer-box h3::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 3px;
+      height: 18px;
+      background-color: #004C99;
+    }
+
+    .footer-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-box li {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .footer-box a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-box a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons img {
+      width: 22px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        padding: 30px 40px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .footer-box {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      footer {
+        padding: 25px 20px;
+      }
+
+      .footer-box h3 {
+        font-size: 15px;
+      }
+
+      .footer-box li {
+        font-size: 13px;
+      }
+
+      .footer-bottom {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">WisataKu</h1>
+      
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="nav-menu">
+        <nav>
+          <ul>
+            <li class="profile-link"><a href="profile.html" onclick="closeMenu()">Profil</a></li>
+            <li><a href="home.html" onclick="closeMenu()">Home</a></li>
+            <li><a href="whistlist.html" onclick="closeMenu()">Favorite</a></li>
+            <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Profile Icon (Visible on Desktop Only) -->
+      <a href="profile.html"><img src="dapin kecil.jpg" alt="Profile" class="profile-icon"></a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Tentang Kami</h1>
+      <p>Mengenal lebih dekat platform wisata terpercaya di Malang Raya</p>
+    </div>
+  </section>
+
+  <!-- ABOUT STORY -->
+  <section class="about-story">
+    <div class="container">
+      <div class="story-content">
+        <div class="story-text">
+          <h2>Cerita Kami</h2>
+          <p>WisataKu lahir dari kecintaan kami terhadap keindahan Malang Raya. Kami percaya bahwa setiap orang berhak menikmati pengalaman wisata yang mudah, menyenangkan, dan berkesan.</p>
+          <p>Berawal dari sebuah ide sederhana untuk memudahkan wisatawan dalam menemukan dan memesan tiket destinasi wisata, kini WisataKu telah berkembang menjadi platform terpercaya yang melayani ribuan pelanggan setiap bulannya.</p>
+          <p>Kami berkomitmen untuk terus berinovasi dan memberikan pelayanan terbaik, sehingga setiap perjalanan wisata Anda menjadi pengalaman yang tak terlupakan.</p>
+        </div>
+        <div class="story-image">
+          <img src="Bromo.png" alt="Tim WisataKu">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES SECTION -->
+  <section class="values-section">
+    <div class="container">
+      <h2>Nilai-Nilai Kami</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🎯</div>
+          <h3>Komitmen</h3>
+          <p>Kami berkomitmen memberikan layanan terbaik dan pengalaman wisata yang memuaskan untuk setiap pelanggan.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h3>Kepercayaan</h3>
+          <p>Kepercayaan pelanggan adalah prioritas utama kami. Kami menjaga transparansi dalam setiap transaksi.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💡</div>
+          <h3>Inovasi</h3>
+          <p>Kami terus berinovasi untuk memberikan kemudahan dan fitur terbaru dalam platform kami.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌟</div>
+          <h3>Kualitas</h3>
+          <p>Kami hanya menyediakan destinasi wisata berkualitas dengan standar pelayanan terbaik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Destinasi Wisata</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">Pelanggan Puas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">Rating Pengguna</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Tahun Pengalaman</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section class="team-section">
+    <div class="container">
+      <h2>Tim Kami</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">👨‍💼</div>
+          <h3>Davin Aditya</h3>
+          <p class="role">Founder & CEO</p>
+          <p>Memimpin visi dan strategi pengembangan WisataKu untuk masa depan yang lebih baik.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">👩‍💻</div>
+          <h3>Siti Nurhaliza</h3>
+          <p class="role">Head of Operations</p>
+          <p>Memastikan setiap operasional berjalan lancar dan pelanggan mendapat pelayanan terbaik.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">👨‍🎨</div>
+          <h3>Budi Santoso</h3>
+          <p class="role">Creative Director</p>
+          <p>Menciptakan pengalaman visual yang menarik dan user-friendly untuk platform kami.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">👩‍💼</div>
+          <h3>Ayu Lestari</h3>
+          <p class="role">Customer Relations</p>
+          <p>Menjaga hubungan baik dengan pelanggan dan mendengarkan setiap feedback mereka.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Siap Memulai Petualangan?</h2>
+      <p>Jelajahi berbagai destinasi wisata menarik di Malang Raya bersama WisataKu</p>
+      <a href="home.html" class="cta-button">Mulai Jelajahi Sekarang</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-box">
+        <h3>Navigasi</h3>
+        <ul>
+          <li><a href="home.html">Beranda</a></li>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Layanan</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-box">
+        <h3>Kontak</h3>
+        <ul>
+          <li>Email: info@wisataku.id</li>
+          <li>Telp: +62 857 9287 4948</li>
+        </ul>
+      </div>
+
+      <div class="footer-box">
+        <h3>Ikuti Kami</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/dpinnn20?igsh=aHQ5NnYwbnFxNnI4"><img src="Instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="Facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="Twitter.png" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-bottom">&copy; 2025 WisataKu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navMenu = document.querySelector('.nav-menu');
+      const hamburger = document.querySelector('.hamburger');
+      navMenu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const navMenu = document.querySelector('.nav-menu');
+      const hamburger = document.querySelector('.hamburger');
+      if (window.innerWidth <= 768) {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+      }
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navMenu = document.querySelector('.nav-menu');
+      const hamburger = document.querySelector('.hamburger');
+      const navbar = document.querySelector('.navbar');
+      
+      if (!navbar.contains(event.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
