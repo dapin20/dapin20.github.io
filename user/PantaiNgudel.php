@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WisataKu - Hutan Pinus Semeru Immersive Experience</title>
+    <title>WisataKu - Pantai Ngudel Immersive Experience</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="Bromo.css?v=2.0">
     <!-- Flatpickr untuk kalender modern -->
@@ -25,7 +25,7 @@
             </ul>
 
             <div class="nav-right">
-                <a href="../user/profile.php">
+                <a href="profile.php">
                     <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
                 </a>
             </div>
@@ -34,7 +34,7 @@
 
     <!-- IMMERSIVE HERO -->
     <div class="hero-wrapper">
-        <img src="https://i.pinimg.com/736x/a5/f2/cd/a5f2cd5cf203a7fdcc1e3fa45a78d896.jpg" alt="Hutan Pinus Semeru" class="hero-img">
+        <img src="https://i.pinimg.com/736x/b0/a6/5b/b0a65b419012b024a689f5a4ebb5f2b6.jpg" alt="Pantai Ngudel" class="hero-img">
         <div class="hero-overlay"></div>
     </div>
 
@@ -44,31 +44,31 @@
             <!-- MAIN CONTENT -->
             <main class="main-content">
                 <nav class="breadcrumb">
-                    <a href="../dashboard/home.php">Home</a> / <a href="WisataAlam.php">Wisata Alam</a> / Hutan Pinus Semeru
+                    <a href="../dashboard/home.php">Home</a> / <a href="WisataAlam.php">Wisata Alam</a> / Pantai Ngudel
                 </nav>
                 
-                <h1>Hutan Pinus Semeru</h1>
+                <h1>Pantai Ngudel</h1>
                 
                 <div class="stats-bar">
                     <div class="stat-item">
                         <span class="icon">⭐</span>
-                        <span class="label">4.6</span>
-                        <span class="value">(380 review)</span>
+                        <span class="label">4.8</span>
+                        <span class="value">(650 review)</span>
                     </div>
                     <div class="stat-item">
                         <span class="icon"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px;"/></span>
-                        <span class="label">Sumberputih, Malang</span>
+                        <span class="label">Gedangan, Malang</span>
                     </div>
                     <div class="stat-item">
-                        <span class="icon">🌲</span>
+                        <span class="icon">🏖</span>
                         <span class="label">Wisata Alam</span>
                     </div>
                 </div>
 
                 <div class="description">
-                    <p>Hutan Pinus Semeru adalah destinasi wisata alam yang menawarkan keindahan deretan pohon pinus yang menjulang tinggi di lereng Gunung Semeru. Tempat ini menjadi salah satu spot foto paling populer di Malang karena suasananya yang menyerupai hutan di luar negeri.</p>
+                    <p>Pantai Ngudel adalah destinasi wisata pesisir yang menawan di pesisir selatan Kabupaten Malang. Pantai ini terkenal dengan pasir putihnya yang bersih, deburan ombak yang besar khas pantai selatan, serta sebuah bukit kecil yang ikonik di pinggir pantai.</p>
                     <br>
-                    <p>Selain berfoto ria, pengunjung juga bisa menikmati udara segar yang bebas polusi, bersantai di hammock yang terpasang di antara pepohonan, atau menikmati kopi hangat di kedai-kedai lokal yang ada di sekitar area wisata. Hutan Pinus Semeru sangat cocok untuk wisata keluarga dan pemulihan jiwa.</p>
+                    <p>Daya tarik utama Pantai Ngudel adalah suasananya yang masih asri dan deretan pohon cemara udang yang memberikan keteduhan. Pantai ini juga menjadi lokasi favorit bagi para penggemar camping untuk bermalam sambil menikmati keindahan bintang di langit malam.</p>
                 </div>
             </main>
 
@@ -77,7 +77,7 @@
                 <div class="booking-card">
                     <div class="price-box">
                         <div class="price-label">Harga Tiket Mulai</div>
-                        <div class="price-value">Rp 15.000 <span>/ orang</span></div>
+                        <div class="price-value">Rp 10.000 <span>/ orang</span></div>
                     </div>
 
                     <div class="input-group">
@@ -92,7 +92,7 @@
 
                     <div class="total-payment">
                         <div class="total-label">Total Pembayaran</div>
-                        <div class="total-price" id="totalPriceDisplay">Rp 15.000</div>
+                        <div class="total-price" id="totalPriceDisplay">Rp 10.000</div>
                     </div>
 
                     <button class="buy-btn" onclick="orderTicket()">Pesan Sekarang</button>
@@ -137,7 +137,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        const pricePerTicket = 15000;
+        const pricePerTicket = 10000;
         const datePicker = flatpickr("#bookingDate", {
             altInput: true,
             altFormat: "F j, Y",
@@ -160,7 +160,7 @@
             const amount = amountInput.value;
             const total = amount * pricePerTicket;
             
-            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Hutan Pinus Semeru untuk tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
+            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Pantai Ngudel untuk tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
             window.location.href = `https://wa.me/+6285847739780?text=${encodeURIComponent(message)}`;
         }
     </script>

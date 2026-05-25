@@ -12,17 +12,17 @@
     <!-- ===== NAVBAR (Standardized) ===== -->
     <header class="navbar">
         <div class="container">
-            <a href="../dashboard/home.html" class="logo">WisataKu</a>
+            <a href="../dashboard/home.php" class="logo">WisataKu</a>
 
             <ul class="nav-links">
-                <li><a href="../dashboard/home.html">Home</a></li>
+                <li><a href="../dashboard/home.php">Home</a></li>
                 <li><a href="#">Promo</a></li>
-                <li><a href="../wishlist/whistlist.html">Favorite</a></li>
-                <li><a href="../tentang.html">Tentang Kami</a></li>
+                <li><a href="../wishlist/whistlist.php">Favorite</a></li>
+                <li><a href="../tentang.php">Tentang Kami</a></li>
             </ul>
 
             <div class="nav-right">
-                <a href="../user/profile.html">
+                <a href="profile.php">
                     <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon">
                 </a>
             </div>
@@ -50,7 +50,7 @@
                 <h3>Eco Green Park</h3>
                 <p class="rating">⭐ 4.8</p>
                 <p>Rp 65.000–170.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='EcoGreenPark.html'">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='EcoGreenPark.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -63,8 +63,8 @@
                 <img src="../images/09ace2f0a0f616a9cf973d588ca58e4c 1.png" alt="">
                 <h3>Predator Fun Park</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 220.000 / orang</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 50.000 / orang</p>
+                 <button class="buy-btn" onclick="location.href='PredatorFunPark.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -77,8 +77,8 @@
                 <img src="https://i.pinimg.com/736x/65/91/7f/65917fe94e54b7afa39ddc85d868a9a6.jpg" alt="">
                 <h3>Museum Mpu Purwa</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 15.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 10.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='MuseumMpuPurwa.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -91,8 +91,8 @@
                 <img src="https://i.pinimg.com/1200x/23/48/83/2348832180a88e989ed04f3f24faa9f5.jpg" alt="">
                 <h3>Batu Secret Zoo</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 100.000–150.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 120.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='BatuSecretZoo.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -106,7 +106,7 @@
                 <h3>Museum Brawijaya</h3>
                 <p class="rating">⭐ 4.6</p>
                 <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='MuseumBrawijaya.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -119,8 +119,8 @@
                 <img src="https://i.pinimg.com/736x/53/e3/44/53e344edb748846077be55054012cda7.jpg" alt="">
                 <h3>Museum Angkut</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 20.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='MuseumAngkut.html'">Beli Tiket</button>
+                <p>Rp 110.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='MuseumAngkut.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -134,7 +134,7 @@
                 <h3>Kampung Budaya Polowijen</h3>
                 <p class="rating">⭐ 4.6</p>
                 <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='KampungBudayaPolowijen.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -148,7 +148,7 @@
                 <h3>Museum Zoologi Frater Vianney</h3>
                 <p class="rating">⭐ 4.6</p>
                 <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='MuseumZoologiFraterVianney.php'">Beli Tiket</button>
                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -178,9 +178,9 @@
         <div>
             <h3>Navigasi</h3>
             <ul>
-                <li><a href="../dashboard/home.html">Home</a></li>
+                <li><a href="../dashboard/home.php">Home</a></li>
                 <li><a href="#">Wisata Edukasi</a></li>
-                <li><a href="../wishlist/whistlist.html">Favorit</a></li>
+                <li><a href="../wishlist/whistlist.php">Favorit</a></li>
             </ul>
         </div>
 

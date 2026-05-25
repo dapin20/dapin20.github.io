@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WisataKu - Tumpak Sewu Immersive Experience</title>
+    <title>WisataKu - Malang Night Paradise</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="Bromo.css?v=2.0">
     <!-- Flatpickr untuk kalender modern -->
@@ -12,9 +12,9 @@
 </head>
 <body>
 
-    <!-- ===== NAVBAR (Standardized) ===== -->
+    <!-- ===== NAVBAR ===== -->
     <header class="navbar">
-        <div class="container">
+        <div class="container nav-flex">
             <a href="../dashboard/home.php" class="logo">WisataKu</a>
 
             <ul class="nav-links">
@@ -25,8 +25,8 @@
             </ul>
 
             <div class="nav-right">
-                <a href="../user/profile.php">
-                    <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon">
+                <a href="profile.php">
+                    <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
                 </a>
             </div>
         </div>
@@ -34,7 +34,7 @@
 
     <!-- IMMERSIVE HERO -->
     <div class="hero-wrapper">
-        <img src="https://i.pinimg.com/736x/e4/4e/96/e44e9612cae7bed3b92816e3a0de50f5.jpg" alt="Tumpak Sewu" class="hero-img">
+        <img src="../images/Buatan2.png" alt="Malang Night Paradise" class="hero-img">
         <div class="hero-overlay"></div>
     </div>
 
@@ -44,36 +44,35 @@
             <!-- MAIN CONTENT -->
             <main class="main-content">
                 <nav class="breadcrumb">
-                    <a href="../dashboard/home.php">Home</a> / <a href="WisataAlam.php">Wisata Alam</a> / Tumpak Sewu
+                    <a href="../dashboard/home.php">Home</a> / <a href="WisataBuatan.php">Wisata Buatan</a> / Malang Night Paradise
                 </nav>
                 
-                <h1>Air Terjun Tumpak Sewu</h1>
+                <h1>Malang Night Paradise</h1>
                 
                 <div class="stats-bar">
                     <div class="stat-item">
                         <span class="icon">⭐</span>
-                        <span class="label">4.8</span>
-                        <span class="value">(800+ review)</span>
+                        <span class="label">4.6</span>
+                        <span class="value">(1.1k review)</span>
                     </div>
                     <div class="stat-item">
                         <span class="icon"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px;"/></span>
-                        <span class="label">Lumajang - Malang, Jatim</span>
+                        <span class="label">Malang, Jatim</span>
                     </div>
                     <div class="stat-item">
-                        <span class="icon">🏔</span>
-                        <span class="label">Wisata Alam</span>
+                        <span class="icon">✨</span>
+                        <span class="label">Wisata Buatan</span>
                     </div>
                 </div>
 
                 <div class="description">
-                    <p>Air Terjun Tumpak Sewu merupakan salah satu destinasi wisata alam paling menakjubkan di Jawa Timur. Terletak di perbatasan Kabupaten Malang dan Lumajang, air terjun ini terkenal dengan keindahan panorama yang dijuluki Niagara dari Timur Jawa.</p>
+                    <p>Malang Night Paradise adalah destinasi wisata malam terbesar di Jawa Timur yang menawarkan keindahan gemerlap lampu lampion dan taman hiburan keluarga.</p>
                     <br>
-                    <p>Dikelilingi tebing tinggi dan hijaunya pepohonan, Tumpak Sewu menyuguhkan pemandangan spektakuler berupa air terjun yang menjulang lebar dengan aliran air yang tampak seperti tirai raksasa. Pengunjung bisa menikmati keindahan dari titik pandang atas (panorama) maupun turun ke dasar lembah untuk merasakan langsung kesegaran percikan airnya.</p>
+                    <p>Nikmati berbagai wahana menarik seperti Magic Journey, Roaring Dino, dan Flying Car. Tempat ini sangat populer sebagai spot foto Instagramable karena dekorasi lampunya yang spektakuler dan suasana yang magis di malam hari.</p>
                 </div>
 
-                <h2 style="margin-bottom: 20px;">Fasilitas & Akses</h2>
-                <div class="description">
-                    <p>Lokasi ini menyediakan berbagai fasilitas pendukung seperti area parkir yang luas, warung makan lokal, toilet, dan pemandu wisata berpengalaman. Akses menuju lokasi sudah terbilang baik, namun disarankan untuk menggunakan alas kaki yang nyaman jika ingin turun ke area bawah air terjun.</p>
+                <div class="map-wrapper">
+                    <button class="map-btn" onclick="window.location.href='https://maps.app.goo.gl/2dywodUkzqT3gstw7'"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Lihat di Google Maps</button>
                 </div>
             </main>
 
@@ -82,7 +81,7 @@
                 <div class="booking-card">
                     <div class="price-box">
                         <div class="price-label">Harga Tiket Mulai</div>
-                        <div class="price-value">Rp 100.000 <span>/ orang</span></div>
+                        <div class="price-value">Rp 90.000 <span>/ orang</span></div>
                     </div>
 
                     <div class="input-group">
@@ -97,7 +96,7 @@
 
                     <div class="total-payment">
                         <div class="total-label">Total Pembayaran</div>
-                        <div class="total-price" id="totalPriceDisplay">Rp 100.000</div>
+                        <div class="total-price" id="totalPriceDisplay">Rp 90.000</div>
                     </div>
 
                     <button class="buy-btn" onclick="orderTicket()">Pesan Sekarang</button>
@@ -115,15 +114,15 @@
     <footer>
         <div class="container footer-grid">
             <div class="footer-col">
-                <h3 class="logo" style="background: none; -webkit-text-fill-color: white; color: white;">WisataKu</h3>
+                <h3 class="logo">WisataKu</h3>
                 <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online dan terpercaya.</p>
             </div>
             <div class="footer-col">
                 <h3>Navigasi</h3>
                 <ul>
-                    <li><a href="../dashboard/home.html">Beranda</a></li>
-                    <li><a href="WisataAlam.html">Wisata Alam</a></li>
-                    <li><a href="../wishlist/whistlist.html">Favorit</a></li>
+                    <li><a href="../dashboard/home.php">Beranda</a></li>
+                    <li><a href="WisataBuatan.php">Wisata Buatan</a></li>
+                    <li><a href="../wishlist/whistlist.php">Favorit</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -142,7 +141,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        const pricePerTicket = 100000;
+        const pricePerTicket = 90000;
         const datePicker = flatpickr("#bookingDate", {
             altInput: true,
             altFormat: "F j, Y",
@@ -165,7 +164,7 @@
             const amount = amountInput.value;
             const total = amount * pricePerTicket;
             
-            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Tumpak Sewu untuk tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
+            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Malang Night Paradise for tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
             window.location.href = `https://wa.me/+6285847739780?text=${encodeURIComponent(message)}`;
         }
     </script>

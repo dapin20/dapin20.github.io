@@ -16,23 +16,24 @@
             </div>
             <nav class="sidebar-menu">
                 <ul>
-                    <li><a href="../user/profile.html" class="menu-item">Profil Saya</a></li>
-                    <li><a href="../orders/pesanan.html" class="menu-item">Pesanan Saya</a></li>
-                    <li><a href="../orders/riwayat.html" class="menu-item">Riwayat Transaksi</a></li>
-                    <li><a href="../orders/pembayaran.html" class="menu-item">Metode Pembayaran</a></li>
-                    <li><a href="./whistlist.html" class="menu-item active">Wishlist</a></li>
-                    <li><a href="../user/akun.html" class="menu-item">Pengaturan Akun</a></li>
-                    <li><a href="../help/bantuan.html" class="menu-item">Bantuan & Dukungan</a></li>
+                    <li><a href="../user/profile.php" class="menu-item">Profil Saya</a></li>
+                    <li><a href="../orders/pesanan.php" class="menu-item">Pesanan Saya</a></li>
+                    <li><a href="../orders/riwayat.php" class="menu-item">Riwayat Transaksi</a></li>
+                    <li><a href="../orders/pembayaran.php" class="menu-item">Metode Pembayaran</a></li>
+                    <li><a href="../dashboard/promo.php" class="menu-item">Promo & Deals</a></li>
+                    <li><a href="./whistlist.php" class="menu-item active">Wishlist</a></li>
+                    <li><a href="../user/akun.php" class="menu-item">Pengaturan Akun</a></li>
+                    <li><a href="../help/bantuan.php" class="menu-item">Bantuan & Dukungan</a></li>
                 </ul>
             </nav>
-            <button class="btn-logout">Keluar</button>
+            <button class="btn-logout" onclick="window.location.href='../auth/logout.php'">Keluar</button>
         </aside>
 
         <!-- RIGHT CONTENT: Wishlist Content -->
         <main class="profile-content">
             <!-- Header -->
             <div class="profile-header">
-                <a href="../dashboard/home.html" class="btn-back">← Kembali ke Halaman Utama</a>
+                <a href="../dashboard/home.php" class="btn-back">← Kembali ke Halaman Utama</a>
             </div>
 
             <!-- Wishlist Header -->

@@ -12,17 +12,17 @@
     <!-- ===== NAVBAR (Standardized) ===== -->
     <header class="navbar">
         <div class="container">
-            <a href="../dashboard/home.html" class="logo">WisataKu</a>
+            <a href="../dashboard/home.php" class="logo">WisataKu</a>
 
             <ul class="nav-links">
-                <li><a href="../dashboard/home.html">Home</a></li>
+                <li><a href="../dashboard/home.php">Home</a></li>
                 <li><a href="#">Promo</a></li>
-                <li><a href="../wishlist/whistlist.html">Favorite</a></li>
-                <li><a href="../tentang.html">Tentang Kami</a></li>
+                <li><a href="../wishlist/whistlist.php">Favorite</a></li>
+                <li><a href="../tentang.php">Tentang Kami</a></li>
             </ul>
 
             <div class="nav-right">
-                <a href="../user/profile.html">
+                <a href="profile.php">
                     <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon">
                 </a>
             </div>
@@ -49,8 +49,8 @@
                 <img src="../images/Edukasi.png" alt="">
                 <h3>Jatim Park 1</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 65.000–170.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 100.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='JatimPark1.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -63,8 +63,8 @@
                 <img src="../images/Buatan2.png" alt="">
                 <h3>Malang Night Paradise</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 220.000 / orang</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 90.000 / orang</p>
+                 <button class="buy-btn" onclick="location.href='MalangNightParadise.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -77,8 +77,8 @@
                 <img src="../images/Buatan3.png" alt="">
                 <h3>Hawai Water Park</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 15.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='Hawai.html'">Beli Tiket</button>
+                <p>Rp 100.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='Hawai.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -91,8 +91,8 @@
                 <img src="../images/buatan4.png" alt="">
                 <h3>Kesembon Park</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 100.000–150.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 50.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='KesembonPark.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -105,8 +105,8 @@
                 <img src="../images/buatan5.png" alt="">
                 <h3>Fantasy Land</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 15.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='FantasyLand.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -119,8 +119,8 @@
                 <img src="../images/buatan6.png" alt="">
                 <h3>Kampung Tridi</h3>
                 <p class="rating">⭐ 4.8</p>
-                <p>Rp 20.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 5.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='KampungTridi.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -133,8 +133,8 @@
                 <img src="https://selectawisata.id/wp-content/uploads/2023/12/20230105-DSC04944-scaled.jpg" alt="">
                 <h3>Taman Rekreasi Selecta</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                <p>Rp 40.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='Selecta.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -147,8 +147,8 @@
                 <img src="https://asset.kompas.com/crops/qVZ7dLMU2uwDODrZrSWLni3yUkI=/0x363:765x873/1200x800/data/photo/2023/12/26/658a7bf12e3f1.jpeg" alt=""> 
                 <h3>Malang Skyland</h3>
                 <p class="rating">⭐ 4.6</p>
-                <p>Rp 45.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='MalangSky.html'">Beli Tiket</button>
+                <p>Rp 35.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='MalangSky.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -178,9 +178,9 @@
         <div>
             <h3>Navigasi</h3>
             <ul>
-                <li><a href="../dashboard/home.html">Home</a></li>
+                <li><a href="../dashboard/home.php">Home</a></li>
                 <li><a href="#">Wisata Buatan</a></li>
-                <li><a href="../wishlist/whistlist.html">Favorit</a></li>
+                <li><a href="../wishlist/whistlist.php">Favorit</a></li>
             </ul>
         </div>
 

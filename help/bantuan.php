@@ -21,13 +21,14 @@
           <li><a href="../orders/pesanan.php" class="menu-item">Pesanan Saya</a></li>
           <li><a href="../orders/riwayat.php" class="menu-item">Riwayat Transaksi</a></li>
           <li><a href="../orders/pembayaran.php" class="menu-item">Metode Pembayaran</a></li>
+          <li><a href="../dashboard/promo.php" class="menu-item">Promo & Deals</a></li>
           <li><a href="../wishlist/whistlist.php" class="menu-item">Wishlist</a></li>
           <li><a href="../user/akun.php" class="menu-item">Pengaturan Akun</a></li>
           <li><a href="./bantuan.php" class="menu-item active">Bantuan & Dukungan</a></li>
         </ul>
       </nav>
 
-      <button class="btn-logout">Keluar</button>
+      <button class="btn-logout" onclick="window.location.href='../auth/logout.php'">Keluar</button>
     </aside>
 
     <!-- RIGHT CONTENT: Konten Bantuan -->

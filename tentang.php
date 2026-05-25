@@ -693,16 +693,17 @@ input, button, select, textarea, optgroup, option {
       <div class="nav-menu">
         <nav>
           <ul>
-            <li class="profile-link"><a href="profile.php" onclick="closeMenu()">Profil</a></li>
-            <li><a href="home.php" onclick="closeMenu()">Home</a></li>
-            <li><a href="whistlist.php" onclick="closeMenu()">Favorite</a></li>
+            <li class="profile-link"><a href="user/profile.php" onclick="closeMenu()">Profil</a></li>
+            <li><a href="dashboard/home.php" onclick="closeMenu()">Home</a></li>
+            <li><a href="dashboard/promo.php" onclick="closeMenu()">Promo & Deals</a></li>
+            <li><a href="wishlist/whistlist.php" onclick="closeMenu()">Favorite</a></li>
             <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
           </ul>
         </nav>
       </div>
       
       <!-- Profile Icon (Visible on Desktop Only) -->
-      <a href="profile.php"><img src="dapin kecil.jpg" alt="Profile" class="profile-icon"></a>
+      <a href="user/profile.php"><img src="dapin kecil.jpg" alt="Profile" class="profile-icon"></a>
     </div>
   </header>
 
@@ -721,11 +722,11 @@ input, button, select, textarea, optgroup, option {
         <div class="story-text">
           <h2>Cerita Kami</h2>
           <p>WisataKu lahir dari kecintaan kami terhadap keindahan Malang Raya. Kami percaya bahwa setiap orang berhak menikmati pengalaman wisata yang mudah, menyenangkan, dan berkesan.</p>
-          <p>Berawal dari sebuah ide sederhana untuk memudahkan wisatawan dalam menemukan dan memesan tiket destinasi wisata, kini WisataKu telah berkembang menjadi platform terpercaya yang melayani ribuan pelanggan setiap bulannya.</p>
+          <p>Berawal dari sebuah id sederhana untuk memudahkan wisatawan dalam menemukan dan memesan tiket destinasi wisata, kini WisataKu telah berkembang menjadi platform terpercaya yang melayani ribuan pelanggan setiap bulannya.</p>
           <p>Kami berkomitmen untuk terus berinovasi dan memberikan pelayanan terbaik, sehingga setiap perjalanan wisata Anda menjadi pengalaman yang tak terlupakan.</p>
         </div>
         <div class="story-image">
-          <img src="Bromo.png" alt="Tim WisataKu">
+          <img src="assets/images/Bromo.png" alt="Tim WisataKu">
         </div>
       </div>
     </div>
@@ -822,7 +823,7 @@ input, button, select, textarea, optgroup, option {
     <div class="container">
       <h2>Siap Memulai Petualangan?</h2>
       <p>Jelajahi berbagai destinasi wisata menarik di Malang Raya bersama WisataKu</p>
-      <a href="home.php" class="cta-button">Mulai Jelajahi Sekarang</a>
+      <a href="dashboard/home.php" class="cta-button">Mulai Jelajahi Sekarang</a>
     </div>
   </section>
 
@@ -832,7 +833,8 @@ input, button, select, textarea, optgroup, option {
       <div class="footer-box">
         <h3>Navigasi</h3>
         <ul>
-          <li><a href="home.php">Beranda</a></li>
+          <li><a href="dashboard/home.php">Beranda</a></li>
+          <li><a href="dashboard/promo.php">Promo & Deals</a></li>
           <li><a href="#">Tentang Kami</a></li>
           <li><a href="#">Layanan</a></li>
         </ul>

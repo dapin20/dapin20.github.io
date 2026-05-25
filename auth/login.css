@@ -129,6 +129,7 @@ input {
   text-align: center;
   text-decoration: none;
   margin-bottom: 16px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn-submit:hover {
@@ -147,7 +148,7 @@ input {
 }
 
 .lupa a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .register {
@@ -162,5 +163,96 @@ input {
 }
 
 .register a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+.error-messages {
+  background-color: #ffebee;
+  border: 1px solid #ef5350;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.error-item {
+  color: #c62828;
+  font-size: 13px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.error-item:last-child {
+  margin-bottom: 0;
+}
+
+.success-messages {
+  background-color: #e8f5e9;
+  border: 1px solid #4caf50;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.success-item {
+  color: #2e7d32;
+  font-size: 13px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Toast Notification */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-150px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-error {
+  background-color: #ffebee;
+  border: 1px solid #ef5350;
+  color: #c62828;
+}
+
+.toast-success {
+  background-color: #e8f5e9;
+  border: 1px solid #4caf50;
+  color: #2e7d32;
+}
+
+.toast-icon {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.toast-message {
+  flex: 1;
 }

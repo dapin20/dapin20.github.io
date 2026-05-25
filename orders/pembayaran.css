@@ -11,5 +11,294 @@ input, button, select, textarea, optgroup, option {
   font-family: 'Poppins', sans-serif !important;
 }
 
-/* ===== CSS PEMBAYARAN ===== */
-/* (Lihat pembayaran.css di root folder untuk styling lengkap) */
+/* ===== RESET & DASAR ===== */
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* ===== LAYOUT UTAMA ===== */
+.profile-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* ===== SIDEBAR KIRI ===== */
+.sidebar {
+  width: 200px;
+  background: linear-gradient(135deg, #0157AD 0%, #4E9CFF 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4E9CFF 40%, #0157AD 120%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-menu li {
+  margin: 8px 0;
+}
+
+.menu-item {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.btn-logout {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+  margin-top: auto;
+}
+
+.btn-logout:hover {
+  background-color: rgba(255,255,255,0.3);
+}
+
+/* ===== KONTEN KANAN ===== */
+.profile-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  display: inline-block;
+  background: linear-gradient(to right, #0157AD, #4E9CFF);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  opacity: 0.9;
+}
+
+/* ===== HEADER PEMBAYARAN ===== */
+.pembayaran-header {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pembayaran-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0157AD;
+  margin-bottom: 4px;
+}
+
+.pembayaran-subtitle {
+  font-size: 14px;
+  color: #999;
+}
+
+.btn-tambah {
+  background: linear-gradient(to right, #0157AD, #4E9CFF);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-tambah:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ===== LIST PEMBAYARAN ===== */
+.pembayaran-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.pembayaran-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.payment-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: 0.3s;
+  position: relative;
+}
+
+.payment-card:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-color: #4E9CFF;
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.payment-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #f0f7ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.payment-info {
+  flex: 1;
+}
+
+.payment-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.payment-detail {
+  font-size: 13px;
+  color: #666;
+}
+
+.badge-utama {
+  background-color: #e3f2fd;
+  color: #0157AD;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-edit {
+  background-color: #f5f5f5;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.btn-edit:hover {
+  background-color: #eee;
+}
+
+.btn-hapus {
+  background-color: #fff5f5;
+  color: #e53935;
+  border: 1px solid #ffcdd2;
+}
+
+.btn-hapus:hover {
+  background-color: #ffebee;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .pembayaran-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .btn-tambah {
+    width: 100%;
+  }
+
+  .pembayaran-list {
+    grid-template-columns: 1fr;
+  }
+}

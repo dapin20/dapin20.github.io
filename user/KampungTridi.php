@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WisataKu - Pantai Ngudel Immersive Experience</title>
+    <title>WisataKu - Kampung Tridi</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="Bromo.css?v=2.0">
     <!-- Flatpickr untuk kalender modern -->
@@ -25,7 +25,7 @@
             </ul>
 
             <div class="nav-right">
-                <a href="../user/profile.php">
+                <a href="profile.php">
                     <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
                 </a>
             </div>
@@ -34,7 +34,7 @@
 
     <!-- IMMERSIVE HERO -->
     <div class="hero-wrapper">
-        <img src="https://i.pinimg.com/736x/b0/a6/5b/b0a65b419012b024a689f5a4ebb5f2b6.jpg" alt="Pantai Ngudel" class="hero-img">
+        <img src="../images/buatan6.png" alt="Kampung Tridi" class="hero-img">
         <div class="hero-overlay"></div>
     </div>
 
@@ -44,31 +44,35 @@
             <!-- MAIN CONTENT -->
             <main class="main-content">
                 <nav class="breadcrumb">
-                    <a href="../dashboard/home.php">Home</a> / <a href="WisataAlam.php">Wisata Alam</a> / Pantai Ngudel
+                    <a href="../dashboard/home.php">Home</a> / <a href="WisataBuatan.php">Wisata Buatan</a> / Kampung Tridi
                 </nav>
                 
-                <h1>Pantai Ngudel</h1>
+                <h1>Kampung Tridi</h1>
                 
                 <div class="stats-bar">
                     <div class="stat-item">
                         <span class="icon">⭐</span>
-                        <span class="label">4.8</span>
-                        <span class="value">(650 review)</span>
+                        <span class="label">4.5</span>
+                        <span class="value">(900 review)</span>
                     </div>
                     <div class="stat-item">
                         <span class="icon"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px;"/></span>
-                        <span class="label">Gedangan, Malang</span>
+                        <span class="label">Kota Malang, Jatim</span>
                     </div>
                     <div class="stat-item">
-                        <span class="icon">🏖</span>
-                        <span class="label">Wisata Alam</span>
+                        <span class="icon">🎨</span>
+                        <span class="label">Wisata Buatan</span>
                     </div>
                 </div>
 
                 <div class="description">
-                    <p>Pantai Ngudel adalah destinasi wisata pesisir yang menawan di pesisir selatan Kabupaten Malang. Pantai ini terkenal dengan pasir putihnya yang bersih, deburan ombak yang besar khas pantai selatan, serta sebuah bukit kecil yang ikonik di pinggir pantai.</p>
+                    <p>Kampung Tridi adalah destinasi wisata kreatif di Kota Malang yang menyuguhkan ratusan lukisan mural tiga dimensi yang menakjubkan di dinding-dinding rumah warga.</p>
                     <br>
-                    <p>Daya tarik utama Pantai Ngudel adalah suasananya yang masih asri dan deretan pohon cemara udang yang memberikan keteduhan. Pantai ini juga menjadi lokasi favorit bagi para penggemar camping untuk bermalam sambil menikmati keindahan bintang di langit malam.</p>
+                    <p>Pengunjung dapat berfoto dengan berbagai latar belakang lukisan yang tampak nyata, mulai dari tema alam, hewan, hingga karakter fiksi. Jembatan kaca yang menghubungkan Kampung Tridi dengan Kampung Warna-Warni Jodipan juga menjadi daya tarik tersendiri yang menguji adrenalin.</p>
+                </div>
+
+                <div class="map-wrapper">
+                    <button class="map-btn" onclick="window.location.href='#'"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Lihat di Google Maps</button>
                 </div>
             </main>
 
@@ -77,7 +81,7 @@
                 <div class="booking-card">
                     <div class="price-box">
                         <div class="price-label">Harga Tiket Mulai</div>
-                        <div class="price-value">Rp 10.000 <span>/ orang</span></div>
+                        <div class="price-value">Rp 5.000 <span>/ orang</span></div>
                     </div>
 
                     <div class="input-group">
@@ -92,7 +96,7 @@
 
                     <div class="total-payment">
                         <div class="total-label">Total Pembayaran</div>
-                        <div class="total-price" id="totalPriceDisplay">Rp 10.000</div>
+                        <div class="total-price" id="totalPriceDisplay">Rp 5.000</div>
                     </div>
 
                     <button class="buy-btn" onclick="orderTicket()">Pesan Sekarang</button>
@@ -111,13 +115,13 @@
         <div class="container footer-grid">
             <div class="footer-col">
                 <h3 class="logo">WisataKu</h3>
-                <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online and terpercaya.</p>
+                <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online dan terpercaya.</p>
             </div>
             <div class="footer-col">
                 <h3>Navigasi</h3>
                 <ul>
                     <li><a href="../dashboard/home.php">Beranda</a></li>
-                    <li><a href="WisataAlam.php">Wisata Alam</a></li>
+                    <li><a href="WisataBuatan.php">Wisata Buatan</a></li>
                     <li><a href="../wishlist/whistlist.php">Favorit</a></li>
                 </ul>
             </div>
@@ -137,7 +141,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        const pricePerTicket = 10000;
+        const pricePerTicket = 5000;
         const datePicker = flatpickr("#bookingDate", {
             altInput: true,
             altFormat: "F j, Y",
@@ -160,7 +164,7 @@
             const amount = amountInput.value;
             const total = amount * pricePerTicket;
             
-            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Pantai Ngudel untuk tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
+            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Kampung Tridi for tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
             window.location.href = `https://wa.me/+6285847739780?text=${encodeURIComponent(message)}`;
         }
     </script>

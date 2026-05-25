@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WisataKu - Gunung Buthak Immersive Experience</title>
+    <title>WisataKu - Museum Brawijaya</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="Bromo.css?v=2.0">
     <!-- Flatpickr untuk kalender modern -->
@@ -25,7 +25,7 @@
             </ul>
 
             <div class="nav-right">
-                <a href="../user/profile.php">
+                <a href="profile.php">
                     <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
                 </a>
             </div>
@@ -34,7 +34,7 @@
 
     <!-- IMMERSIVE HERO -->
     <div class="hero-wrapper">
-        <img src="../assets/images/buthak.jpg" alt="Gunung Buthak" class="hero-img">
+        <img src="https://i.pinimg.com/736x/61/8d/05/618d055f5a0f1f4acf5b31359bcbc41d.jpg" alt="Museum Brawijaya" class="hero-img">
         <div class="hero-overlay"></div>
     </div>
 
@@ -44,31 +44,35 @@
             <!-- MAIN CONTENT -->
             <main class="main-content">
                 <nav class="breadcrumb">
-                    <a href="../dashboard/home.php">Home</a> / <a href="WisataAlam.php">Wisata Alam</a> / Gunung Buthak
+                    <a href="../dashboard/home.php">Home</a> / <a href="WisataEdukasi.php">Wisata Edukasi</a> / Museum Brawijaya
                 </nav>
                 
-                <h1>Gunung Buthak</h1>
+                <h1>Museum Brawijaya</h1>
                 
                 <div class="stats-bar">
                     <div class="stat-item">
                         <span class="icon">⭐</span>
-                        <span class="label">4.8</span>
-                        <span class="value">(1.1k review)</span>
+                        <span class="label">4.6</span>
+                        <span class="value">(600 review)</span>
                     </div>
                     <div class="stat-item">
                         <span class="icon"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px;"/></span>
-                        <span class="label">Batu/Blitar, Jatim</span>
+                        <span class="label">Malang, Jatim</span>
                     </div>
                     <div class="stat-item">
-                        <span class="icon">🏔</span>
-                        <span class="label">Wisata Alam</span>
+                        <span class="icon">🏛</span>
+                        <span class="label">Wisata Edukasi</span>
                     </div>
                 </div>
 
                 <div class="description">
-                    <p>Gunung Buthak adalah gunung stratovolcano yang terletak di perbatasan Kabupaten Blitar dan Kabupaten Malang. Gunung ini dikenal memiliki sabana luas yang sangat indah di puncaknya, yang sering disebut sebagai "Sabana Buthak".</p>
+                    <p>Museum Brawijaya merupakan museum militer yang terletak di Malang, Jawa Timur. Museum ini menyimpan berbagai koleksi senjata, kendaraan tempur, dan barang-barang bersejarah lainnya yang berkaitan dengan perjuangan kemerdekaan Indonesia.</p>
                     <br>
-                    <p>Pendakian ke Gunung Buthak menawarkan jalur yang menantang namun terbayar lunas dengan pemandangan hamparan bunga edelweiss dan pemandangan Kota Malang serta Kota Batu dari ketinggian 2.868 mdpl.</p>
+                    <p>Salah satu koleksi yang paling terkenal adalah Gerbong Maut, sebuah saksi bisu perjuangan rakyat Indonesia melawan penjajahan. Museum ini sangat cocok untuk wisata edukasi sejarah bagi pelajar dan masyarakat umum.</p>
+                </div>
+
+                <div class="map-wrapper">
+                    <button class="map-btn" onclick="window.location.href='https://maps.app.goo.gl/UsVKvj5VtjE1TDam6'"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Lihat di Google Maps</button>
                 </div>
             </main>
 
@@ -77,7 +81,7 @@
                 <div class="booking-card">
                     <div class="price-box">
                         <div class="price-label">Harga Tiket Mulai</div>
-                        <div class="price-value">Rp 20.000 <span>/ orang</span></div>
+                        <div class="price-value">Rp 10.000 <span>/ orang</span></div>
                     </div>
 
                     <div class="input-group">
@@ -92,7 +96,7 @@
 
                     <div class="total-payment">
                         <div class="total-label">Total Pembayaran</div>
-                        <div class="total-price" id="totalPriceDisplay">Rp 20.000</div>
+                        <div class="total-price" id="totalPriceDisplay">Rp 10.000</div>
                     </div>
 
                     <button class="buy-btn" onclick="orderTicket()">Pesan Sekarang</button>
@@ -111,13 +115,13 @@
         <div class="container footer-grid">
             <div class="footer-col">
                 <h3 class="logo">WisataKu</h3>
-                <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online and terpercaya.</p>
+                <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online dan terpercaya.</p>
             </div>
             <div class="footer-col">
                 <h3>Navigasi</h3>
                 <ul>
                     <li><a href="../dashboard/home.php">Beranda</a></li>
-                    <li><a href="WisataAlam.php">Wisata Alam</a></li>
+                    <li><a href="WisataEdukasi.php">Wisata Edukasi</a></li>
                     <li><a href="../wishlist/whistlist.php">Favorit</a></li>
                 </ul>
             </div>
@@ -137,7 +141,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        const pricePerTicket = 20000;
+        const pricePerTicket = 10000;
         const datePicker = flatpickr("#bookingDate", {
             altInput: true,
             altFormat: "F j, Y",
@@ -160,7 +164,7 @@
             const amount = amountInput.value;
             const total = amount * pricePerTicket;
             
-            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Gunung Buthak untuk tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
+            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Museum Brawijaya untuk tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
             window.location.href = `https://wa.me/+6285847739780?text=${encodeURIComponent(message)}`;
         }
     </script>

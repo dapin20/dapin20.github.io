@@ -33,11 +33,11 @@ input, button, select, textarea, optgroup, option {
   <!-- ===== NAVBAR ===== -->
   <header class="navbar">
     <div class="container">
-      <a href="index.php" class="logo">WisataKu</a>
+      <span class="logo">WisataKu</span>
 
       <ul class="nav-links">
         <li><a href="index.php" class="active">Home</a></li>
-        <li><a href="#">Promo &amp; Deals</a></li>
+        <li><a href="dashboard/promo.php">Promo &amp; Deals</a></li>
         <li><a href="auth/login.php">Favorite</a></li>
         <li><a href="tentang.php">Tentang Kami</a></li>
       </ul>
@@ -58,7 +58,7 @@ input, button, select, textarea, optgroup, option {
     <div class="mobile-nav-panel">
       <a href="auth/login.php" onclick="closeMobileMenu()">Masuk</a>
       <a href="index.php" onclick="closeMobileMenu()">Home</a>
-      <a href="#" onclick="closeMobileMenu()">Promo &amp; Deals</a>
+      <a href="dashboard/promo.php" onclick="closeMobileMenu()">Promo &amp; Deals</a>
       <a href="auth/login.php" onclick="closeMobileMenu()">Favorite</a>
       <a href="tentang.php" onclick="closeMobileMenu()">Tentang Kami</a>
     </div>
@@ -149,7 +149,7 @@ input, button, select, textarea, optgroup, option {
               <h3>Tumpak Sewu</h3>
             </div>
           </a>
-          <a href="PJBL WEB/RanuRegulo.php" class="mag-card">
+          <a href="user/RanuRegulo.php" class="mag-card">
             <img src="assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
             <div class="mag-overlay"></div>
             <div class="mag-info">
@@ -157,7 +157,7 @@ input, button, select, textarea, optgroup, option {
               <h3>Ranu Regulo</h3>
             </div>
           </a>
-          <a href="PJBL WEB/GunungButhak.php" class="mag-card">
+          <a href="user/GunungButhak.php" class="mag-card">
             <img src="assets/images/buthak.jpg" alt="Gunung Buthak">
             <div class="mag-overlay"></div>
             <div class="mag-info">
@@ -192,11 +192,6 @@ input, button, select, textarea, optgroup, option {
           <div class="chip-label">Wisata Edukasi</div>
           <div class="chip-desc">Belajar sambil berwisata</div>
         </a>
-        <a href="#" class="chip-card">
-          <div class="chip-icon">🍽</div>
-          <div class="chip-label">Wisata Kuliner</div>
-          <div class="chip-desc">Cita rasa otentik khas Malang</div>
-        </a>
       </div>
     </div>
   </section>
@@ -227,7 +222,7 @@ input, button, select, textarea, optgroup, option {
               </div>
             </div>
           </a>
-          <a href="PJBL WEB/RanuRegulo.php" class="hotel-card">
+          <a href="user/RanuRegulo.php" class="hotel-card">
             <div class="hotel-img-wrap">
               <img src="assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
               <button class="wishlist-btn">
@@ -243,7 +238,7 @@ input, button, select, textarea, optgroup, option {
               </div>
             </div>
           </a>
-          <a href="PJBL WEB/GunungButhak.php" class="hotel-card">
+          <a href="user/GunungButhak.php" class="hotel-card">
             <div class="hotel-img-wrap">
               <img src="assets/images/buthak.jpg" alt="Gunung Buthak">
               <button class="wishlist-btn">
@@ -259,7 +254,7 @@ input, button, select, textarea, optgroup, option {
               </div>
             </div>
           </a>
-          <a href="PJBL WEB/RanuKumbolo.php" class="hotel-card">
+          <a href="user/RanuKumbolo.php" class="hotel-card">
             <div class="hotel-img-wrap">
               <img src="assets/images/ranu_kumbolo.jpg" alt="Ranu Kumbolo">
               <button class="wishlist-btn">
@@ -361,7 +356,7 @@ input, button, select, textarea, optgroup, option {
           <h4>Navigasi</h4>
           <ul>
             <li><a href="index.php">Beranda</a></li>
-            <li><a href="#">Promo &amp; Deals</a></li>
+            <li><a href="dashboard/promo.php">Promo &amp; Deals</a></li>
             <li><a href="auth/login.php">Favorite</a></li>
             <li><a href="tentang.php">Tentang Kami</a></li>
           </ul>
@@ -369,10 +364,10 @@ input, button, select, textarea, optgroup, option {
         <div class="footer-col">
           <h4>Destinasi</h4>
           <ul>
-            <li><a href="PJBL WEB/Bromo.php">Gunung Bromo</a></li>
-            <li><a href="PJBL WEB/PantaiNgudel.php">Pantai Balekambang</a></li>
-            <li><a href="PJBL WEB/TumpakSewu.php">Tumpak Sewu</a></li>
-            <li><a href="PJBL WEB/RanuRegulo.php">Ranu Regulo</a></li>
+            <li><a href="user/Bromo.php">Gunung Bromo</a></li>
+            <li><a href="user/PantaiNgudel.php">Pantai Balekambang</a></li>
+            <li><a href="user/TumpakSewu.php">Tumpak Sewu</a></li>
+            <li><a href="user/RanuRegulo.php">Ranu Regulo</a></li>
           </ul>
         </div>
         <div class="footer-col">
