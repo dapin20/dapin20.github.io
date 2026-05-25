@@ -9,16 +9,25 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">WisataKu</div>
-        <ul class="nav-links">
-            <li><a href="../dashboard/home.html">Home</a></li>
-            <li><a href="../wishlist/whistlist.html">Favorit</a></li>
-            <li><a href="../tentang.html">Tentang Kami</a></li>
-        </ul>
-        <div class="menu-btn">☰</div>
-    </nav>
+    <!-- ===== NAVBAR (Standardized) ===== -->
+    <header class="navbar">
+        <div class="container">
+            <a href="../dashboard/home.php" class="logo">WisataKu</a>
+
+            <ul class="nav-links">
+                <li><a href="../dashboard/home.php">Home</a></li>
+                <li><a href="#">Promo</a></li>
+                <li><a href="../wishlist/whistlist.php">Favorite</a></li>
+                <li><a href="../tentang.php">Tentang Kami</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <a href="../user/profile.php">
+                    <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
+                </a>
+            </div>
+        </div>
+    </header>
 
     <div class="container">
 

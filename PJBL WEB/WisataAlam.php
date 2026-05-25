@@ -46,11 +46,11 @@
 
             <!-- CARD 1 -->
             <div class="card">
-                <img src="https://i.pinimg.com/736x/a9/5c/1c/a95c1cb5157d29eb3dc2797e8d54285e.jpg" alt="" href="Bromo.html">
+                <img src="https://i.pinimg.com/736x/a9/5c/1c/a95c1cb5157d29eb3dc2797e8d54285e.jpg" alt="" href="Bromo.php">
                 <h3>Bromo</h3>
                 <p class="rating">⭐ 4.8</p>
                 <p>Rp 200.000 / tiket</p>
-                <button class="buy-btn" onclick="location.href='Bromo.html'">Beli Tiket</button>
+                <button class="buy-btn" onclick="location.href='Bromo.php'">Beli Tiket</button>
                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -64,7 +64,7 @@
                 <h3>Coban Srikandi</h3>
                 <p class="rating">⭐ 4.6</p>
                 <p>Rp 15.000 / orang</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='CobanSrikandi.php'">Beli Tiket</button>
                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -78,7 +78,7 @@
                 <h3>Pantai Ngudel</h3>
                 <p class="rating">⭐ 4.8</p>
                 <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='PantaiNgudel.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -92,7 +92,7 @@
                 <h3>Ranu Kumbolo</h3>
                 <p class="rating">⭐ 4.8</p>
                 <p>Rp 20.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='RanuKumbolo.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -106,7 +106,7 @@
                 <h3>Ranu Regulo</h3>
                 <p class="rating">⭐ 4.6</p>
                 <p>Rp 25.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='RanuRegulo.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -117,10 +117,10 @@
             <!-- CARD 6 -->
             <div class="card">
                 <img src="https://i.pinimg.com/736x/4b/86/1d/4b861d43ee57f761133a479587ab3aa5.jpg" alt="">
-                <h3>Gununng Buthak</h3>
+                <h3>Gunung Buthak</h3>
                 <p class="rating">⭐ 4.8</p>
                 <p>Rp 20.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='GunungButhak.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -135,7 +135,7 @@
                 <h3>Hutan Pinus Semeru</h3>
                 <p class="rating">⭐ 4.6</p>
                 <p>Rp 15.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href=''">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='HutanPinusSemeru.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
@@ -149,7 +149,7 @@
                 <h3>Tumpak Sewu</h3>
                 <p class="rating">⭐ 4.6</p>
                 <p>Rp 100.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='TumpakSewu.html'">Beli Tiket</button>
+                 <button class="buy-btn" onclick="location.href='TumpakSewu.php'">Beli Tiket</button>
                   <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>

@@ -15,17 +15,17 @@
     <!-- ===== NAVBAR ===== -->
     <header class="navbar">
         <div class="container nav-flex">
-            <a href="../dashboard/home.html" class="logo">WisataKu</a>
+            <a href="../dashboard/home.php" class="logo">WisataKu</a>
 
             <ul class="nav-links">
-                <li><a href="../dashboard/home.html">Home</a></li>
+                <li><a href="../dashboard/home.php">Home</a></li>
                 <li><a href="#">Promo</a></li>
-                <li><a href="../wishlist/whistlist.html">Favorite</a></li>
-                <li><a href="../tentang.html">Tentang Kami</a></li>
+                <li><a href="../wishlist/whistlist.php">Favorite</a></li>
+                <li><a href="../tentang.php">Tentang Kami</a></li>
             </ul>
 
             <div class="nav-right">
-                <a href="../user/profile.html">
+                <a href="../user/profile.php">
                     <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
                 </a>
             </div>
@@ -44,7 +44,7 @@
             <!-- MAIN CONTENT -->
             <main class="main-content">
                 <nav class="breadcrumb">
-                    <a href="../dashboard/home.html">Home</a> / <a href="WisataAlam.html">Wisata Alam</a> / Bromo
+                    <a href="../dashboard/home.php">Home</a> / <a href="WisataAlam.php">Wisata Alam</a> / Bromo
                 </nav>
                 
                 <h1>Gunung Bromo</h1>
@@ -124,8 +124,8 @@
             <div class="footer-col">
                 <h3>Hubungi Kami</h3>
                 <ul>
-                    <li><img src="../assets/icon/gmail.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> info@wisataku.id</li>
-                    <li>📞 +62 857-9287-4048</li>
+                    <li><img src="../assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> info@wisataku.id</li>
+                    <li><img src="../assets/icon/phone-line.svg" alt="Phone" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> +62 857-9287-4048</li>
                 </ul>
             </div>
         </div>

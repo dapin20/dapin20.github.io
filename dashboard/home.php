@@ -132,20 +132,20 @@
               <h3>Tumpak Sewu</h3>
             </div>
           </a>
-          <a href="../PJBL WEB/WisataAlam.php" class="mag-card">
-            <img src="../images/Wisata Alam.png" alt="Wisata Alam" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80'">
+          <a href="../PJBL WEB/RanuRegulo.php" class="mag-card">
+            <img src="../assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
             <div class="mag-overlay"></div>
             <div class="mag-info">
               <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</span>
-              <h3>Wisata Alam</h3>
+              <h3>Ranu Regulo</h3>
             </div>
           </a>
-          <a href="../PJBL WEB/WisataBuatan.php" class="mag-card">
-            <img src="../images/WisataBuatan.png" alt="Wisata Buatan" onerror="this.src='https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=80'">
+          <a href="../PJBL WEB/GunungButhak.php" class="mag-card">
+            <img src="../assets/images/buthak.jpg" alt="Gunung Buthak">
             <div class="mag-overlay"></div>
             <div class="mag-info">
               <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Kota</span>
-              <h3>Wisata Buatan</h3>
+              <h3>Gunung Buthak</h3>
             </div>
           </a>
         </div>
@@ -242,15 +242,15 @@
               </div>
             </div>
           </a>
-          <a href="../PJBL WEB/WisataAlam.php" class="hotel-card">
+          <a href="../PJBL WEB/RanuRegulo.php" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="../images/WisataAlam.png" alt="Wisata Alam" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80'">
+              <img src="../assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
               <button class="wishlist-btn">
                 <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Wisata Alam</h4>
+              <h4>Ranu Regulo</h4>
               <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 30.000 <span>/ orang</span></div>
@@ -258,35 +258,35 @@
               </div>
             </div>
           </a>
-          <a href="../PJBL WEB/WisataBuatan.php" class="hotel-card">
+          <a href="../PJBL WEB/GunungButhak.php" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="../images/WisataBuatan.png" alt="Wisata Buatan" onerror="this.src='https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=80'">
+              <img src="../assets/images/buthak.jpg" alt="Gunung Buthak">
               <button class="wishlist-btn">
                 <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Wisata Buatan</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Kota</div>
+              <h4>Gunung Buthak</h4>
+              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 50.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.5</div>
+                <div class="hotel-rating">★ 4.8</div>
               </div>
             </div>
           </a>
-          <a href="../PJBL WEB/WisataEdukasi.php" class="hotel-card">
+          <a href="../PJBL WEB/RanuKumbolo.php" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="../images/Wisata Edukasi.png" alt="Wisata Edukasi" onerror="this.src='https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&q=80'">
+              <img src="../assets/images/ranu_kumbolo.jpg" alt="Ranu Kumbolo">
               <button class="wishlist-btn">
                 <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Wisata Edukasi</h4>
+              <h4>Ranu Kumbolo</h4>
               <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
-                <div class="hotel-price">Rp 35.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.6</div>
+                <div class="hotel-price">Rp 45.000 <span>/ orang</span></div>
+                <div class="hotel-rating">★ 4.9</div>
               </div>
             </div>
           </a>
@@ -338,51 +338,35 @@
               </div>
             </div>
           </a>
-          <a href="../PJBL WEB/WisataEdukasi.php" class="hotel-card">
+          <a href="#" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="../images/Wisata Edukasi.png" alt="Wisata Edukasi" onerror="this.src='https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&q=80'">
+              <img src="../assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
               <button class="wishlist-btn">
                 <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Wisata Edukasi</h4>
+              <h4>Ranu Regulo</h4>
               <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
-                <div class="hotel-price">Rp 35.000 <span>/ orang</span></div>
+                <div class="hotel-price">Rp 30.000 <span>/ orang</span></div>
                 <div class="hotel-rating">★ 4.6</div>
               </div>
             </div>
           </a>
           <a href="#" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="../images/Kondang.png" alt="Balekambang" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80'">
+              <img src="../assets/images/buthak.jpg" alt="Gunung Buthak">
               <button class="wishlist-btn">
                 <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Pantai Balekambang</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Selatan</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 25.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.7</div>
-              </div>
-            </div>
-          </a>
-          <a href="../PJBL WEB/WisataBuatan.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../images/WisataBuatan.png" alt="Wisata Buatan" onerror="this.src='https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=80'">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Wisata Buatan</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Kota</div>
+              <h4>Gunung Buthak</h4>
+              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 50.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.5</div>
+                <div class="hotel-rating">★ 4.8</div>
               </div>
             </div>
           </a>
@@ -464,7 +448,7 @@
               <img src="../assets/icon/twitter.svg" alt="Twitter" />
             </a>
             <a href="mailto:davinadityasaputra20@gmail.com" class="social-icon">
-              <img src="../assets/icon/gmail.svg" alt="Email" />
+              <img src="../assets/icon/mail-line.svg" alt="Email" />
             </a>
           </div>
         </div>
@@ -481,9 +465,9 @@
           <h4>Destinasi</h4>
           <ul>
             <li><a href="../PJBL WEB/Bromo.php">Gunung Bromo</a></li>
-            <li><a href="#">Pantai Balekambang</a></li>
+            <li><a href="../PJBL WEB/PantaiNgudel.php">Pantai Balekambang</a></li>
             <li><a href="../PJBL WEB/TumpakSewu.php">Tumpak Sewu</a></li>
-            <li><a href="../PJBL WEB/WisataAlam.php">Wisata Alam</a></li>
+            <li><a href="../PJBL WEB/RanuRegulo.php">Ranu Regulo</a></li>
           </ul>
         </div>
         <div class="footer-col">

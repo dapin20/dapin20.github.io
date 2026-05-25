@@ -149,20 +149,20 @@ input, button, select, textarea, optgroup, option {
               <h3>Tumpak Sewu</h3>
             </div>
           </a>
-          <a href="auth/login.php" class="mag-card">
-            <img src="assets/images/Wisata Alam.png" alt="Wisata Alam">
+          <a href="PJBL WEB/RanuRegulo.php" class="mag-card">
+            <img src="assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
             <div class="mag-overlay"></div>
             <div class="mag-info">
               <span class="tag"><img src="assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</span>
-              <h3>Wisata Alam</h3>
+              <h3>Ranu Regulo</h3>
             </div>
           </a>
-          <a href="auth/login.php" class="mag-card">
-            <img src="assets/images/WisataBuatan.png" alt="Wisata Buatan">
+          <a href="PJBL WEB/GunungButhak.php" class="mag-card">
+            <img src="assets/images/buthak.jpg" alt="Gunung Buthak">
             <div class="mag-overlay"></div>
             <div class="mag-info">
               <span class="tag"><img src="assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Kota</span>
-              <h3>Wisata Buatan</h3>
+              <h3>Gunung Buthak</h3>
             </div>
           </a>
         </div>
@@ -227,51 +227,51 @@ input, button, select, textarea, optgroup, option {
               </div>
             </div>
           </a>
-          <a href="auth/login.php" class="hotel-card">
+          <a href="PJBL WEB/RanuRegulo.php" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="assets/images/Kondang.png" alt="Balekambang">
+              <img src="assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
               <button class="wishlist-btn">
                 <img src="assets/icon/save.svg" alt="Save" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Pantai Balekambang</h4>
-              <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Selatan</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 25.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.7</div>
-              </div>
-            </div>
-          </a>
-          <a href="auth/login.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="assets/images/Tumpak.png" alt="Tumpak Sewu">
-              <button class="wishlist-btn">
-                <img src="assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Tumpak Sewu</h4>
-              <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Lumajang</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 20.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.8</div>
-              </div>
-            </div>
-          </a>
-          <a href="auth/login.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="assets/images/Wisata Alam.png" alt="Wisata Alam">
-              <button class="wishlist-btn">
-                <img src="assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Wisata Alam</h4>
+              <h4>Ranu Regulo</h4>
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 30.000 <span>/ orang</span></div>
                 <div class="hotel-rating">★ 4.6</div>
+              </div>
+            </div>
+          </a>
+          <a href="PJBL WEB/GunungButhak.php" class="hotel-card">
+            <div class="hotel-img-wrap">
+              <img src="assets/images/buthak.jpg" alt="Gunung Buthak">
+              <button class="wishlist-btn">
+                <img src="assets/icon/save.svg" alt="Save" class="save-icon" />
+              </button>
+            </div>
+            <div class="hotel-info">
+              <h4>Gunung Buthak</h4>
+              <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
+              <div class="hotel-meta">
+                <div class="hotel-price">Rp 50.000 <span>/ orang</span></div>
+                <div class="hotel-rating">★ 4.8</div>
+              </div>
+            </div>
+          </a>
+          <a href="PJBL WEB/RanuKumbolo.php" class="hotel-card">
+            <div class="hotel-img-wrap">
+              <img src="assets/images/ranu_kumbolo.jpg" alt="Ranu Kumbolo">
+              <button class="wishlist-btn">
+                <img src="assets/icon/save.svg" alt="Save" class="save-icon" />
+              </button>
+            </div>
+            <div class="hotel-info">
+              <h4>Ranu Kumbolo</h4>
+              <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
+              <div class="hotel-meta">
+                <div class="hotel-price">Rp 45.000 <span>/ orang</span></div>
+                <div class="hotel-rating">★ 4.9</div>
               </div>
             </div>
           </a>
@@ -369,10 +369,10 @@ input, button, select, textarea, optgroup, option {
         <div class="footer-col">
           <h4>Destinasi</h4>
           <ul>
-            <li><a href="auth/login.php">Gunung Bromo</a></li>
-            <li><a href="auth/login.php">Pantai Balekambang</a></li>
-            <li><a href="auth/login.php">Tumpak Sewu</a></li>
-            <li><a href="auth/login.php">Wisata Alam</a></li>
+            <li><a href="PJBL WEB/Bromo.php">Gunung Bromo</a></li>
+            <li><a href="PJBL WEB/PantaiNgudel.php">Pantai Balekambang</a></li>
+            <li><a href="PJBL WEB/TumpakSewu.php">Tumpak Sewu</a></li>
+            <li><a href="PJBL WEB/RanuRegulo.php">Ranu Regulo</a></li>
           </ul>
         </div>
         <div class="footer-col">

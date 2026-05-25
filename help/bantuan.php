@@ -182,7 +182,7 @@
           </div>
           <div class="contact-card">
             <div class="contact-icon">
-              <img src="../assets/icon/gmail.svg" alt="Email" />
+              <img src="../assets/icon/mail-line.svg" alt="Email" />
             </div>
             <h3>Email</h3>
             <p>rificiahool@gmail.com</p>
