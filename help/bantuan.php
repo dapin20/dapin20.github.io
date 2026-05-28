@@ -5,43 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Bantuan & Dukungan</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../user/account-theme.css?v=3.0" />
   <link rel="stylesheet" href="./bantuan.css?v=2.0" />
 </head>
 <body>
   <div class="profile-container">
-    <!-- LEFT SIDEBAR: Menu Navigasi -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <h2 class="sidebar-title">WisataKu</h2>
+        <p class="sidebar-eyebrow">Akun</p>
+        <h2 class="sidebar-title">Profil Pengguna</h2>
       </div>
 
       <nav class="sidebar-menu">
         <ul>
-          <li><a href="../user/profile.php" class="menu-item">Profil Saya</a></li>
-          <li><a href="../orders/pesanan.php" class="menu-item">Pesanan Saya</a></li>
-          <li><a href="../orders/riwayat.php" class="menu-item">Riwayat Transaksi</a></li>
-          <li><a href="../orders/pembayaran.php" class="menu-item">Metode Pembayaran</a></li>
-          <li><a href="../dashboard/promo.php" class="menu-item">Promo & Deals</a></li>
-          <li><a href="../wishlist/whistlist.php" class="menu-item">Wishlist</a></li>
-          <li><a href="../user/akun.php" class="menu-item">Pengaturan Akun</a></li>
-          <li><a href="./bantuan.php" class="menu-item active">Bantuan & Dukungan</a></li>
+          <li><a href="../user/profile.php" class="menu-item"><span class="menu-icon">👤</span><span>Profil Saya</span></a></li>
+          <li><a href="../orders/pesanan.php" class="menu-item"><span class="menu-icon">🎫</span><span>Pesanan Saya</span></a></li>
+          <li><a href="../orders/riwayat.php" class="menu-item"><span class="menu-icon">🧾</span><span>Riwayat Transaksi</span></a></li>
+          <li><a href="../orders/pembayaran.php" class="menu-item"><span class="menu-icon">💳</span><span>Metode Pembayaran</span></a></li>
+          <li><a href="../dashboard/promo.php" class="menu-item"><span class="menu-icon">🏷</span><span>Promo & Deals</span></a></li>
+          <li><a href="../wishlist/whistlist.php" class="menu-item"><span class="menu-icon">❤</span><span>Wishlist</span></a></li>
+          <li><a href="../user/akun.php" class="menu-item"><span class="menu-icon">⚙</span><span>Pengaturan Akun</span></a></li>
+          <li><a href="./bantuan.php" class="menu-item active"><span class="menu-icon">❓</span><span>Bantuan & Dukungan</span></a></li>
         </ul>
       </nav>
 
+      <a href="../admin/index.php" class="btn-admin-link">Login Admin</a>
       <button class="btn-logout" onclick="window.location.href='../auth/logout.php'">Keluar</button>
     </aside>
 
-    <!-- RIGHT CONTENT: Konten Bantuan -->
     <main class="profile-content">
-      <!-- Header Bantuan -->
       <div class="profile-header">
-        <a href="../dashboard/home.php" class="btn-back">← Kembali ke Halaman Utama</a>
+        <a href="../dashboard/home.php" class="btn-back">← Kembali ke Beranda</a>
+        <p class="profile-subtitle">Cari jawaban cepat, lihat FAQ, dan hubungi tim dukungan dari layout yang sama.</p>
       </div>
 
-      <!-- Title Bantuan -->
-      <div class="bantuan-header">
-        <h1 class="bantuan-title">Bantuan & Dukungan</h1>
-        <p class="bantuan-subtitle">Kami siap membantu Anda mengatasi masalah apapun</p>
+      <div class="page-hero bantuan-header">
+        <h1 class="page-hero-title">Bantuan & Dukungan</h1>
+        <p class="page-hero-subtitle">Kami siap membantu Anda mengatasi masalah apa pun.</p>
       </div>
 
       <!-- Search Bantuan -->
@@ -70,7 +70,7 @@
             <p>Info status pesanan Anda</p>
           </a>
           <a href="#" class="kategori-card">
-            <div class="kategori-icon">�</div>
+            <div class="kategori-icon">🔒</div>
             <h3>Keamanan Akun</h3>
             <p>Lindungi akun Anda dengan aman</p>
           </a>

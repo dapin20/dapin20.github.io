@@ -1,4 +1,9 @@
-1<!DOCTYPE html>
+1<?php
+session_start();
+$isLoggedIn = !empty($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
+$username = $_SESSION['username'] ?? null;
+?>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -90,9 +95,25 @@ input, button, select, textarea, optgroup, option {
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 24px;
-      margin-left: auto;
-      margin-right: 16px;
+      gap: 14px;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 30px;
+      border: 1px solid #0157AD;
+      color: #0157AD;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      background-color: #0157AD;
+      color: white;
     }
 
     nav ul {
@@ -109,8 +130,9 @@ input, button, select, textarea, optgroup, option {
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #000000;
+    nav a:hover,
+    nav a.active {
+      color: #0157AD;
     }
 
     /* === PROFILE PHOTO ICON === */
@@ -589,8 +611,8 @@ input, button, select, textarea, optgroup, option {
     }
 
     .footer-box {
-      width: 30%;
-      min-width: 200px;
+      flex: 1 1 220px;
+      min-width: 220px;
     }
 
     .footer-box h3 {
@@ -628,6 +650,25 @@ input, button, select, textarea, optgroup, option {
 
     .footer-box a:hover {
       text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.8;
     }
 
     .social-icons img {
@@ -681,29 +722,37 @@ input, button, select, textarea, optgroup, option {
   <header class="navbar">
     <div class="container">
       <h1 class="logo">WisataKu</h1>
-      
+
+      <div class="nav-menu">
+        <nav>
+          <ul>
+            <li><a href="index.php" onclick="closeMenu()">Home</a></li>
+            <li><a href="dashboard/promo.php" onclick="closeMenu()">Promo & Deals</a></li>
+            <li><a href="<?php echo $isLoggedIn ? 'wishlist/whistlist.php' : 'auth/login.php'; ?>" onclick="closeMenu()">Favorite</a></li>
+            <li><a href="tentang.php" class="active" onclick="closeMenu()">Tentang Kami</a></li>
+            <?php if ($isLoggedIn): ?>
+            <li class="profile-link"><a href="user/profile.php" onclick="closeMenu()">Profil</a></li>
+            <?php endif; ?>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="nav-right">
+        <?php if ($isLoggedIn): ?>
+          <a href="user/profile.php" class="btn-outline"><?php echo htmlspecialchars($username ?: 'Profil'); ?></a>
+          <a href="auth/logout.php" class="btn-outline" style="background: #0157AD; color: white;">Keluar</a>
+        <?php else: ?>
+          <a href="auth/login.php" class="btn-outline">Masuk</a>
+          <a href="auth/regrist.php" class="btn-outline" style="background: #0157AD; color: white;">Daftar</a>
+        <?php endif; ?>
+      </div>
+
       <!-- Hamburger Menu -->
       <div class="hamburger" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
       </div>
-
-      <!-- Navigation Menu -->
-      <div class="nav-menu">
-        <nav>
-          <ul>
-            <li class="profile-link"><a href="user/profile.php" onclick="closeMenu()">Profil</a></li>
-            <li><a href="dashboard/home.php" onclick="closeMenu()">Home</a></li>
-            <li><a href="dashboard/promo.php" onclick="closeMenu()">Promo & Deals</a></li>
-            <li><a href="wishlist/whistlist.php" onclick="closeMenu()">Favorite</a></li>
-            <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
-          </ul>
-        </nav>
-      </div>
-      
-      <!-- Profile Icon (Visible on Desktop Only) -->
-      <a href="user/profile.php"><img src="dapin kecil.jpg" alt="Profile" class="profile-icon"></a>
     </div>
   </header>
 
@@ -831,34 +880,61 @@ input, button, select, textarea, optgroup, option {
   <footer>
     <div class="footer-container">
       <div class="footer-box">
+        <h3>WisataKu</h3>
+        <p>Platform booking tiket wisata terpercaya di Malang Raya, dari destinasi alam hingga wisata edukasi.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon">
+            <img src="assets/icon/instagram.svg" alt="Instagram" />
+          </a>
+          <a href="#" class="social-icon">
+            <img src="assets/icon/youtube.svg" alt="YouTube" />
+          </a>
+          <a href="#" class="social-icon">
+            <img src="assets/icon/twitter.svg" alt="Twitter" />
+          </a>
+          <a href="#" class="social-icon">
+            <img src="assets/icon/gmail.svg" alt="Email" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-box">
         <h3>Navigasi</h3>
         <ul>
-          <li><a href="dashboard/home.php">Beranda</a></li>
+          <li><a href="index.php">Beranda</a></li>
           <li><a href="dashboard/promo.php">Promo & Deals</a></li>
-          <li><a href="#">Tentang Kami</a></li>
-          <li><a href="#">Layanan</a></li>
+          <li><a href="auth/login.php">Favorite</a></li>
+          <li><a href="tentang.php">Tentang Kami</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-box">
+        <h3>Destinasi</h3>
+        <ul>
+          <li><a href="user/wisata_alam/Bromo.php">Gunung Bromo</a></li>
+          <li><a href="user/wisata_alam/PantaiNgudel.php">Pantai Balekambang</a></li>
+          <li><a href="user/wisata_alam/TumpakSewu.php">Tumpak Sewu</a></li>
+          <li><a href="user/wisata_alam/RanuRegulo.php">Ranu Regulo</a></li>
         </ul>
       </div>
 
       <div class="footer-box">
         <h3>Kontak</h3>
         <ul>
-          <li>Email: info@wisataku.id</li>
-          <li>Telp: +62 857 9287 4948</li>
+          <li><span class="contact-item"><img src="assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> info@wisataku.id</span></li>
+          <li><span class="contact-item"><img src="assets/icon/phone-line.svg" alt="Phone" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> +62 857 9287 4948</span></li>
+          <li><span class="contact-item"><img src="assets/icon/map-pin-2-fill.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang, Jawa Timur</span></li>
         </ul>
-      </div>
-
-      <div class="footer-box">
-        <h3>Ikuti Kami</h3>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/dpinnn20?igsh=aHQ5NnYwbnFxNnI4"><img src="assets/icon/instagram.svg" alt="Instagram"></a>
-          <a href="#"><img src="assets/icon/youtube.svg" alt="Facebook"></a>
-          <a href="#"><img src="assets/icon/twitter.svg" alt="Twitter"></a>
-        </div>
       </div>
     </div>
 
-    <p class="footer-bottom">&copy; 2025 WisataKu. All rights reserved.</p>
+    <div class="footer-bottom">
+      <p>© 2025 WisataKu. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+      </div>
+    </div>
   </footer>
 
   <script>

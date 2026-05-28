@@ -78,6 +78,9 @@ session_start();
                 'auth/process_register.php' => 'Register Processor',
                 'auth/logout.php' => 'Logout Handler',
                 'admin/index.php' => 'Admin Login Form',
+                'admin/home.php' => 'Admin Home',
+                'admin/dashboard.php' => 'Admin Dashboard',
+                'admin/destinations.php' => 'Admin Destination Manager',
             ];
 
             foreach ($files_check as $file => $desc) {
@@ -132,7 +135,9 @@ session_start();
             <li><a href="auth/regrist.php" target="_blank">Register User</a></li>
             <li><a href="admin/index.php" target="_blank">Login Admin</a></li>
             <li><a href="dashboard/home.php" target="_blank">User Dashboard</a></li>
-            <li><a href="user/DashborAdmin.php" target="_blank">Admin Dashboard</a></li>
+            <li><a href="admin/home.php" target="_blank">Admin Home</a></li>
+            <li><a href="admin/dashboard.php" target="_blank">Admin Dashboard</a></li>
+            <li><a href="admin/destinations.php" target="_blank">Kelola Wisata</a></li>
         </ul>
     </div>
 

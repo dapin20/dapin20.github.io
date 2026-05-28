@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS sessions (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Insert admin default (username: admin, password: admin123)
-INSERT IGNORE INTO admins (username, email, password, role) 
-VALUES ('admin', 'admin@wisataku.com', '$2y$10$YIlNjj7j0LqmEb3L2k8uP.8Z8LVxKx6qV0qP0q8K6L0E8H8i6C5zW', 'admin');
+-- Insert admin default (username: admin, password: admin123) and tambahan admin baru (username: Admin Dapin, password: Dapinmasuk123)
+INSERT IGNORE INTO admins (username, email, password, role)
+VALUES
+    ('admin', 'admin@wisataku.com', '$2y$10$YIlNjj7j0LqmEb3L2k8uP.8Z8LVxKx6qV0qP0q8K6L0E8H8i6C5zW', 'admin'),
+    ('Admin Dapin', 'admindapin@wisataku.com', '$2y$10$auxS3MSdqe6qqLV58hfumOChQyfQUmJAbO7VhWl8ILynEjcDHqHXy', 'admin');

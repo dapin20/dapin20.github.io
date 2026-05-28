@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WisataKu - Wisata Alam Malang Raya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="WisataAlam.css?v=2.0">
+</head>
+<body>
+
+    <!-- ===== NAVBAR (Standardized) ===== -->
+    <header class="navbar">
+        <div class="container">
+            <a href="../../dashboard/home.php" class="logo">WisataKu</a>
+
+            <ul class="nav-links">
+                <li><a href="../../dashboard/home.php">Home</a></li>
+                <li><a href="#">Promo</a></li>
+                <li><a href="../../wishlist/whistlist.php">Favorite</a></li>
+                <li><a href="../../tentang.php">Tentang Kami</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <a href="../../user/profile.php">
+                    <img src="../../assets/images/dapin kecil.jpg" alt="Profile" class="profile-icon">
+                </a>
+            </div>
+        </div>
+    </header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h2>Wisata Alam Malang Raya</h2>
+        <p>Eksplorasi seru di Bromo, Coban Srikandi, dan destinasi alam populer lainnya di Malang Raya.</p>
+    </div>
+</section>
+
+<!-- DESTINASI POPULER -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Destinasi Populer</h2>
+
+        <div class="grid-card">
+
+            <!-- CARD 1 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/a9/5c/1c/a95c1cb5157d29eb3dc2797e8d54285e.jpg" alt="">
+                <h3>Bromo</h3>
+                <p class="rating">⭐ 4.8</p>
+                <p>Rp 200.000 / tiket</p>
+                <button class="buy-btn" onclick="location.href='Bromo.php'">Beli Tiket</button>
+                <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/b0/a7/10/b0a71008cd248b24c4a5dca9a5a6f5f6.jpg" alt="">
+                <h3>Coban Srikandi</h3>
+                <p class="rating">⭐ 4.6</p>
+                <p>Rp 15.000 / orang</p>
+                 <button class="buy-btn" onclick="location.href='CobanSrikandi.php'">Beli Tiket</button>
+                <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/b0/a6/5b/b0a65b419012b024a689f5a4ebb5f2b6.jpg" alt="">
+                <h3>Pantai Ngudel</h3>
+                <p class="rating">⭐ 4.8</p>
+                <p>Rp 10.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='PantaiNgudel.php'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/5a/62/88/5a6288878168daf3179b87f02de6f51c.jpg" alt="">
+                <h3>Ranu Kumbolo</h3>
+                <p class="rating">⭐ 4.8</p>
+                <p>Rp 20.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='RanuKumbolo.php'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/1200x/a0/8b/ec/a08bec31c332960d271c0689aa23007a.jpg" alt="">
+                <h3>Ranu Regulo</h3>
+                <p class="rating">⭐ 4.6</p>
+                <p>Rp 25.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='RanuRegulo.php'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/4b/86/1d/4b861d43ee57f761133a479587ab3aa5.jpg" alt="">
+                <h3>Gunung Buthak</h3>
+                <p class="rating">⭐ 4.8</p>
+                <p>Rp 20.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='GunungButhak.php'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+                 
+            </div>
+
+            <!-- CARD 7 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/a5/f2/cd/a5f2cd5cf203a7fdcc1e3fa45a78d896.jpg" alt="">
+                <h3>Hutan Pinus Semeru</h3>
+                <p class="rating">⭐ 4.6</p>
+                <p>Rp 15.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='HutanPinusSemeru.php'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+        </div>
+
+        <!-- CARD 8 -->
+            <div class="card">
+                <img src="https://i.pinimg.com/1200x/a9/58/d3/a958d373aa4c98b39e769d7933b08b02.jpg" alt=""> 
+                <h3>Tumpak Sewu</h3>
+                <p class="rating">⭐ 4.6</p>
+                <p>Rp 100.000 / tiket</p>
+                 <button class="buy-btn" onclick="location.href='TumpakSewu.php'">Beli Tiket</button>
+                  <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                    </svg>
+                </div>
+    </div>
+    <script>
+        function toggleBookmark(el) {
+            el.classList.toggle("saved");
+            el.classList.toggle("unsaved");                 
+            el.style.transform = "scale(1.2)";
+            setTimeout(() => {
+                el.style.transform = "scale(1)";
+            }, 150);
+        }
+    </script>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h3 class="logo">WisataKu</h3>
+            <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online dan terpercaya.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Navigasi</h3>
+            <ul>
+                <li><a href="../../dashboard/home.php">Beranda</a></li>
+                <li><a href="WisataAlam.php">Wisata Alam</a></li>
+                <li><a href="../../wishlist/whistlist.php">Favorit</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Hubungi Kami</h3>
+            <ul>
+                <li><img src="../../assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> info@wisataku.id</li>
+                <li><img src="../../assets/icon/phone-line.svg" alt="Phone" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> +62 857-9287-4048</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 WisataKu - Malang Raya. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
+
+
+
+
+

@@ -2,12 +2,14 @@
 // Fungsi untuk mengecek apakah user sudah login
 function checkLogin($required_role = null) {
     if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-        header("Location: ../auth/login.php");
+        $redirect = $required_role === 'admin' ? '../admin/index.php' : '../auth/login.php';
+        header("Location: " . $redirect);
         exit;
     }
     
     if ($required_role && $_SESSION['user_type'] !== $required_role) {
-        header("Location: ../auth/login.php");
+        $redirect = $required_role === 'admin' ? '../admin/index.php' : '../auth/login.php';
+        header("Location: " . $redirect);
         exit;
     }
 }
@@ -15,8 +17,11 @@ function checkLogin($required_role = null) {
 // Fungsi untuk logout
 function logoutUser() {
     session_start();
+    $redirect = (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin')
+        ? '../admin/index.php'
+        : '../auth/login.php';
     session_destroy();
-    header("Location: ../auth/login.php");
+    header("Location: " . $redirect);
     exit;
 }
 

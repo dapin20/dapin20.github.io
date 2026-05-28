@@ -154,7 +154,7 @@
 
       <div class="nav-right">
         <a href="../user/profile.php">
-          <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
+          <img src="../assets/images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
         </a>
       </div>
     </div>
@@ -189,7 +189,7 @@
           <p>Nikmati keindahan matahari terbit di Gunung Bromo dengan harga lebih hemat 30% untuk pemesanan minimal 4 orang.</p>
           <div class="promo-footer">
             <span class="promo-date">Hingga 30 Jun 2026</span>
-            <a href="../user/Bromo.php" class="btn-claim">Gunakan Promo</a>
+            <a href="../user/wisata_alam/Bromo.php" class="btn-claim">Gunakan Promo</a>
           </div>
         </div>
       </div>
@@ -203,21 +203,21 @@
           <p>Promo spesial liburan sekolah! Dapatkan 1 tiket gratis setiap pembelian 2 tiket Jatim Park 1. Berlaku setiap hari.</p>
           <div class="promo-footer">
             <span class="promo-date">Hingga 15 Jul 2026</span>
-            <a href="../user/JatimPark1.php" class="btn-claim">Gunakan Promo</a>
+            <a href="../user/wisata_buatan/JatimPark1.php" class="btn-claim">Gunakan Promo</a>
           </div>
         </div>
       </div>
 
       <!-- Promo 3 -->
       <div class="promo-card">
-        <img src="../images/Buatan3.png" alt="Promo Hawai" class="promo-img">
+        <img src="../assets/images/Buatan3.png" alt="Promo Hawai" class="promo-img">
         <div class="promo-badge">POTONGAN 50RB</div>
         <div class="promo-content">
           <h3>Hawai Waterpark Seru</h3>
           <p>Khusus pemesanan via website WisataKu, dapatkan potongan langsung Rp 50.000 untuk paket keluarga Hawai Waterpark.</p>
           <div class="promo-footer">
             <span class="promo-date">Hingga 20 Jun 2026</span>
-            <a href="../user/Hawai.php" class="btn-claim">Gunakan Promo</a>
+            <a href="../user/wisata_buatan/Hawai.php" class="btn-claim">Gunakan Promo</a>
           </div>
         </div>
       </div>
@@ -231,7 +231,7 @@
           <p>Petualangan tak terlupakan di air terjun termegah. Diskon 20% khusus pemesanan hari kerja (Senin-Jumat).</p>
           <div class="promo-footer">
             <span class="promo-date">Hingga 25 Jun 2026</span>
-            <a href="../user/TumpakSewu.php" class="btn-claim">Gunakan Promo</a>
+            <a href="../user/wisata_alam/TumpakSewu.php" class="btn-claim">Gunakan Promo</a>
           </div>
         </div>
       </div>
@@ -245,21 +245,21 @@
           <p>Bawa keluarga belajar tentang lingkungan lebih hemat. Paket keluarga (4 orang) hanya Rp 250.000 saja.</p>
           <div class="promo-footer">
             <span class="promo-date">Hingga 10 Jul 2026</span>
-            <a href="../user/EcoGreenPark.php" class="btn-claim">Gunakan Promo</a>
+            <a href="../user/wisata_edukasi/EcoGreenPark.php" class="btn-claim">Gunakan Promo</a>
           </div>
         </div>
       </div>
 
       <!-- Promo 6 -->
       <div class="promo-card">
-        <img src="../images/Buatan2.png" alt="Promo Malang Night Paradise" class="promo-img">
+        <img src="../assets/images/Buatan2.png" alt="Promo Malang Night Paradise" class="promo-img">
         <div class="promo-badge">CASHBACK 15%</div>
         <div class="promo-content">
           <h3>Malang Night Paradise Glow</h3>
           <p>Dapatkan cashback 15% dalam bentuk koin WisataKu untuk setiap pembelian tiket Malang Night Paradise.</p>
           <div class="promo-footer">
             <span class="promo-date">Hingga 05 Jul 2026</span>
-            <a href="../user/MalangNightParadise.php" class="btn-claim">Gunakan Promo</a>
+            <a href="../user/wisata_buatan/MalangNightParadise.php" class="btn-claim">Gunakan Promo</a>
           </div>
         </div>
       </div>

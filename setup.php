@@ -47,10 +47,12 @@ foreach ($sql_commands as $sql) {
     }
 }
 
-// Insert admin default
+// Insert admin default dan akun admin tambahan
 $admin_password = password_hash("admin123", PASSWORD_BCRYPT);
+$admin_dapin_password = password_hash("Dapinmasuk123", PASSWORD_BCRYPT);
 $insert_admin = "INSERT IGNORE INTO admins (username, email, password, role) 
-                 VALUES ('admin', 'admin@wisataku.com', '$admin_password', 'admin')";
+                 VALUES ('admin', 'admin@wisataku.com', '$admin_password', 'admin'),
+                        ('Admin Dapin', 'admindapin@wisataku.com', '$admin_dapin_password', 'admin')";
 
 if ($mysqli->query($insert_admin) === FALSE) {
     echo "Error: " . $mysqli->error;
@@ -59,8 +61,8 @@ if ($mysqli->query($insert_admin) === FALSE) {
     echo "<p>Silahkan hapus file setup.php setelah selesai.</p>";
     echo "<p><strong>Akun Admin Default:</strong></p>";
     echo "<ul>";
-    echo "<li>Username: <code>admin</code></li>";
-    echo "<li>Password: <code>admin123</code></li>";
+    echo "<li>Username: <code>admin</code> - Password: <code>admin123</code></li>";
+    echo "<li>Username: <code>Admin Dapin</code> - Password: <code>Dapinmasuk123</code></li>";
     echo "</ul>";
 }
 

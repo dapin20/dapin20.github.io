@@ -1,3 +1,23 @@
+<?php
+require_once('../config/destination_helper.php');
+
+$destinations = load_destinations();
+$popularDestinations = array_slice(destination_filter($destinations, 'popular'), 0, 5);
+$nearDestinations = array_slice(destination_filter($destinations, 'near'), 0, 8);
+$recommendedDestinations = array_slice(destination_filter($destinations, 'recommended'), 0, 8);
+
+if (count($popularDestinations) < 5) {
+    $popularDestinations = array_slice($destinations, 0, 5);
+}
+
+if (count($nearDestinations) === 0) {
+    $nearDestinations = array_slice($destinations, 0, 8);
+}
+
+if (count($recommendedDestinations) === 0) {
+    $recommendedDestinations = array_slice($destinations, 0, 8);
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -26,7 +46,7 @@
 
       <div class="nav-right">
         <a href="../user/profile.php">
-          <img src="../images/dapin kecil.jpg" alt="Profile" class="profile-icon" onerror="this.style.display='none'">
+          <img src="../assets/images/dapin kecil.jpg" alt="Profile" class="profile-icon">
         </a>
         <div class="hamburger" onclick="openMobileMenu()">
           <span></span><span></span><span></span>
@@ -100,56 +120,35 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Destinasi <span>Populer</span></h2>
-        <a href="../user/WisataAlam.php" class="see-all">Lihat Semua →</a>
+        <a href="../user/wisata_alam/WisataAlam.php" class="see-all">Lihat Semua →</a>
       </div>
 
+      <?php if (!empty($popularDestinations)): ?>
       <div class="populer-magazine">
-        <!-- Main large card -->
-        <a href="../user/Bromo.php" class="mag-card mag-main">
-          <img src="../images/Bromo.png" alt="Gunung Bromo" onerror="this.src='https://images.unsplash.com/photo-1571409883422-ae01b3be7c52?w=800&q=80'">
+        <?php $mainPopular = $popularDestinations[0]; ?>
+        <a href="../<?php echo htmlspecialchars($mainPopular['href']); ?>" class="mag-card mag-main">
+          <img src="../<?php echo htmlspecialchars($mainPopular['image']); ?>" alt="<?php echo htmlspecialchars($mainPopular['name']); ?>">
           <div class="mag-overlay"></div>
           <div class="mag-info">
-            <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Probolinggo, Jawa Timur</span>
-            <h3>Gunung Bromo</h3>
+            <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> <?php echo htmlspecialchars($mainPopular['location']); ?></span>
+            <h3><?php echo htmlspecialchars($mainPopular['name']); ?></h3>
           </div>
         </a>
 
-        <!-- Side 2x2 cards -->
         <div class="mag-side">
-          <a href="../user/PantaiNgudel.php" class="mag-card">
-            <img src="../images/Kondang.png" alt="Pantai Balekambang" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80'">
+          <?php foreach (array_slice($popularDestinations, 1, 4) as $destination): ?>
+          <a href="../<?php echo htmlspecialchars($destination['href']); ?>" class="mag-card">
+            <img src="../<?php echo htmlspecialchars($destination['image']); ?>" alt="<?php echo htmlspecialchars($destination['name']); ?>">
             <div class="mag-overlay"></div>
             <div class="mag-info">
-              <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Selatan</span>
-              <h3>Pantai Balekambang</h3>
+              <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> <?php echo htmlspecialchars($destination['location']); ?></span>
+              <h3><?php echo htmlspecialchars($destination['name']); ?></h3>
             </div>
           </a>
-          <a href="../user/TumpakSewu.php" class="mag-card">
-            <img src="../images/Tumpak.png" alt="Tumpak Sewu" onerror="this.src='https://images.unsplash.com/photo-1533632359083-0185df1be85d?w=400&q=80'">
-            <div class="mag-overlay"></div>
-            <div class="mag-info">
-              <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Lumajang</span>
-              <h3>Tumpak Sewu</h3>
-            </div>
-          </a>
-          <a href="../user/RanuRegulo.php" class="mag-card">
-            <img src="../assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
-            <div class="mag-overlay"></div>
-            <div class="mag-info">
-              <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</span>
-              <h3>Ranu Regulo</h3>
-            </div>
-          </a>
-          <a href="../user/GunungButhak.php" class="mag-card">
-            <img src="../assets/images/buthak.jpg" alt="Gunung Buthak">
-            <div class="mag-overlay"></div>
-            <div class="mag-info">
-              <span class="tag"><img src="../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Kota</span>
-              <h3>Gunung Buthak</h3>
-            </div>
-          </a>
+          <?php endforeach; ?>
         </div>
       </div>
+      <?php endif; ?>
     </div>
   </section>
 
@@ -160,17 +159,17 @@
         <h2 class="section-title">Kategori <span>Wisata</span></h2>
       </div>
       <div class="kategori-chips">
-        <a href="../user/WisataAlam.php" class="chip-card">
+        <a href="../user/wisata_alam/WisataAlam.php" class="chip-card">
           <div class="chip-icon">🏔</div>
           <div class="chip-label">Wisata Alam</div>
           <div class="chip-desc">Pesona alam indah di Malang Raya</div>
         </a>
-        <a href="../user/WisataBuatan.php" class="chip-card">
+        <a href="../user/wisata_buatan/WisataBuatan.php" class="chip-card">
           <div class="chip-icon">🎪</div>
           <div class="chip-label">Wisata Buatan</div>
           <div class="chip-desc">Wahana modern & hiburan keluarga</div>
         </a>
-        <a href="../user/WisataEdukasi.php" class="chip-card">
+        <a href="../user/wisata_edukasi/WisataEdukasi.php" class="chip-card">
           <div class="chip-icon">🏛</div>
           <div class="chip-label">Wisata Edukasi</div>
           <div class="chip-desc">Belajar sambil berwisata</div>
@@ -184,107 +183,45 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Destinasi <span>Dekat Anda</span></h2>
-        <a href="../user/WisataAlam.php" class="see-all">Lihat Semua →</a>
+        <a href="../user/wisata_alam/WisataAlam.php" class="see-all">Lihat Semua →</a>
       </div>
       <div class="scroll-wrapper">
         <button class="scroll-btn prev" onclick="scrollCards('near', -1)">‹</button>
         <div class="card-scroll" id="near">
-          <a href="../user/Bromo.php" class="hotel-card">
+          <?php foreach ($nearDestinations as $destination): ?>
+          <a href="../<?php echo htmlspecialchars($destination['href']); ?>" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="../images/Bromo.png" alt="Gunung Bromo" onerror="this.src='https://images.unsplash.com/photo-1571409883422-ae01b3be7c52?w=400&q=80'">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
+              <img src="../<?php echo htmlspecialchars($destination['image']); ?>" alt="<?php echo htmlspecialchars($destination['name']); ?>">
+              <button
+                class="wishlist-btn"
+                type="button"
+                data-favorite-button
+                data-id="<?php echo htmlspecialchars($destination['id'], ENT_QUOTES); ?>"
+                data-name="<?php echo htmlspecialchars($destination['name'], ENT_QUOTES); ?>"
+                data-location="<?php echo htmlspecialchars($destination['location'], ENT_QUOTES); ?>"
+                data-price="<?php echo (int) $destination['price']; ?>"
+                data-rating="<?php echo htmlspecialchars((string) $destination['rating'], ENT_QUOTES); ?>"
+                data-image="../<?php echo htmlspecialchars($destination['image'], ENT_QUOTES); ?>"
+                data-href="../<?php echo htmlspecialchars($destination['href'], ENT_QUOTES); ?>"
+                data-category="<?php echo htmlspecialchars($destination['category'], ENT_QUOTES); ?>"
+                data-icon-default="../assets/icon/save.svg"
+                data-icon-active="../assets/icon/save_fill.svg"
+                aria-label="Simpan ke favorite"
+                aria-pressed="false"
+              >
+                <img src="../assets/icon/save.svg" alt="Favorite" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Gunung Bromo</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Probolinggo</div>
+              <h4><?php echo htmlspecialchars($destination['name']); ?></h4>
+              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> <?php echo htmlspecialchars($destination['location']); ?></div>
               <div class="hotel-meta">
-                <div class="hotel-price">Rp 150.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.9</div>
+                <div class="hotel-price"><?php echo htmlspecialchars(destination_price_label($destination['price'])); ?> <span>/ orang</span></div>
+                <div class="hotel-rating">★ <?php echo htmlspecialchars(number_format($destination['rating'], 1)); ?></div>
               </div>
             </div>
           </a>
-          <a href="../user/PantaiNgudel.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../images/Kondang.png" alt="Balekambang" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80'">
-              <button class="wishlist-btn" data-saved="false">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Pantai Balekambang</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang Selatan</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 25.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.7</div>
-              </div>
-            </div>
-          </a>
-          <a href="../user/TumpakSewu.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../images/Tumpak.png" alt="Tumpak Sewu" onerror="this.src='https://images.unsplash.com/photo-1533632359083-0185df1be85d?w=400&q=80'">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Tumpak Sewu</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Lumajang</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 20.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.8</div>
-              </div>
-            </div>
-          </a>
-          <a href="../user/RanuRegulo.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Ranu Regulo</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 30.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.6</div>
-              </div>
-            </div>
-          </a>
-          <a href="../user/GunungButhak.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../assets/images/buthak.jpg" alt="Gunung Buthak">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Gunung Buthak</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 50.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.8</div>
-              </div>
-            </div>
-          </a>
-          <a href="../user/RanuKumbolo.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../assets/images/ranu_kumbolo.jpg" alt="Ranu Kumbolo">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Ranu Kumbolo</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 45.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.9</div>
-              </div>
-            </div>
-          </a>
+          <?php endforeach; ?>
         </div>
         <button class="scroll-btn next" onclick="scrollCards('near', 1)">›</button>
       </div>
@@ -296,75 +233,45 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Rekomendasi <span>Untukmu</span></h2>
-        <a href="../user/WisataAlam.php" class="see-all">Lihat Semua →</a>
+        <a href="../user/wisata_alam/WisataAlam.php" class="see-all">Lihat Semua →</a>
       </div>
       <div class="scroll-wrapper">
         <button class="scroll-btn prev" onclick="scrollCards('reko', -1)">‹</button>
         <div class="card-scroll" id="reko">
-          <a href="../user/TumpakSewu.php" class="hotel-card">
+          <?php foreach ($recommendedDestinations as $destination): ?>
+          <a href="../<?php echo htmlspecialchars($destination['href']); ?>" class="hotel-card">
             <div class="hotel-img-wrap">
-              <img src="../images/Tumpak.png" alt="Tumpak Sewu" onerror="this.src='https://images.unsplash.com/photo-1533632359083-0185df1be85d?w=400&q=80'">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
+              <img src="../<?php echo htmlspecialchars($destination['image']); ?>" alt="<?php echo htmlspecialchars($destination['name']); ?>">
+              <button
+                class="wishlist-btn"
+                type="button"
+                data-favorite-button
+                data-id="<?php echo htmlspecialchars($destination['id'], ENT_QUOTES); ?>"
+                data-name="<?php echo htmlspecialchars($destination['name'], ENT_QUOTES); ?>"
+                data-location="<?php echo htmlspecialchars($destination['location'], ENT_QUOTES); ?>"
+                data-price="<?php echo (int) $destination['price']; ?>"
+                data-rating="<?php echo htmlspecialchars((string) $destination['rating'], ENT_QUOTES); ?>"
+                data-image="../<?php echo htmlspecialchars($destination['image'], ENT_QUOTES); ?>"
+                data-href="../<?php echo htmlspecialchars($destination['href'], ENT_QUOTES); ?>"
+                data-category="<?php echo htmlspecialchars($destination['category'], ENT_QUOTES); ?>"
+                data-icon-default="../assets/icon/save.svg"
+                data-icon-active="../assets/icon/save_fill.svg"
+                aria-label="Simpan ke favorite"
+                aria-pressed="false"
+              >
+                <img src="../assets/icon/save.svg" alt="Favorite" class="save-icon" />
               </button>
             </div>
             <div class="hotel-info">
-              <h4>Tumpak Sewu</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Lumajang</div>
+              <h4><?php echo htmlspecialchars($destination['name']); ?></h4>
+              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> <?php echo htmlspecialchars($destination['location']); ?></div>
               <div class="hotel-meta">
-                <div class="hotel-price">Rp 20.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.8</div>
+                <div class="hotel-price"><?php echo htmlspecialchars(destination_price_label($destination['price'])); ?> <span>/ orang</span></div>
+                <div class="hotel-rating">★ <?php echo htmlspecialchars(number_format($destination['rating'], 1)); ?></div>
               </div>
             </div>
           </a>
-          <a href="../user/Bromo.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../images/Bromo.png" alt="Gunung Bromo" onerror="this.src='https://images.unsplash.com/photo-1571409883422-ae01b3be7c52?w=400&q=80'">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Gunung Bromo</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Probolinggo</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 150.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.9</div>
-              </div>
-            </div>
-          </a>
-          <a href="../user/RanuRegulo.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../assets/images/ranu_regulo.jpg" alt="Ranu Regulo">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Ranu Regulo</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 30.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.6</div>
-              </div>
-            </div>
-          </a>
-          <a href="../user/GunungButhak.php" class="hotel-card">
-            <div class="hotel-img-wrap">
-              <img src="../assets/images/buthak.jpg" alt="Gunung Buthak">
-              <button class="wishlist-btn">
-                <img src="../assets/icon/save.svg" alt="Save" class="save-icon" />
-              </button>
-            </div>
-            <div class="hotel-info">
-              <h4>Gunung Buthak</h4>
-              <div class="hotel-location"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
-              <div class="hotel-meta">
-                <div class="hotel-price">Rp 50.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.8</div>
-              </div>
-            </div>
-          </a>
+          <?php endforeach; ?>
         </div>
         <button class="scroll-btn next" onclick="scrollCards('reko', 1)">›</button>
       </div>
@@ -459,10 +366,10 @@
         <div class="footer-col">
           <h4>Destinasi</h4>
           <ul>
-            <li><a href="../user/Bromo.php">Gunung Bromo</a></li>
-            <li><a href="../user/PantaiNgudel.php">Pantai Balekambang</a></li>
-            <li><a href="../user/TumpakSewu.php">Tumpak Sewu</a></li>
-            <li><a href="../user/RanuRegulo.php">Ranu Regulo</a></li>
+            <li><a href="../user/wisata_alam/Bromo.php">Gunung Bromo</a></li>
+            <li><a href="../user/wisata_alam/PantaiNgudel.php">Pantai Balekambang</a></li>
+            <li><a href="../user/wisata_alam/TumpakSewu.php">Tumpak Sewu</a></li>
+            <li><a href="../user/wisata_alam/RanuRegulo.php">Ranu Regulo</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -486,6 +393,7 @@
 
   <!-- Flatpickr JS -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="../assets/js/favorites.js"></script>
   <script>
     // Global Date Picker for Home
     flatpickr("#homeDate", {
@@ -510,17 +418,6 @@
       el.scrollBy({ left: dir * 250, behavior: 'smooth' });
     }
 
-    // Wishlist toggle
-    document.querySelectorAll('.wishlist-btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const img = this.querySelector('.save-icon');
-        if (img) {
-          const isSaved = img.src.includes('save_fill');
-          img.src = isSaved ? '../assets/icon/save.svg' : '../assets/icon/save_fill.svg';
-        }
-      });
-    });
   </script>
 
 </body>

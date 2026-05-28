@@ -94,7 +94,7 @@
                 <!-- Placeholder untuk Grafik (anda bisa ganti ini dengan library chart.js) -->
                 <div class="chart-placeholder">
                     <!-- Grafik garis di sini -->
-                    <img src="../images/Data.png" alt="Grafik Transaksi Bulanan" style="width:100%; height:auto;">
+                    <img src="../assets/Data.png" alt="Grafik Transaksi Bulanan" style="width:100%; height:auto;">
                 </div>
             </div>
 

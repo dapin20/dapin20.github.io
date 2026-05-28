@@ -678,17 +678,17 @@ footer {
       <h2>Kategori Wisata</h2>
       <div class="kategori-grid">
         <div class="card">
-          <a href="../PJBL/PJBL WEB/WisataAlam.php"><img src="Wisata Alam.png" alt="Wisata Alam"></a>
+          <a href="../user/wisata_alam/WisataAlam.php"><img src="Wisata Alam.png" alt="Wisata Alam"></a>
           <h3>Wisata Alam</h3>
           <p>Menikmati pesona alam indah di area Malang Raya.</p>
         </div>
         <div class="card">
-          <a href="../PJBL/PJBL WEB/WisataBuatan.php"><img src="Wisata Buatan.png" alt="Wisata Buatan"></a>
+          <a href="../user/wisata_buatan/WisataBuatan.php"><img src="Wisata Buatan.png" alt="Wisata Buatan"></a>
           <h3>Wisata Buatan</h3>
           <p>Menikmati wahana buatan modern dan beragam hiburan keluarga.</p>
         </div>
         <div class="card">
-          <a href="../PJBL/PJBL WEB/WisataEdukasi.php"><img src="Wisata Edukasi.png" alt="Wisata Edukasi"></a>
+          <a href="../user/wisata_edukasi/WisataEdukasi.php"><img src="Wisata Edukasi.png" alt="Wisata Edukasi"></a>
           <h3>Wisata Edukasi</h3>
           <p>Wisata sambil belajar di berbagai lokasi menarik di Malang.</p>
         </div>
@@ -702,17 +702,17 @@ footer {
       <h2>Destinasi Populer</h2>
       <div class="populer-grid">
         <div class="card">
-          <a href="../PJBL/PJBL WEB/Bromo.php"><img src="Bromo.png" alt="Gunung Bromo"></a>
+          <a href="../user/wisata_alam/Bromo.php"><img src="Bromo.png" alt="Gunung Bromo"></a>
           <h3>Gunung Bromo</h3>
           <p>Destinasi wisata alam paling terkenal di Jawa Timur.</p>
         </div>
         <div class="card">
-          <a href="../PJBL/PJBL WEB/Balekambang.php"><img src="Kondang.png" alt="Pantai Balekambang"></a>
+          <a href="../user/wisata_alam/PantaiNgudel.php"><img src="Kondang.png" alt="Pantai Balekambang"></a>
           <h3>Pantai Balekambang</h3>
           <p>Pantai indah dengan suasana tenang dan pemandangan menakjubkan.</p>
         </div>
           <div class="card">
-            <a href="../PJBL/PJBL WEB/TumpakSewu.php"><img src="Tumpak.png" alt="Tumpak Sewu"></a>
+            <a href="../user/wisata_alam/TumpakSewu.php"><img src="Tumpak.png" alt="Tumpak Sewu"></a>
           <h3>Tumpak Sewu</h3>
           <p>Air terjun megah yang menjadi ikon wisata Malang Selatan.</p>
         </div>

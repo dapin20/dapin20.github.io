@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // Redirect berdasarkan tipe user
             if ($user_type === 'admin') {
-                header("Location: ../user/DashborAdmin.php");
+                header("Location: ../admin/home.php");
             } else {
                 header("Location: ../dashboard/home.php");
             }

@@ -5,50 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Pesanan Saya</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../user/account-theme.css?v=3.0" />
   <link rel="stylesheet" href="pesanan.css?v=2.0" />
 </head>
 <body>
   <div class="profile-container">
-    <!-- LEFT SIDEBAR: Menu Navigasi -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <h2 class="sidebar-title">WisataKu</h2>
+        <p class="sidebar-eyebrow">Akun</p>
+        <h2 class="sidebar-title">Profil Pengguna</h2>
       </div>
 
       <nav class="sidebar-menu">
         <ul>
-          <li><a href="../user/profile.php" class="menu-item">Profil Saya</a></li>
-          <li><a href="pesanan.php" class="menu-item active">Pesanan Saya</a></li>
-          <li><a href="riwayat.php" class="menu-item">Riwayat Transaksi</a></li>
-          <li><a href="pembayaran.php" class="menu-item">Metode Pembayaran</a></li>
-          <li><a href="../dashboard/promo.php" class="menu-item">Promo & Deals</a></li>
-          <li><a href="../wishlist/whistlist.php" class="menu-item">Wishlist</a></li>
-          <li><a href="../user/akun.php" class="menu-item">Pengaturan Akun</a></li>
-          <li><a href="../help/bantuan.php" class="menu-item">Bantuan & Dukungan</a></li>
+          <li><a href="../user/profile.php" class="menu-item"><span class="menu-icon">👤</span><span>Profil Saya</span></a></li>
+          <li><a href="pesanan.php" class="menu-item active"><span class="menu-icon">🎫</span><span>Pesanan Saya</span></a></li>
+          <li><a href="riwayat.php" class="menu-item"><span class="menu-icon">🧾</span><span>Riwayat Transaksi</span></a></li>
+          <li><a href="pembayaran.php" class="menu-item"><span class="menu-icon">💳</span><span>Metode Pembayaran</span></a></li>
+          <li><a href="../dashboard/promo.php" class="menu-item"><span class="menu-icon">🏷</span><span>Promo & Deals</span></a></li>
+          <li><a href="../wishlist/whistlist.php" class="menu-item"><span class="menu-icon">❤</span><span>Wishlist</span></a></li>
+          <li><a href="../user/akun.php" class="menu-item"><span class="menu-icon">⚙</span><span>Pengaturan Akun</span></a></li>
+          <li><a href="../help/bantuan.php" class="menu-item"><span class="menu-icon">❓</span><span>Bantuan & Dukungan</span></a></li>
         </ul>
       </nav>
 
+      <a href="../admin/index.php" class="btn-admin-link">Login Admin</a>
       <button class="btn-logout" onclick="window.location.href='../auth/logout.php'">Keluar</button>
     </aside>
 
-    <!-- RIGHT CONTENT: Konten Pesanan -->
     <main class="profile-content">
-      <!-- Header Pesanan -->
       <div class="profile-header">
-        <a href="../dashboard/home.php" class="btn-back">← Kembali ke Halaman Utama</a>
+        <a href="../dashboard/home.php" class="btn-back">← Kembali ke Beranda</a>
+        <p class="profile-subtitle">Pantau status tiket aktif, pembayaran, dan aksi lanjutan dalam satu tampilan.</p>
       </div>
 
-      <!-- Title Pesanan -->
-      <div class="pesanan-header">
-        <h1 class="pesanan-title">Pesanan Saya</h1>
-        <p class="pesanan-subtitle">Kelola dan pantau semua pesanan tiket wisata Anda</p>
+      <div class="page-hero">
+        <h1 class="page-hero-title">Pesanan Saya</h1>
+        <p class="page-hero-subtitle">Kelola dan pantau semua pesanan tiket wisata Anda.</p>
       </div>
 
-      <!-- Pesanan Aktif -->
-      <section class="pesanan-section">
+      <section class="section-shell pesanan-section">
         <h2 class="section-title">Pesanan Aktif</h2>
         <div class="pesanan-list">
-          <!-- Pesanan 1 -->
           <div class="pesanan-card">
             <div class="pesanan-card-header">
               <h3 class="pesanan-nama">Tiket Bromo</h3>
@@ -78,7 +76,6 @@
             </div>
           </div>
 
-          <!-- Pesanan 2 -->
           <div class="pesanan-card">
             <div class="pesanan-card-header">
               <h3 class="pesanan-nama">Tiket Coban Rondo</h3>

@@ -15,7 +15,7 @@
     <div class="left">
       <div class="logo">
         <div class="wave"></div>
-        <img src="../images/logo.png" alt="Logo WisataKu" />
+        <img src="../assets/logo/logo.png" alt="Logo WisataKu" />
         <h1><span class=>Wisata</span>Ku</h1>
         <p>Jelajahi keindahan Malang Raya – Gunung, pantai selatan, dan budaya lokal.</p>
       </div>
