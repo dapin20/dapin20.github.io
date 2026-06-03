@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="../assets/js/theme.js?v=3.4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WisataKu Dashboard Admin</title>
@@ -27,7 +28,7 @@
         <!-- Main Content -->
         <div class="main-content">
 
-            <a href="#" class="back-link">← Kembali ke Halaman Utama</a>
+            <a href="#" class="back-link">? Kembali ke Halaman Utama</a>
             <h1 class="page-title">Dashboard Admin</h1>
 
             <!-- Stats Cards Container -->

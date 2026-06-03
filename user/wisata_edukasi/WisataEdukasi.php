@@ -1,206 +1,187 @@
+<?php
+session_start();
+require_once('../../config/koneksi.php');
+require_once('../../config/destination_helper.php');
+require_once('../../config/category_page_helper.php');
+
+$avatarSrc = '../../assets/images/dapin kecil.jpg';
+$userId = $_SESSION['user_id'] ?? null;
+$userType = $_SESSION['user_type'] ?? 'user';
+
+if ($userId) {
+    $table = ($userType === 'admin') ? 'admins' : 'users';
+    $colCheck = $conn->query("SHOW COLUMNS FROM $table LIKE 'avatar'");
+    if ($colCheck && $colCheck->num_rows > 0) {
+        $stmt = $conn->prepare("SELECT avatar FROM $table WHERE id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if ($row = $res->fetch_assoc()) {
+            if (!empty($row['avatar'])) {
+                $avatarSrc = preg_match('/^https?:\/\//', $row['avatar']) ? $row['avatar'] : '../../' . ltrim($row['avatar'], '/');
+            }
+        }
+        $stmt->close();
+    }
+}
+
+$destinations = [
+    ['id' => 'eco-green-park', 'name' => 'Eco Green Park', 'location' => 'Batu', 'price' => 55000, 'rating' => 4.8, 'image' => '../../assets/images/eco_green_park.jpg', 'href' => 'EcoGreenPark.php'],
+    ['id' => 'predator-fun-park', 'name' => 'Predator Fun Park', 'location' => 'Batu', 'price' => 50000, 'rating' => 4.6, 'image' => '../../assets/images/predator_fun_park.jpg', 'href' => 'PredatorFunPark.php'],
+    ['id' => 'museum-mpu-purwa', 'name' => 'Museum Mpu Purwa', 'location' => 'Malang', 'price' => 10000, 'rating' => 4.8, 'image' => '../../assets/images/museum_mpu_purwa.jpg', 'href' => 'MuseumMpuPurwa.php'],
+    ['id' => 'batu-secret-zoo', 'name' => 'Batu Secret Zoo', 'location' => 'Batu', 'price' => 120000, 'rating' => 4.8, 'image' => '../../assets/images/batu_secret_zoo.jpg', 'href' => 'BatuSecretZoo.php'],
+    ['id' => 'museum-brawijaya', 'name' => 'Museum Brawijaya', 'location' => 'Malang', 'price' => 10000, 'rating' => 4.6, 'image' => '../../assets/images/museum_brawijaya.jpg', 'href' => 'MuseumBrawijaya.php'],
+    ['id' => 'museum-angkut', 'name' => 'Museum Angkut', 'location' => 'Batu', 'price' => 110000, 'rating' => 4.8, 'image' => '../../assets/images/museum_angkut.jpg', 'href' => 'MuseumAngkut.php'],
+    ['id' => 'kampung-budaya-polowijen', 'name' => 'Kampung Budaya Polowijen', 'location' => 'Malang', 'price' => 10000, 'rating' => 4.6, 'image' => '../../assets/images/kampung_budaya_polowijen.jpg', 'href' => 'KampungBudayaPolowijen.php'],
+    ['id' => 'museum-zoologi-frater-vianney', 'name' => 'Museum Zoologi Frater Vianney', 'location' => 'Malang', 'price' => 10000, 'rating' => 4.6, 'image' => '../../assets/images/museum_zoologi_frater_vianney.jpg', 'href' => 'MuseumZoologiFraterVianney.php'],
+];
+
+$destinations = category_page_destinations('wisata_edukasi', $destinations, '../../');
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <script src="../../assets/js/theme.js?v=3.4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WisataKu - Wisata Edukasi Malang Raya</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="WisataEdukasi.css?v=2.0">
+    <link rel="stylesheet" href="WisataEdukasi.css?v=2.2">
 </head>
 <body>
-
-    <!-- ===== NAVBAR (Standardized) ===== -->
     <header class="navbar">
         <div class="container">
             <a href="../../dashboard/home.php" class="logo">WisataKu</a>
-
             <ul class="nav-links">
                 <li><a href="../../dashboard/home.php">Home</a></li>
-                <li><a href="#">Promo</a></li>
-                <li><a href="../../wishlist/whistlist.php">Favorite</a></li>
+                <li><a href="../../dashboard/promo.php">Promo &amp; Deals</a></li>
                 <li><a href="../../tentang.php">Tentang Kami</a></li>
             </ul>
-
             <div class="nav-right">
-                <a href="../../user/profile.php">
-                    <img src="../../assets/images/dapin kecil.jpg" alt="Profile" class="profile-icon">
-                </a>
+                <button class="profile-menu-button" type="button" id="profileMenuButton" aria-label="Menu profil" aria-expanded="false">
+                    <img src="<?php echo htmlspecialchars($avatarSrc); ?>" alt="Profile" class="profile-icon">
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="../../user/profile.php">Profil Saya</a>
+                    <a href="../../wishlist/whistlist.php">Favorite Saya</a>
+                    <a href="../../auth/logout.php">Logout</a>
+                </div>
             </div>
         </div>
     </header>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <h2>Wisata Edukasi Malang Raya</h2>
-        <p>Eksplorasi seru di Eco Green Park, Predator Fun Park, Batu Secret Zoo, dan destinasi alam populer lainnya di Malang Raya.</p>
-    </div>
-</section>
-
-<!-- DESTINASI POPULER -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">Destinasi Populer</h2>
-
-        <div class="grid-card">
-
-            <!-- CARD 1 -->
-            <div class="card">
-                <img src="https://i.pinimg.com/736x/39/fc/1c/39fc1c4b828e4b116dc09d82f590219c.jpg" alt="">
-                <h3>Eco Green Park</h3>
-                <p class="rating">⭐ 4.8</p>
-                <p>Rp 65.000–170.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='EcoGreenPark.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="card">
-                <img src="../../assets/images/Edukasi.png" alt="Predator Fun Park">
-                <h3>Predator Fun Park</h3>
-                <p class="rating">⭐ 4.6</p>
-                <p>Rp 50.000 / orang</p>
-                 <button class="buy-btn" onclick="location.href='PredatorFunPark.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="card">
-                <img src="https://i.pinimg.com/736x/65/91/7f/65917fe94e54b7afa39ddc85d868a9a6.jpg" alt="">
-                <h3>Museum Mpu Purwa</h3>
-                <p class="rating">⭐ 4.8</p>
-                <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='MuseumMpuPurwa.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="card">
-                <img src="https://i.pinimg.com/1200x/23/48/83/2348832180a88e989ed04f3f24faa9f5.jpg" alt="">
-                <h3>Batu Secret Zoo</h3>
-                <p class="rating">⭐ 4.8</p>
-                <p>Rp 120.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='BatuSecretZoo.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- CARD 5 -->
-            <div class="card">
-                <img src="https://i.pinimg.com/736x/61/8d/05/618d055f5a0f1f4acf5b31359bcbc41d.jpg" alt="">
-                <h3>Museum Brawijaya</h3>
-                <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='MuseumBrawijaya.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- CARD 6 -->
-            <div class="card">
-                <img src="https://i.pinimg.com/736x/53/e3/44/53e344edb748846077be55054012cda7.jpg" alt="">
-                <h3>Museum Angkut</h3>
-                <p class="rating">⭐ 4.8</p>
-                <p>Rp 110.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='MuseumAngkut.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- CARD 7 -->
-            <div class="card">
-                <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyridUvPL3cMoK9yAXNAMfEacZc5_ZxAWouTh4sZ-dFNykKZZHk2QPul2P_yLHwi_PDJvwtCQ0mVKLYFDv4zY06qo_K9UFRavSCpST1sy-Rtm3KufIY_XDPypsimi5jnHmGa6P1=s294-w294-h220-n-k-no" alt="">
-                <h3>Kampung Budaya Polowijen</h3>
-                <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='KampungBudayaPolowijen.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
-                </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Wisata Edukasi Malang Raya</h2>
+            <p>Eksplorasi museum, taman satwa, dan destinasi belajar populer.</p>
         </div>
+    </section>
 
-        <!-- CARD 8 -->
-            <div class="card">
-                <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy9CSxK1HGJuaqLjeICmBZhYZ8hf1eER4TrMq6WKtAKmAZHF6mS-XnWe7jF8lL-tF_I_4cbb6-qhALcCEzRCJTBAeoCEbU7wfdRnMLV2376zQGddpvVknyA6LXcZ1DZM_YkLep7=s1360-w1360-h1020-rw" alt=""> 
-                <h3>Museum Zoologi Frater Vianney</h3>
-                <p class="rating">⭐ 4.6</p>
-                <p>Rp 10.000 / tiket</p>
-                 <button class="buy-btn" onclick="location.href='MuseumZoologiFraterVianney.php'">Beli Tiket</button>
-                 <div class="bookmark-icon saved" onclick="toggleBookmark(this)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                    </svg>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Destinasi Populer</h2>
+            <div class="grid-card">
+                <?php foreach ($destinations as $destination): ?>
+                    <?php
+                    $favoriteImage = $destination['favorite_image'] ?? preg_replace('#^\.\./\.\./#', '../', $destination['image']);
+                    $favoriteHref = $destination['favorite_href'] ?? ('../user/wisata_edukasi/' . $destination['href']);
+                    ?>
+                    <article class="card">
+                        <img src="<?php echo htmlspecialchars($destination['image']); ?>" alt="<?php echo htmlspecialchars($destination['name']); ?>">
+                        <h3><?php echo htmlspecialchars($destination['name']); ?></h3>
+                        <p class="rating">★ <?php echo number_format($destination['rating'], 1); ?></p>
+                        <p>Rp <?php echo number_format($destination['price'], 0, ',', '.'); ?> / tiket</p>
+                        <button class="buy-btn" type="button" onclick="location.href='<?php echo htmlspecialchars($destination['href']); ?>'">Beli Tiket</button>
+                        <button
+                            class="bookmark-icon"
+                            type="button"
+                            data-favorite-button
+                            data-id="<?php echo htmlspecialchars($destination['id']); ?>"
+                            data-name="<?php echo htmlspecialchars($destination['name']); ?>"
+                            data-location="<?php echo htmlspecialchars($destination['location']); ?>"
+                            data-price="<?php echo htmlspecialchars((string) $destination['price']); ?>"
+                            data-rating="<?php echo htmlspecialchars((string) $destination['rating']); ?>"
+                            data-image="<?php echo htmlspecialchars($favoriteImage); ?>"
+                            data-href="<?php echo htmlspecialchars($favoriteHref); ?>"
+                            data-category="Wisata Edukasi"
+                            data-icon-default="../../assets/icon/save.svg"
+                            data-icon-active="../../assets/icon/save_fill.svg"
+                            aria-label="Simpan ke favorite"
+                            aria-pressed="false">
+                            <img src="../../assets/icon/save.svg" alt="Favorite" class="save-icon">
+                        </button>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="logo-footer">WisataKu</span>
+                    <p>Platform booking tiket wisata terpercaya di Malang Raya, dari destinasi alam hingga wisata edukasi.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/da.ppin" class="social-icon"><img src="../../assets/icon/instagram.svg" alt="Instagram" /></a>
+                        <a href="#" class="social-icon"><img src="../../assets/icon/youtube.svg" alt="YouTube" /></a>
+                        <a href="#" class="social-icon"><img src="../../assets/icon/twitter.svg" alt="Twitter" /></a>
+                        <a href="mailto:info@wisataku.id" class="social-icon"><img src="../../assets/icon/gmail.svg" alt="Email" /></a>
+                    </div>
                 </div>
-    </div>
-     <script>
-        function toggleBookmark(el) {
-            el.classList.toggle("saved");
-            el.classList.toggle("unsaved");                 
-            el.style.transform = "scale(1.2)";
-            setTimeout(() => {
-                el.style.transform = "scale(1)";
-            }, 150);
-        }
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="../../dashboard/home.php">Beranda</a></li>
+                        <li><a href="../../dashboard/promo.php">Promo &amp; Deals</a></li>
+                        <li><a href="../../tentang.php">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Destinasi</h4>
+                    <ul>
+                        <li><a href="../../user/wisata_edukasi/EcoGreenPark.php">Eco Green Park</a></li>
+                        <li><a href="../../user/wisata_edukasi/PredatorFunPark.php">Predator Fun Park</a></li>
+                        <li><a href="../../user/wisata_edukasi/MuseumAngkut.php">Museum Angkut</a></li>
+                        <li><a href="../../user/wisata_edukasi/BatuSecretZoo.php">Batu Secret Zoo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><span class="contact-item"><img src="../../assets/icon/mail-line.svg" alt="Email" /> info@wisataku.id</span></li>
+                        <li><span class="contact-item"><img src="../../assets/icon/phone-line.svg" alt="Phone" /> +62 857 9287 4948</span></li>
+                        <li><span class="contact-item"><img src="../../assets/icon/map-pin-line.svg" alt="Location" /> Malang, Jawa Timur</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WisataKu. Semua rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat &amp; Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/favorites.js"></script>
+    <script>
+        const profileMenuButton = document.getElementById('profileMenuButton');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        profileMenuButton && profileDropdown && profileMenuButton.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const isOpen = profileDropdown.classList.toggle('show');
+            profileMenuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (profileDropdown && profileMenuButton && !event.target.closest('.nav-right')) {
+                profileDropdown.classList.remove('show');
+                profileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+        });
     </script>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="container footer-grid">
-        <div class="footer-col">
-            <h3 class="logo">WisataKu</h3>
-            <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online dan terpercaya.</p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Navigasi</h3>
-            <ul>
-                <li><a href="../../dashboard/home.php">Beranda</a></li>
-                <li><a href="WisataEdukasi.php">Wisata Edukasi</a></li>
-                <li><a href="../../wishlist/whistlist.php">Favorit</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h3>Hubungi Kami</h3>
-            <ul>
-                <li><img src="../../assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> info@wisataku.id</li>
-                <li><img src="../../assets/icon/phone-line.svg" alt="Phone" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> +62 857-9287-4048</li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2025 WisataKu - Malang Raya. All rights reserved.
-    </div>
-</footer>
-
 </body>
 </html>
-
-
-
-
-

@@ -29,7 +29,8 @@ $sql_commands = array(
         username VARCHAR(50) UNIQUE NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
-        role VARCHAR(50) DEFAULT 'admin',
+        role ENUM('super_admin', 'ticket_admin') NOT NULL DEFAULT 'ticket_admin',
+        avatar VARCHAR(255) DEFAULT 'assets/images/dapin kecil.jpg',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )",
@@ -47,22 +48,22 @@ foreach ($sql_commands as $sql) {
     }
 }
 
-// Insert admin default dan akun admin tambahan
+// Insert akun super admin dan admin tiket default
 $admin_password = password_hash("admin123", PASSWORD_BCRYPT);
 $admin_dapin_password = password_hash("Dapinmasuk123", PASSWORD_BCRYPT);
 $insert_admin = "INSERT IGNORE INTO admins (username, email, password, role) 
-                 VALUES ('admin', 'admin@wisataku.com', '$admin_password', 'admin'),
-                        ('Admin Dapin', 'admindapin@wisataku.com', '$admin_dapin_password', 'admin')";
+                 VALUES ('superadmin', 'superadmin@wisataku.com', '$admin_password', 'super_admin'),
+                        ('admin_tiket', 'admintiket@wisataku.com', '$admin_dapin_password', 'ticket_admin')";
 
 if ($mysqli->query($insert_admin) === FALSE) {
     echo "Error: " . $mysqli->error;
 } else {
-    echo "<h2>✓ Database berhasil dibuat!</h2>";
+    echo "<h2>? Database berhasil dibuat!</h2>";
     echo "<p>Silahkan hapus file setup.php setelah selesai.</p>";
     echo "<p><strong>Akun Admin Default:</strong></p>";
     echo "<ul>";
-    echo "<li>Username: <code>admin</code> - Password: <code>admin123</code></li>";
-    echo "<li>Username: <code>Admin Dapin</code> - Password: <code>Dapinmasuk123</code></li>";
+    echo "<li>Super Admin: <code>superadmin</code> - Password: <code>admin123</code></li>";
+    echo "<li>Admin Tiket: <code>admin_tiket</code> - Password: <code>Dapinmasuk123</code></li>";
     echo "</ul>";
 }
 

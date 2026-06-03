@@ -7,34 +7,35 @@
 .search-input {
   flex: 1;
   height: 52px;
-  border: 1px solid #dfe7f1;
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 0 16px;
   font-size: 14px;
-  background: #fff;
+  background: var(--input-bg);
+  color: var(--text-dark);
   outline: none;
 }
 
 .search-input:focus {
-  border-color: #0157ad;
+  border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(1, 87, 173, 0.08);
 }
 
 .search-btn {
   min-width: 120px;
-  border: 1px solid #0157ad;
+  border: 1px solid var(--primary);
   border-radius: 14px;
-  background: #0157ad;
+  background: var(--primary);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
 }
 
 .bantuan-section {
-  background: #fff;
+  background: var(--panel);
   border-radius: 24px;
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--card-border);
   padding: 28px 30px;
   margin-bottom: 24px;
 }
@@ -49,19 +50,19 @@
 .kategori-card,
 .contact-card {
   padding: 22px 18px;
-  border: 1px solid #e4ebf4;
+  border: 1px solid var(--line);
   border-radius: 18px;
   text-align: center;
   text-decoration: none;
-  color: #172033;
-  background: #fbfcfe;
+  color: var(--text-dark);
+  background: var(--panel-muted);
   transition: 0.2s ease;
 }
 
 .kategori-card:hover,
 .contact-card:hover {
-  border-color: #b8d4fb;
-  background: #f4f8ff;
+  border-color: var(--primary);
+  background: var(--primary-soft);
   transform: translateY(-2px);
 }
 
@@ -71,7 +72,7 @@
   height: 54px;
   margin: 0 auto 14px;
   border-radius: 16px;
-  background: #eaf3ff;
+  background: var(--primary-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,14 +87,14 @@
 .kategori-card h3,
 .contact-card h3 {
   font-size: 15px;
-  color: #172033;
+  color: var(--text-dark);
   margin-bottom: 8px;
 }
 
 .kategori-card p,
 .contact-card p {
   font-size: 13px;
-  color: #8d98a8;
+  color: var(--text-soft);
   line-height: 1.6;
 }
 
@@ -104,9 +105,9 @@
 }
 
 .faq-item {
-  border: 1px solid #e4ebf4;
+  border: 1px solid var(--line);
   border-radius: 18px;
-  background: #fbfcfe;
+  background: var(--panel-muted);
 }
 
 .faq-trigger {
@@ -121,7 +122,7 @@
   gap: 16px;
   font-size: 15px;
   font-weight: 700;
-  color: #172033;
+  color: var(--text-dark);
 }
 
 .faq-question {
@@ -130,7 +131,7 @@
 
 .faq-icon {
   font-size: 20px;
-  color: #0157ad;
+  color: var(--primary);
   transition: 0.2s ease;
 }
 
@@ -154,7 +155,7 @@
 .faq-content ol,
 .faq-content ul {
   font-size: 13px;
-  color: #627083;
+  color: var(--text-mid);
   line-height: 1.8;
 }
 
@@ -168,15 +169,15 @@
   width: 100%;
   height: 44px;
   border-radius: 12px;
-  border: 1px solid #0157ad;
-  background: #fff;
-  color: #0157ad;
+  border: 1px solid var(--primary);
+  background: var(--input-bg);
+  color: var(--primary);
   font-weight: 700;
   cursor: pointer;
 }
 
 .btn-contact:hover {
-  background: #eaf3ff;
+  background: var(--primary-soft);
 }
 
 @media (max-width: 1024px) {

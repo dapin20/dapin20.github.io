@@ -1,968 +1,874 @@
-1<?php
+<?php
 session_start();
+require_once('config/koneksi.php');
+
 $isLoggedIn = !empty($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
-$username = $_SESSION['username'] ?? null;
+$user_id = $_SESSION['user_id'] ?? null;
+$user_type = $_SESSION['user_type'] ?? 'user';
+$avatarSrc = 'assets/images/dapin kecil.jpg';
+
+if ($user_id) {
+    $table = ($user_type === 'admin') ? 'admins' : 'users';
+    $colCheck = $conn->query("SHOW COLUMNS FROM $table LIKE 'avatar'");
+    if ($colCheck && $colCheck->num_rows > 0) {
+        $stmt = $conn->prepare("SELECT avatar FROM $table WHERE id = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if ($row = $res->fetch_assoc()) {
+            if (!empty($row['avatar'])) {
+                $avatarSrc = $row['avatar'];
+                $_SESSION['avatar'] = $row['avatar'];
+            }
+        }
+        $stmt->close();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="assets/js/theme.js?v=3.4"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Tentang Kami</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif !important;
-}
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif !important;
+    }
 
-input, button, select, textarea, optgroup, option {
-  font-family: 'Poppins', sans-serif !important;
-}
-
-
+    :root {
+      --blue-dark: #0157ad;
+      --blue-mid: #1a6dc4;
+      --blue-light: #4e9cff;
+      --blue-pale: #e8f1fb;
+      --ink: #07345f;
+      --muted: #456b9a;
+      --soft: #f4f7fc;
+      --line: #e2eaf4;
+      --white: #ffffff;
+      --radius: 18px;
+      --shadow: 0 14px 34px rgba(15, 35, 58, 0.10);
+    }
 
     body {
-      background-color: #f8f9fa;
-      color: #333;
+      background: var(--soft);
+      color: var(--ink);
       line-height: 1.6;
     }
 
-    /* === NAVBAR === */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .navbar {
-      background: linear-gradient(90deg, #ffffff, #ffffff);
-      color: #527E90;
-      padding: 16px 0;
+      background: var(--white);
+      height: 64px;
+      display: flex;
+      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 12px rgba(1, 87, 173, 0.07);
     }
 
     .navbar .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
       position: relative;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #4E9CFF 0%, #0157AD 120%); 
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      flex-shrink: 0;
-      z-index: 1001;
+      letter-spacing: 0;
+      white-space: nowrap;
     }
 
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      z-index: 1001;
-      margin-left: auto;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
     }
 
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background-color: #0157AD;
-      margin: 3px 0;
-      transition: 0.3s;
-      border-radius: 3px;
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color 0.2s;
     }
 
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(-45deg) translate(-5px, 6px);
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue-dark);
     }
 
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-    /* Navigation Menu */
-    .nav-menu {
+    .nav-right {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 14px;
     }
 
-    .btn-outline {
+    .profile-menu-button {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .profile-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--blue-light);
+      display: block;
+    }
+
+    .profile-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 170px;
+      background: var(--white);
+      border: 1px solid #dce7f5;
+      border-radius: 10px;
+      box-shadow: 0 14px 30px rgba(15, 35, 58, 0.12);
+      padding: 8px;
+      display: none;
+      z-index: 1002;
+    }
+
+    .profile-dropdown.show {
+      display: grid;
+      gap: 4px;
+    }
+
+    .profile-dropdown a {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 12px;
+      border-radius: 8px;
+    }
+
+    .profile-dropdown a:hover {
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+    }
+
+    .auth-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-outline,
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 10px 18px;
-      border-radius: 30px;
-      border: 1px solid #0157AD;
-      color: #0157AD;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid var(--blue-dark);
     }
 
-    .btn-outline:hover {
-      background-color: #0157AD;
-      color: white;
+    .btn-outline {
+      color: var(--blue-dark);
+      background: var(--white);
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 32px;
-      margin: 0;
+    .btn-primary {
+      color: #fff;
+      background: var(--blue-dark);
     }
 
-    nav a {
-      color: #527E90;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: #0157AD;
-    }
-
-    /* === PROFILE PHOTO ICON === */
-    .profile-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      cursor: pointer;
-      border: 2px solid #0157AD;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      display: block;
-    }
-
-    .profile-icon:hover {
-      transform: scale(1.05);
-      border-color: #4E9CFF;
-      box-shadow: 0 2px 8px rgba(1, 87, 173, 0.3);
-    }
-
-    /* Profile Link in Menu (Hidden by default) */
-    .profile-link {
+    .hamburger {
       display: none;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      padding: 8px;
     }
 
-    /* === RESPONSIVE NAVBAR === */
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      .navbar .container > a .profile-icon {
-        display: none;
-      }
-
-      .profile-link {
-        display: block;
-        padding: 0;
-        width: 100%;
-        border-bottom: 1px solid #f0f0f0;
-      }
-
-      .profile-link a {
-        display: block;
-        padding: 12px 20px;
-        font-size: 15px;
-        color: #527E90;
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      .nav-menu {
-        position: absolute;
-        right: 0;
-        top: 100%;
-        flex-direction: column;
-        background-color: #ffffff;
-        width: auto;
-        min-width: 200px;
-        text-align: left;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
-        gap: 0;
-        border-radius: 0 0 15px 15px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
-        padding: 0;
-      }
-
-      .nav-menu.active {
-        max-height: 500px;
-        padding: 15px 0;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-      }
-
-      nav ul li {
-        padding: 0;
-        width: 100%;
-        border-bottom: 1px solid #f0f0f0;
-      }
-
-      nav a {
-        display: block;
-        padding: 12px 20px;
-        font-size: 15px;
-      }
-
-      .logo {
-        font-size: 24px;
-      }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--blue-dark);
+      margin: 5px 0;
+      border-radius: 999px;
     }
 
-    @media (max-width: 480px) {
-      .navbar .container {
-        width: 95%;
-      }
-      
-      .logo {
-        font-size: 22px;
-      }
-    }
-
-    /* === HERO SECTION === */
     .hero {
-      background: linear-gradient(135deg, rgba(1, 87, 173, 0.9), rgba(78, 156, 255, 0.9)),
-                  url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200') center/cover no-repeat;
-      height: 400px;
+      min-height: 470px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      position: relative;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(10, 26, 44, 0.08), rgba(10, 26, 44, 0.78)),
+        url('assets/images/Bromo.png') center/cover no-repeat;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      padding: 0 20px;
+    .hero-inner {
+      width: 100%;
+      padding: 120px 0 54px;
     }
 
     .hero h1 {
-      font-size: 48px;
-      margin-bottom: 16px;
-      font-weight: 700;
+      max-width: 760px;
+      font-size: 52px;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: 0;
+      margin-bottom: 18px;
     }
 
     .hero p {
-      font-size: 18px;
-      opacity: 0.95;
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 17px;
     }
 
-    @media (max-width: 768px) {
-      .hero {
-        height: 350px;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
+    .intro-band {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
     }
 
-    @media (max-width: 480px) {
-      .hero {
-        height: 300px;
-      }
-
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      .hero p {
-        font-size: 14px;
-      }
-    }
-
-    /* === MAIN CONTENT === */
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    section {
-      padding: 60px 0;
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 48px 0;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section {
-        padding: 32px 0;
-      }
-    }
-
-    /* === ABOUT STORY === */
-    .about-story {
-      background: white;
-      padding: 60px 0;
-    }
-
-    .story-content {
+    .intro-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 42px;
       align-items: center;
+      padding: 64px 0;
     }
 
-    .story-text h2 {
-      color: #0157AD;
-      font-size: 36px;
-      margin-bottom: 20px;
+    .eyebrow {
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .story-text p {
-      color: #555;
+    .section-title {
+      color: var(--ink);
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      color: var(--muted);
       font-size: 16px;
       line-height: 1.8;
       margin-bottom: 16px;
     }
 
-    .story-image img {
+    .intro-photo {
       width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
-    @media (max-width: 768px) {
-      .story-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .story-text h2 {
-        font-size: 28px;
-      }
-    }
-
-    /* === VALUES SECTION === */
-    .values-section {
-      background: #f8f9fa;
-    }
-
-    .values-section h2 {
-      text-align: center;
-      color: #0157AD;
-      font-size: 36px;
-      margin-bottom: 50px;
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .value-card {
-      background: white;
-      padding: 40px 30px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .value-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-
-    .value-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .value-card h3 {
-      color: #0157AD;
-      font-size: 22px;
-      margin-bottom: 15px;
-    }
-
-    .value-card p {
-      color: #666;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .values-section h2 {
-        font-size: 28px;
-        margin-bottom: 35px;
-      }
-
-      .values-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-    }
-
-    /* === TEAM SECTION === */
-    .team-section {
-      background: white;
-    }
-
-    .team-section h2 {
-      text-align: center;
-      color: #0157AD;
-      font-size: 36px;
-      margin-bottom: 50px;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-    }
-
-    .team-card {
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .team-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .team-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      background: linear-gradient(135deg, #4E9CFF, #0157AD);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      color: white;
-      box-shadow: 0 5px 20px rgba(1, 87, 173, 0.3);
-    }
-
-    .team-card h3 {
-      color: #0157AD;
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .team-card .role {
-      color: #666;
-      font-size: 15px;
-      margin-bottom: 15px;
-    }
-
-    .team-card p {
-      color: #777;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .team-section h2 {
-        font-size: 28px;
-        margin-bottom: 35px;
-      }
-
-      .team-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-    }
-
-    /* === STATS SECTION === */
-    .stats-section {
-      background: linear-gradient(135deg, #0157AD, #4E9CFF);
-      color: white;
-      padding: 60px 0;
-      text-align: center;
+    .stats-band {
+      background: var(--blue-dark);
+      color: #fff;
+      padding: 36px 0;
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .stat-item {
-      padding: 20px;
+      padding: 14px 0;
     }
 
     .stat-number {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 10px;
+      display: block;
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 4px;
     }
 
     .stat-label {
-      font-size: 16px;
-      opacity: 0.9;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
     }
 
-    @media (max-width: 768px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
+    .values-section,
+    .cta-section {
+      padding: 66px 0;
+    }
+
+    .values-header,
+    .cta-inner {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .value-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(15, 35, 58, 0.06);
+    }
+
+    .value-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .mark-blue { background: var(--blue-dark); }
+    .mark-light { background: var(--blue-light); }
+    .mark-mid { background: var(--blue-mid); }
+
+    .value-card h3 {
+      color: var(--ink);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .value-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .cta-section {
+      background:
+        linear-gradient(90deg, rgba(1, 87, 173, 0.94), rgba(78, 156, 255, 0.84)),
+        url('assets/images/Tumpak.png') center/cover no-repeat;
+      color: #fff;
+    }
+
+    .cta-inner {
+      margin-bottom: 0;
+    }
+
+    .cta-section .section-title,
+    .cta-section .lead {
+      color: #fff;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .cta-actions .btn-primary {
+      background: #fff;
+      color: var(--blue-dark);
+      border-color: #fff;
+    }
+
+    .cta-actions .btn-outline {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.72);
+    }
+
+    footer {
+      background: #0f2135;
+      color: #fff;
+      padding: 44px 0 26px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 0.9fr;
+      gap: 34px;
+    }
+
+    .footer-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .footer-copy,
+    .footer-grid li {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .footer-grid h3 {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-grid a:hover {
+      color: var(--blue-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      margin-top: 32px;
+      padding-top: 18px;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
       }
 
-      .stat-number {
-        font-size: 36px;
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links.open {
+        position: absolute;
+        top: 52px;
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 0;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 0 0 14px 14px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .nav-links.open a {
+        display: block;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .intro-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid,
+      .values-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 480px) {
-      .stats-grid {
+    @media (max-width: 560px) {
+      .auth-actions {
+        display: none;
+      }
+
+      .hero {
+        min-height: 390px;
+      }
+
+      .hero h1 {
+        font-size: 31px;
+      }
+
+      .section-title {
+        font-size: 27px;
+      }
+
+      .stats-grid,
+      .values-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    /* === CTA SECTION === */
-    .cta-section {
-      background: white;
-      text-align: center;
-      padding: 80px 0;
-    }
-
-    .cta-section h2 {
-      color: #0157AD;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .cta-section p {
-      color: #666;
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #0157AD, #4E9CFF);
-      color: white;
-      padding: 15px 40px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.3s;
-      box-shadow: 0 5px 20px rgba(1, 87, 173, 0.3);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(1, 87, 173, 0.4);
-    }
-
-    @media (max-width: 768px) {
-      .cta-section {
-        padding: 60px 0;
-      }
-
-      .cta-section h2 {
-        font-size: 28px;
-      }
-
-      .cta-section p {
-        font-size: 16px;
-      }
-    }
-
-    /* === FOOTER === */
+    /* Footer mengikuti tampilan Home */
     footer {
-      background-color: #0157AD;
-      color: white;
-      padding: 40px 80px;
+      background: var(--blue-dark) !important;
+      color: #fff !important;
+      padding: 56px 0 24px !important;
     }
 
-    .footer-container {
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo-footer {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer-brand p {
+      max-width: 430px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin: 0 0 20px;
+    }
+
+    .social-icons {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 30px;
+      gap: 10px;
     }
 
-    .footer-box {
-      flex: 1 1 220px;
-      min-width: 220px;
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
     }
 
-    .footer-box h3 {
-      font-size: 16px;
-      margin-bottom: 15px;
-      position: relative;
-      padding-left: 10px;
-      font-weight: bold;
+    .social-icon:hover {
+      background: rgba(255,255,255,0.25);
     }
 
-    .footer-box h3::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: 3px;
-      height: 18px;
-      background-color: #004C99;
+    .social-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
     }
 
-    .footer-box ul {
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: #fff;
+    }
+
+    .footer-col ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
 
-    .footer-box li {
-      margin-bottom: 8px;
-      font-size: 14px;
+    .footer-col li {
+      margin-bottom: 10px;
     }
 
-    .footer-box a {
-      color: white;
-      text-decoration: none;
+    .footer-col a,
+    .footer-col .contact-item {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      transition: color 0.2s;
     }
 
-    .footer-box a:hover {
-      text-decoration: underline;
+    .footer-col a:hover {
+      color: #fff;
+    }
+
+    .footer-col .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col .contact-item img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12) !important;
+      padding-top: 24px !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      text-align: left !important;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 13px;
     }
 
     .footer-links {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 12px;
+      gap: 20px;
     }
 
     .footer-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      transition: 0.3s;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
     }
 
     .footer-links a:hover {
-      opacity: 0.8;
+      color: #fff;
     }
 
-    .social-icons img {
-      width: 22px;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      footer {
-        padding: 30px 40px;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        gap: 25px;
-      }
-
-      .footer-box {
-        width: 100%;
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
       }
     }
 
-    @media (max-width: 480px) {
-      footer {
-        padding: 25px 20px;
-      }
-
-      .footer-box h3 {
-        font-size: 15px;
-      }
-
-      .footer-box li {
-        font-size: 13px;
+    @media (max-width: 600px) {
+      .footer-top {
+        grid-template-columns: 1fr;
       }
 
       .footer-bottom {
-        font-size: 12px;
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="container">
-      <h1 class="logo">WisataKu</h1>
+      <a href="dashboard/home.php" class="logo">WisataKu</a>
 
-      <div class="nav-menu">
-        <nav>
-          <ul>
-            <li><a href="index.php" onclick="closeMenu()">Home</a></li>
-            <li><a href="dashboard/promo.php" onclick="closeMenu()">Promo & Deals</a></li>
-            <li><a href="<?php echo $isLoggedIn ? 'wishlist/whistlist.php' : 'auth/login.php'; ?>" onclick="closeMenu()">Favorite</a></li>
-            <li><a href="tentang.php" class="active" onclick="closeMenu()">Tentang Kami</a></li>
-            <?php if ($isLoggedIn): ?>
-            <li class="profile-link"><a href="user/profile.php" onclick="closeMenu()">Profil</a></li>
-            <?php endif; ?>
-          </ul>
-        </nav>
-      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="dashboard/home.php">Home</a></li>
+        <li><a href="dashboard/promo.php">Promo &amp; Deals</a></li>
+        <li><a href="tentang.php" class="active">Tentang Kami</a></li>
+      </ul>
 
       <div class="nav-right">
         <?php if ($isLoggedIn): ?>
-          <a href="user/profile.php" class="btn-outline"><?php echo htmlspecialchars($username ?: 'Profil'); ?></a>
-          <a href="auth/logout.php" class="btn-outline" style="background: #0157AD; color: white;">Keluar</a>
+          <button class="profile-menu-button" type="button" id="profileMenuButton" aria-label="Menu profil" aria-expanded="false">
+            <img src="<?php echo htmlspecialchars($avatarSrc); ?>" alt="Profile" class="profile-icon">
+          </button>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="user/profile.php">Profil Saya</a>
+            <a href="wishlist/whistlist.php">Favorite Saya</a>
+            <a href="auth/logout.php">Logout</a>
+          </div>
         <?php else: ?>
-          <a href="auth/login.php" class="btn-outline">Masuk</a>
-          <a href="auth/regrist.php" class="btn-outline" style="background: #0157AD; color: white;">Daftar</a>
+          <div class="auth-actions">
+            <a href="auth/login.php" class="btn-outline">Masuk</a>
+            <a href="auth/regrist.php" class="btn-primary">Daftar</a>
+          </div>
         <?php endif; ?>
-      </div>
-
-      <!-- Hamburger Menu -->
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <button class="hamburger" type="button" id="hamburger" aria-label="Menu navigasi">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Tentang Kami</h1>
-      <p>Mengenal lebih dekat platform wisata terpercaya di Malang Raya</p>
+    <div class="container hero-inner">
+      <h1>Wisata Malang lebih mudah dipesan.</h1>
+      <p>Temukan destinasi, pilih tanggal, dan pesan tiket dalam satu tempat.</p>
     </div>
   </section>
 
-  <!-- ABOUT STORY -->
-  <section class="about-story">
-    <div class="container">
-      <div class="story-content">
-        <div class="story-text">
-          <h2>Cerita Kami</h2>
-          <p>WisataKu lahir dari kecintaan kami terhadap keindahan Malang Raya. Kami percaya bahwa setiap orang berhak menikmati pengalaman wisata yang mudah, menyenangkan, dan berkesan.</p>
-          <p>Berawal dari sebuah id sederhana untuk memudahkan wisatawan dalam menemukan dan memesan tiket destinasi wisata, kini WisataKu telah berkembang menjadi platform terpercaya yang melayani ribuan pelanggan setiap bulannya.</p>
-          <p>Kami berkomitmen untuk terus berinovasi dan memberikan pelayanan terbaik, sehingga setiap perjalanan wisata Anda menjadi pengalaman yang tak terlupakan.</p>
-        </div>
-        <div class="story-image">
-          <img src="assets/images/Bromo.png" alt="Tim WisataKu">
-        </div>
+  <section class="intro-band">
+    <div class="container intro-grid">
+      <div>
+        <p class="eyebrow">Tentang WisataKu</p>
+        <h2 class="section-title">Platform pemesanan tiket wisata Malang Raya.</h2>
+        <p class="lead">WisataKu membantu pengunjung melihat destinasi, harga, tanggal kunjungan, dan status pesanan dengan jelas.</p>
+      </div>
+      <img class="intro-photo" src="assets/images/Tumpak.png" alt="Air terjun Tumpak Sewu">
+    </div>
+  </section>
+
+  <section class="stats-band">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">Destinasi wisata</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Kategori wisata</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Akses pemesanan</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">4.8</span>
+        <span class="stat-label">Rata-rata rating destinasi</span>
       </div>
     </div>
   </section>
 
-  <!-- VALUES SECTION -->
   <section class="values-section">
     <div class="container">
-      <h2>Nilai-Nilai Kami</h2>
+      <div class="values-header">
+        <p class="eyebrow">Layanan</p>
+        <h2 class="section-title">Ringkas, jelas, dan mudah digunakan.</h2>
+      </div>
       <div class="values-grid">
-        <div class="value-card">
-          <div class="value-icon">🎯</div>
-          <h3>Komitmen</h3>
-          <p>Kami berkomitmen memberikan layanan terbaik dan pengalaman wisata yang memuaskan untuk setiap pelanggan.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">🤝</div>
-          <h3>Kepercayaan</h3>
-          <p>Kepercayaan pelanggan adalah prioritas utama kami. Kami menjaga transparansi dalam setiap transaksi.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">💡</div>
-          <h3>Inovasi</h3>
-          <p>Kami terus berinovasi untuk memberikan kemudahan dan fitur terbaru dalam platform kami.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">🌟</div>
-          <h3>Kualitas</h3>
-          <p>Kami hanya menyediakan destinasi wisata berkualitas dengan standar pelayanan terbaik.</p>
-        </div>
+        <article class="value-card">
+          <div class="value-mark mark-blue">1</div>
+          <h3>Transparan</h3>
+          <p>Harga dan detail tiket terlihat sejak awal.</p>
+        </article>
+        <article class="value-card">
+          <div class="value-mark mark-light">2</div>
+          <h3>Terpantau</h3>
+          <p>Status pembayaran bisa dicek dengan mudah.</p>
+        </article>
+        <article class="value-card">
+          <div class="value-mark mark-mid">3</div>
+          <h3>Praktis</h3>
+          <p>Pilih destinasi, tanggal, dan jumlah tiket langsung dari web.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- STATS SECTION -->
-  <section class="stats-section">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">50+</div>
-          <div class="stat-label">Destinasi Wisata</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">10K+</div>
-          <div class="stat-label">Pelanggan Puas</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">4.8</div>
-          <div class="stat-label">Rating Pengguna</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">3+</div>
-          <div class="stat-label">Tahun Pengalaman</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM SECTION -->
-  <section class="team-section">
-    <div class="container">
-      <h2>Tim Kami</h2>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-photo">👨‍💼</div>
-          <h3>Davin Aditya</h3>
-          <p class="role">Founder & CEO</p>
-          <p>Memimpin visi dan strategi pengembangan WisataKu untuk masa depan yang lebih baik.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-photo">👩‍💻</div>
-          <h3>Siti Nurhaliza</h3>
-          <p class="role">Head of Operations</p>
-          <p>Memastikan setiap operasional berjalan lancar dan pelanggan mendapat pelayanan terbaik.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-photo">👨‍🎨</div>
-          <h3>Budi Santoso</h3>
-          <p class="role">Creative Director</p>
-          <p>Menciptakan pengalaman visual yang menarik dan user-friendly untuk platform kami.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-photo">👩‍💼</div>
-          <h3>Ayu Lestari</h3>
-          <p class="role">Customer Relations</p>
-          <p>Menjaga hubungan baik dengan pelanggan dan mendengarkan setiap feedback mereka.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA SECTION -->
   <section class="cta-section">
     <div class="container">
-      <h2>Siap Memulai Petualangan?</h2>
-      <p>Jelajahi berbagai destinasi wisata menarik di Malang Raya bersama WisataKu</p>
-      <a href="dashboard/home.php" class="cta-button">Mulai Jelajahi Sekarang</a>
+      <div class="cta-inner">
+        <p class="eyebrow">Mulai jelajah</p>
+        <h2 class="section-title">Cari destinasi favoritmu.</h2>
+        <p class="lead">Lihat rekomendasi dan promo terbaru di WisataKu.</p>
+        <div class="cta-actions">
+          <a href="dashboard/home.php" class="btn-primary">Lihat Destinasi</a>
+          <a href="dashboard/promo.php" class="btn-outline">Lihat Promo</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-container">
-      <div class="footer-box">
-        <h3>WisataKu</h3>
-        <p>Platform booking tiket wisata terpercaya di Malang Raya, dari destinasi alam hingga wisata edukasi.</p>
-        <div class="social-icons">
-          <a href="#" class="social-icon">
-            <img src="assets/icon/instagram.svg" alt="Instagram" />
-          </a>
-          <a href="#" class="social-icon">
-            <img src="assets/icon/youtube.svg" alt="YouTube" />
-          </a>
-          <a href="#" class="social-icon">
-            <img src="assets/icon/twitter.svg" alt="Twitter" />
-          </a>
-          <a href="#" class="social-icon">
-            <img src="assets/icon/gmail.svg" alt="Email" />
-          </a>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-footer">WisataKu</span>
+          <p>Platform booking tiket wisata terpercaya di Malang Raya, dari destinasi alam hingga wisata edukasi.</p>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/da.ppin" class="social-icon"><img src="assets/icon/instagram.svg" alt="Instagram" /></a>
+            <a href="#" class="social-icon"><img src="assets/icon/youtube.svg" alt="YouTube" /></a>
+            <a href="#" class="social-icon"><img src="assets/icon/twitter.svg" alt="Twitter" /></a>
+            <a href="mailto:info@wisataku.id" class="social-icon"><img src="assets/icon/gmail.svg" alt="Email" /></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="dashboard/home.php">Beranda</a></li>
+            <li><a href="dashboard/promo.php">Promo &amp; Deals</a></li>
+            <li><a href="tentang.php">Tentang Kami</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Destinasi</h4>
+          <ul>
+            <li><a href="user/wisata_alam/Bromo.php">Gunung Bromo</a></li>
+            <li><a href="user/wisata_alam/PantaiNgudel.php">Pantai Ngudel</a></li>
+            <li><a href="user/wisata_alam/TumpakSewu.php">Tumpak Sewu</a></li>
+            <li><a href="user/wisata_edukasi/EcoGreenPark.php">Eco Green Park</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <ul>
+            <li><span class="contact-item"><img src="assets/icon/mail-line.svg" alt="Email" /> info@wisataku.id</span></li>
+            <li><span class="contact-item"><img src="assets/icon/phone-line.svg" alt="Phone" /> +62 857 9287 4948</span></li>
+            <li><span class="contact-item"><img src="assets/icon/map-pin-line.svg" alt="Location" /> Malang, Jawa Timur</span></li>
+          </ul>
         </div>
       </div>
-
-      <div class="footer-box">
-        <h3>Navigasi</h3>
-        <ul>
-          <li><a href="index.php">Beranda</a></li>
-          <li><a href="dashboard/promo.php">Promo & Deals</a></li>
-          <li><a href="auth/login.php">Favorite</a></li>
-          <li><a href="tentang.php">Tentang Kami</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-box">
-        <h3>Destinasi</h3>
-        <ul>
-          <li><a href="user/wisata_alam/Bromo.php">Gunung Bromo</a></li>
-          <li><a href="user/wisata_alam/PantaiNgudel.php">Pantai Balekambang</a></li>
-          <li><a href="user/wisata_alam/TumpakSewu.php">Tumpak Sewu</a></li>
-          <li><a href="user/wisata_alam/RanuRegulo.php">Ranu Regulo</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-box">
-        <h3>Kontak</h3>
-        <ul>
-          <li><span class="contact-item"><img src="assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> info@wisataku.id</span></li>
-          <li><span class="contact-item"><img src="assets/icon/phone-line.svg" alt="Phone" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> +62 857 9287 4948</span></li>
-          <li><span class="contact-item"><img src="assets/icon/map-pin-2-fill.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang, Jawa Timur</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2025 WisataKu. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Kebijakan Privasi</a>
-        <a href="#">Syarat & Ketentuan</a>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WisataKu. Semua rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat &amp; Ketentuan</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
-    function toggleMenu() {
-      const navMenu = document.querySelector('.nav-menu');
-      const hamburger = document.querySelector('.hamburger');
-      navMenu.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    }
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const profileMenuButton = document.getElementById('profileMenuButton');
+    const profileDropdown = document.getElementById('profileDropdown');
 
-    function closeMenu() {
-      const navMenu = document.querySelector('.nav-menu');
-      const hamburger = document.querySelector('.hamburger');
-      if (window.innerWidth <= 768) {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
-      }
-    }
+    hamburger && hamburger.addEventListener('click', function(event) {
+      event.stopPropagation();
+      navLinks.classList.toggle('open');
+    });
 
-    // Close menu when clicking outside
+    profileMenuButton && profileDropdown && profileMenuButton.addEventListener('click', function(event) {
+      event.stopPropagation();
+      const isOpen = profileDropdown.classList.toggle('show');
+      profileMenuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
     document.addEventListener('click', function(event) {
-      const navMenu = document.querySelector('.nav-menu');
-      const hamburger = document.querySelector('.hamburger');
-      const navbar = document.querySelector('.navbar');
-      
-      if (!navbar.contains(event.target) && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
+      if (!event.target.closest('.navbar')) {
+        navLinks.classList.remove('open');
+      }
+
+      if (profileDropdown && profileMenuButton && !event.target.closest('.nav-right')) {
+        profileDropdown.classList.remove('show');
+        profileMenuButton.setAttribute('aria-expanded', 'false');
       }
     });
   </script>

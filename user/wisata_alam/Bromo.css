@@ -36,6 +36,7 @@ input, button, select, textarea, optgroup, option {
 body {
     background: var(--bg);
     color: var(--text-dark);
+    padding-top: 64px;
 }
 
 /* ===== GLOBAL CONTAINER ===== */
@@ -51,8 +52,10 @@ body {
   height: 64px;
   display: flex;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   box-shadow: 0 2px 12px rgba(1,87,173,0.07);
 }
@@ -180,6 +183,37 @@ h1 {
 
 .stat-item span.icon { font-size: 18px; }
 .stat-item span.value { color: #ffa800; }
+
+.rating-star,
+.category-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    flex: 0 0 18px;
+    background: #ffa800;
+}
+
+.rating-star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 56%, 79% 91%, 50% 70%, 21% 91%, 32% 56%, 2% 35%, 39% 35%);
+}
+
+.category-icon {
+    border-radius: 50%;
+    position: relative;
+}
+
+.category-icon::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    width: 8px;
+    height: 10px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    transform: skewX(-12deg);
+}
 
 .description {
     font-size: 16px;
@@ -327,4 +361,159 @@ footer a:hover { color: white; }
     .content-grid { grid-template-columns: 1fr; margin-top: -40px; }
     .sidebar-sticky { position: static; }
     .hero-wrapper { height: 350px; }
+}
+/* ===== STANDARD BOOKING FOOTER ===== */
+.regular-price {
+  color: var(--text-light, #7a859e);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+footer {
+  background: var(--blue-dark, #0157AD) !important;
+  color: var(--white, #ffffff) !important;
+  padding: 56px 0 24px !important;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-brand .logo-footer {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.footer-brand p {
+  max-width: 430px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.social-icon:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 10px;
+}
+
+.footer-col a,
+.footer-col .contact-item {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+}
+
+.footer-col .contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-col .contact-item img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12) !important;
+  padding-top: 24px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-align: left !important;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

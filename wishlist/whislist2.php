@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="../assets/js/theme.js?v=3.4"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Tentang Kami</title>
@@ -695,7 +696,6 @@ input, button, select, textarea, optgroup, option {
           <ul>
             <li class="profile-link"><a href="profile.html" onclick="closeMenu()">Profil</a></li>
             <li><a href="home.html" onclick="closeMenu()">Home</a></li>
-            <li><a href="whistlist.html" onclick="closeMenu()">Favorite</a></li>
             <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
           </ul>
         </nav>
@@ -737,22 +737,22 @@ input, button, select, textarea, optgroup, option {
       <h2>Nilai-Nilai Kami</h2>
       <div class="values-grid">
         <div class="value-card">
-          <div class="value-icon">🎯</div>
+          <div class="value-icon">??</div>
           <h3>Komitmen</h3>
           <p>Kami berkomitmen memberikan layanan terbaik dan pengalaman wisata yang memuaskan untuk setiap pelanggan.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">🤝</div>
+          <div class="value-icon">??</div>
           <h3>Kepercayaan</h3>
           <p>Kepercayaan pelanggan adalah prioritas utama kami. Kami menjaga transparansi dalam setiap transaksi.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">💡</div>
+          <div class="value-icon">??</div>
           <h3>Inovasi</h3>
           <p>Kami terus berinovasi untuk memberikan kemudahan dan fitur terbaru dalam platform kami.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">🌟</div>
+          <div class="value-icon">??</div>
           <h3>Kualitas</h3>
           <p>Kami hanya menyediakan destinasi wisata berkualitas dengan standar pelayanan terbaik.</p>
         </div>
@@ -790,25 +790,25 @@ input, button, select, textarea, optgroup, option {
       <h2>Tim Kami</h2>
       <div class="team-grid">
         <div class="team-card">
-          <div class="team-photo">👨‍💼</div>
+          <div class="team-photo">?????</div>
           <h3>Davin Aditya</h3>
           <p class="role">Founder & CEO</p>
           <p>Memimpin visi dan strategi pengembangan WisataKu untuk masa depan yang lebih baik.</p>
         </div>
         <div class="team-card">
-          <div class="team-photo">👩‍💻</div>
+          <div class="team-photo">?????</div>
           <h3>Siti Nurhaliza</h3>
           <p class="role">Head of Operations</p>
           <p>Memastikan setiap operasional berjalan lancar dan pelanggan mendapat pelayanan terbaik.</p>
         </div>
         <div class="team-card">
-          <div class="team-photo">👨‍🎨</div>
+          <div class="team-photo">?????</div>
           <h3>Budi Santoso</h3>
           <p class="role">Creative Director</p>
           <p>Menciptakan pengalaman visual yang menarik dan user-friendly untuk platform kami.</p>
         </div>
         <div class="team-card">
-          <div class="team-photo">👩‍💼</div>
+          <div class="team-photo">?????</div>
           <h3>Ayu Lestari</h3>
           <p class="role">Customer Relations</p>
           <p>Menjaga hubungan baik dengan pelanggan dan mendengarkan setiap feedback mereka.</p>

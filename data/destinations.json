@@ -10,7 +10,8 @@
         "category": "wisata_alam",
         "popular": true,
         "near": true,
-        "recommended": true
+        "recommended": true,
+        "owner_admin_id": null
     },
     {
         "id": "pantai-balekambang",
@@ -23,7 +24,8 @@
         "category": "wisata_alam",
         "popular": true,
         "near": true,
-        "recommended": false
+        "recommended": false,
+        "owner_admin_id": null
     },
     {
         "id": "tumpak-sewu",
@@ -36,7 +38,8 @@
         "category": "wisata_alam",
         "popular": true,
         "near": true,
-        "recommended": true
+        "recommended": true,
+        "owner_admin_id": null
     },
     {
         "id": "ranu-regulo",
@@ -49,7 +52,8 @@
         "category": "wisata_alam",
         "popular": true,
         "near": true,
-        "recommended": true
+        "recommended": true,
+        "owner_admin_id": null
     },
     {
         "id": "gunung-buthak",
@@ -62,7 +66,8 @@
         "category": "wisata_alam",
         "popular": true,
         "near": true,
-        "recommended": true
+        "recommended": true,
+        "owner_admin_id": null
     },
     {
         "id": "ranu-kumbolo",
@@ -75,7 +80,8 @@
         "category": "wisata_alam",
         "popular": false,
         "near": true,
-        "recommended": false
+        "recommended": false,
+        "owner_admin_id": null
     },
     {
         "id": "jatim-park-1",
@@ -88,7 +94,8 @@
         "category": "wisata_buatan",
         "popular": false,
         "near": false,
-        "recommended": true
+        "recommended": true,
+        "owner_admin_id": null
     },
     {
         "id": "eco-green-park",
@@ -101,6 +108,7 @@
         "category": "wisata_edukasi",
         "popular": false,
         "near": false,
-        "recommended": true
+        "recommended": true,
+        "owner_admin_id": null
     }
 ]

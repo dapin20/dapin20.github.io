@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="../assets/js/theme.js?v=3.4"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Jelajahi Keindahan Malang Raya</title>
@@ -644,7 +645,6 @@ footer {
           <ul>
             <li class="profile-link"><a href="profile.php" onclick="closeMenu()">Profil</a></li>
             <li><a href="home.php" onclick="closeMenu()">Home</a></li>
-            <li><a href="whistlist.php" onclick="closeMenu()">Favorite</a></li>
             <li><a href="#" onclick="closeMenu()">Tentang Kami</a></li>
           </ul>
         </nav>

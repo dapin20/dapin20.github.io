@@ -1,11 +1,20 @@
 <?php
 require_once('./_auth.php');
+require_once('../config/koneksi.php');
 
-$destinations = load_destinations();
+$destinations = destination_filter_by_admin(load_destinations(), $adminRole, $adminId);
+$ticketAdminNames = [];
+$ticketAdminResult = $conn->query("SELECT id, username FROM admins WHERE role = 'ticket_admin'");
+if ($ticketAdminResult) {
+    while ($ticketAdmin = $ticketAdminResult->fetch_assoc()) {
+        $ticketAdminNames[(int) $ticketAdmin['id']] = $ticketAdmin['username'];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="../assets/js/theme.js?v=3.4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin WisataKu - Kelola Wisata</title>
@@ -14,33 +23,14 @@ $destinations = load_destinations();
 </head>
 <body>
     <div class="admin-shell">
-        <aside class="admin-sidebar">
-            <div class="admin-brand">
-                <div class="admin-brand-badge">WK</div>
-                <div>
-                    <h2 class="admin-brand-title">Admin WisataKu</h2>
-                    <p class="admin-brand-copy">Panel pengelolaan destinasi dan harga.</p>
-                </div>
-            </div>
-
-            <nav class="admin-nav">
-                <a href="home.php">Home Admin</a>
-                <a href="dashboard.php">Dashboard</a>
-                <a href="destinations.php" class="active">Kelola Wisata</a>
-                <a href="../dashboard/home.php">Lihat Home User</a>
-            </nav>
-
-            <div class="admin-sidebar-footer">
-                <a href="../auth/logout.php" class="admin-btn danger">Logout</a>
-            </div>
-        </aside>
+        <?php render_admin_sidebar('destinations', admin_role_label($adminRole) . ' - kelola data wisata.'); ?>
 
         <main class="admin-content">
             <div class="admin-topbar">
                 <div>
                     <p class="admin-eyebrow">Data destinasi</p>
                     <h1>Kelola Wisata</h1>
-                    <p>Tambah wisata baru, edit harga, perbarui gambar, dan atur apakah kartu muncul di section populer, dekat Anda, atau rekomendasi.</p>
+                    <p><?php echo $isSuperAdmin ? 'Pantau semua wisata yang dikelola oleh seluruh loket.' : 'Tambah wisata, edit harga tiket, perbarui gambar, dan atur tampilan wisata milik loket Anda.'; ?></p>
                 </div>
                 <a href="destination_form.php" class="admin-btn">Tambah Wisata Baru</a>
             </div>
@@ -57,6 +47,7 @@ $destinations = load_destinations();
                             <tr>
                                 <th>Destinasi</th>
                                 <th>Kategori</th>
+                                <?php if ($isSuperAdmin): ?><th>Admin Tiket</th><?php endif; ?>
                                 <th>Harga</th>
                                 <th>Rating</th>
                                 <th>Tampil di Home</th>
@@ -76,8 +67,16 @@ $destinations = load_destinations();
                                     </div>
                                 </td>
                                 <td><span class="admin-chip"><?php echo htmlspecialchars(str_replace('_', ' ', $destination['category'])); ?></span></td>
+                                <?php if ($isSuperAdmin): ?>
+                                <td>
+                                    <?php
+                                    $ownerId = (int) ($destination['owner_admin_id'] ?? 0);
+                                    echo htmlspecialchars($ticketAdminNames[$ownerId] ?? 'Belum ditetapkan');
+                                    ?>
+                                </td>
+                                <?php endif; ?>
                                 <td><?php echo htmlspecialchars(destination_price_label($destination['price'])); ?></td>
-                                <td>★ <?php echo htmlspecialchars(number_format($destination['rating'], 1)); ?></td>
+                                <td>&#9733; <?php echo htmlspecialchars(number_format($destination['rating'], 1)); ?></td>
                                 <td>
                                     <div class="admin-flags">
                                         <?php if ($destination['popular']): ?><span class="admin-flag">Populer</span><?php endif; ?>

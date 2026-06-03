@@ -11,9 +11,165 @@
   gap: 20px;
 }
 
+.payment-flow {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 24px;
+}
+
+.bank-card,
+.upload-card {
+  background: var(--panel-muted);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.bank-row,
+.order-summary > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.bank-row span,
+.order-summary span {
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.bank-row strong,
+.order-summary strong {
+  color: var(--text-dark);
+  text-align: right;
+}
+
+.bank-row.total strong {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.bank-note {
+  margin: 18px 0 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.payment-empty {
+  padding: 18px;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  color: var(--text-soft);
+  font-weight: 600;
+  text-align: center;
+}
+
+.pending-payment-list {
+  display: grid;
+  gap: 12px;
+}
+
+.pending-payment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.pending-payment-item strong,
+.pending-payment-item span {
+  display: block;
+}
+
+.pending-payment-item strong {
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.pending-payment-item span {
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+.small-link {
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 10px 14px;
+}
+
+.payment-alert {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 600;
+}
+
+.payment-alert.error {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+.payment-alert.success {
+  background: #e6f7ef;
+  color: #1d8f5b;
+}
+
+.upload-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.upload-form label {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.upload-form input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--panel);
+}
+
+.proof-preview {
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.proof-preview img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.proof-preview p {
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+.nota-link {
+  margin-top: 20px;
+  text-decoration: none;
+  display: inline-flex;
+}
+
 .payment-card {
-  background: #fbfcfe;
-  border: 1px solid #e9eef5;
+  background: var(--panel-muted);
+  border: 1px solid var(--line);
   border-radius: 20px;
   padding: 22px;
 }
@@ -28,7 +184,7 @@
 .payment-icon {
   width: 52px;
   height: 52px;
-  background: #eaf3ff;
+  background: var(--primary-soft);
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -44,18 +200,18 @@
 .payment-name {
   font-size: 17px;
   font-weight: 700;
-  color: #172033;
+  color: var(--text-dark);
   margin-bottom: 4px;
 }
 
 .payment-detail {
   font-size: 13px;
-  color: #7b8795;
+  color: var(--text-soft);
 }
 
 .badge-utama {
-  background: #eaf3ff;
-  color: #0157ad;
+  background: var(--primary-soft);
+  color: var(--primary);
   padding: 7px 12px;
   border-radius: 999px;
   font-size: 11px;
@@ -65,7 +221,7 @@
 .payment-actions {
   display: flex;
   gap: 12px;
-  border-top: 1px solid #e9eef5;
+  border-top: 1px solid var(--line);
   padding-top: 16px;
 }
 
@@ -79,23 +235,23 @@
 }
 
 .btn-edit {
-  background: #fff;
-  color: #0157ad;
-  border: 1px solid #0157ad;
+  background: var(--input-bg);
+  color: var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .btn-edit:hover {
-  background: #eaf3ff;
+  background: var(--primary-soft);
 }
 
 .btn-hapus {
-  background: #fff5f6;
-  color: #b42332;
+  background: var(--danger-bg);
+  color: var(--danger-text);
   border: 1px solid #e5b0b7;
 }
 
 .btn-hapus:hover {
-  background: #fde8ea;
+  background: var(--danger-bg);
 }
 
 @media (max-width: 900px) {
@@ -106,5 +262,14 @@
 
   .pembayaran-list {
     grid-template-columns: 1fr;
+  }
+
+  .payment-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .pending-payment-item {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

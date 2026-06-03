@@ -1,5 +1,34 @@
 <?php
+session_start();
+require_once('../config/auth_helper.php');
 require_once('../config/destination_helper.php');
+require_once('../config/koneksi.php');
+
+$user_id = $_SESSION['user_id'] ?? null;
+$user_type = $_SESSION['user_type'] ?? 'user';
+$avatarSrc = '../assets/images/dapin kecil.jpg';
+
+if ($user_id) {
+    $table = ($user_type === 'admin') ? 'admins' : 'users';
+    $hasAvatar = false;
+    $colCheck = $conn->query("SHOW COLUMNS FROM $table LIKE 'avatar'");
+    if ($colCheck && $colCheck->num_rows > 0) {
+      $hasAvatar = true;
+    }
+    if ($hasAvatar) {
+      $stmt = $conn->prepare("SELECT avatar FROM $table WHERE id = ?");
+      $stmt->bind_param("i", $user_id);
+      $stmt->execute();
+      $res = $stmt->get_result();
+      if ($row = $res->fetch_assoc()) {
+        if (!empty($row['avatar'])) {
+          $avatarSrc = '../' . $row['avatar'];
+          $_SESSION['avatar'] = $row['avatar']; // Sync session
+        }
+      }
+      $stmt->close();
+    }
+}
 
 $destinations = load_destinations();
 $popularDestinations = array_slice(destination_filter($destinations, 'popular'), 0, 5);
@@ -24,8 +53,9 @@ if (count($recommendedDestinations) === 0) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Jelajahi Keindahan Malang Raya</title>
+  <script src="../assets/js/theme.js?v=3.4"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="home.css?v=2.0">
+  <link rel="stylesheet" href="home.css?v=2.1">
   <!-- Flatpickr CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?v=2.0">
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css?v=2.0">
@@ -40,14 +70,18 @@ if (count($recommendedDestinations) === 0) {
       <ul class="nav-links">
         <li><a href="home.php" class="active">Home</a></li>
         <li><a href="promo.php">Promo &amp; Deals</a></li>
-        <li><a href="../wishlist/whistlist.php">Favorite</a></li>
         <li><a href="../tentang.php">Tentang Kami</a></li>
       </ul>
 
       <div class="nav-right">
-        <a href="../user/profile.php">
-          <img src="../assets/images/dapin kecil.jpg" alt="Profile" class="profile-icon">
-        </a>
+        <button class="profile-menu-button" type="button" id="profileMenuButton" aria-label="Menu profil" aria-expanded="false">
+          <img src="<?php echo htmlspecialchars($avatarSrc); ?>" alt="Profile" class="profile-icon">
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <a href="../user/profile.php">Profil Saya</a>
+          <a href="../wishlist/whistlist.php">Favorite Saya</a>
+          <a href="../auth/logout.php">Logout</a>
+        </div>
         <div class="hamburger" onclick="openMobileMenu()">
           <span></span><span></span><span></span>
         </div>
@@ -62,7 +96,6 @@ if (count($recommendedDestinations) === 0) {
       <a href="../user/profile.php" onclick="closeMobileMenu()">Profil</a>
       <a href="home.php" onclick="closeMobileMenu()">Home</a>
       <a href="#" onclick="closeMobileMenu()">Promo &amp; Deals</a>
-      <a href="../wishlist/whistlist.php" onclick="closeMobileMenu()">Favorite</a>
       <a href="../tentang.php" onclick="closeMobileMenu()">Tentang Kami</a>
     </div>
   </div>
@@ -74,7 +107,7 @@ if (count($recommendedDestinations) === 0) {
         <h1>Jelajahi Keindahan<br>Malang Raya</h1>
         <p>Temukan berbagai destinasi wisata menarik di area Malang dan sekitarnya. Perjalananmu dimulai dari sini!</p>
         <div class="hero-buttons">
-          <a href="#" class="btn-hero-primary">Pesan Tiket Sekarang</a>
+          <a href="#wisata-terdekat" class="btn-hero-primary" id="heroOrderButton">Pesan Tiket Sekarang</a>
           <a href="../tentang.php" class="btn-hero-secondary">Tentang Kami</a>
         </div>
       </div>
@@ -83,13 +116,13 @@ if (count($recommendedDestinations) === 0) {
 
   <!-- ===== FLOATING SEARCH ===== -->
   <div class="search-float">
-    <div class="search-field">
+    <div class="search-field search-destination-wrap">
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M17.657 16.657L22 21m-4.343-4.343A8 8 0 1 0 4.343 12.314a8 8 0 0 0 13.314 4.343z"/>
       </svg>
       <div>
         <label>Destinasi</label>
-        <input type="text" placeholder="Mau ke mana?" />
+        <input type="text" id="destinationSearch" placeholder="Mau ke mana?" autocomplete="off" />
       </div>
     </div>
     <div class="search-divider"></div>
@@ -112,7 +145,8 @@ if (count($recommendedDestinations) === 0) {
         <input type="text" placeholder="Berapa orang?" />
       </div>
     </div>
-    <button class="btn-search"><img src="../assets/icon/search-line.svg" alt="Search" style="width: 18px; height: 18px; margin-right: 5px; display: inline-block;"/> Cari</button>
+    <button class="btn-search" id="destinationSearchButton"><img src="../assets/icon/search-line.svg" alt="Search" style="width: 18px; height: 18px; margin-right: 5px; display: inline-block;"/> Cari</button>
+    <div class="search-suggestions" id="destinationSuggestions"></div>
   </div>
 
   <!-- ===== DESTINASI POPULER ===== -->
@@ -179,7 +213,7 @@ if (count($recommendedDestinations) === 0) {
   </section>
 
   <!-- ===== DESTINASI DEKAT ===== -->
-  <section class="scroll-section" style="padding-top:60px;">
+  <section class="scroll-section" id="wisata-terdekat" style="padding-top:60px;">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Destinasi <span>Dekat Anda</span></h2>
@@ -229,7 +263,7 @@ if (count($recommendedDestinations) === 0) {
   </section>
 
   <!-- ===== REKOMENDASI ===== -->
-  <section class="scroll-section">
+  <section class="scroll-section" id="rekomendasi">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Rekomendasi <span>Untukmu</span></h2>
@@ -340,7 +374,7 @@ if (count($recommendedDestinations) === 0) {
           <span class="logo-footer">WisataKu</span>
           <p>Platform booking tiket wisata terpercaya di Malang Raya, dari destinasi alam hingga wisata edukasi.</p>
           <div class="social-icons">
-            <a href="https://www.instagram.com/dpinnn20" class="social-icon">
+            <a href="https://www.instagram.com/da.ppin" class="social-icon">
               <img src="../assets/icon/instagram.svg" alt="Instagram" />
             </a>
             <a href="#" class="social-icon">
@@ -349,17 +383,16 @@ if (count($recommendedDestinations) === 0) {
             <a href="#" class="social-icon">
               <img src="../assets/icon/twitter.svg" alt="Twitter" />
             </a>
-            <a href="mailto:davinadityasaputra20@gmail.com" class="social-icon">
-              <img src="../assets/icon/mail-line.svg" alt="Email" />
+            <a href="davinadityasaputra20@gmail.com" class="social-icon">
+              <img src="../assets/icon/gmail.svg" alt="Email" />
             </a>
           </div>
         </div>
         <div class="footer-col">
           <h4>Navigasi</h4>
           <ul>
-            <li><a href="home.php">Beranda</a></li>
+            <li><a href="../dashboard/home.php">Beranda</a></li>
             <li><a href="#">Promo &amp; Deals</a></li>
-            <li><a href="../wishlist/whistlist.php">Favorite</a></li>
             <li><a href="../tentang.php">Tentang Kami</a></li>
           </ul>
         </div>
@@ -375,7 +408,7 @@ if (count($recommendedDestinations) === 0) {
         <div class="footer-col">
           <h4>Kontak</h4>
           <ul>
-             <li><span class="contact-item"><img src="../assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> info@wisataku.id</span></li>
+            <li><span class="contact-item"><img src="../assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> info@wisataku.id</span></li>
             <li><span class="contact-item"><img src="../assets/icon/phone-line.svg" alt="Phone" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> +62 857 9287 4948</span></li>
             <li><span class="contact-item"><img src="../assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang, Jawa Timur</span></li>
           </ul>
@@ -416,6 +449,176 @@ if (count($recommendedDestinations) === 0) {
     function scrollCards(id, dir) {
       const el = document.getElementById(id);
       el.scrollBy({ left: dir * 250, behavior: 'smooth' });
+    }
+
+    const destinationSearch = document.getElementById('destinationSearch');
+    const destinationSuggestions = document.getElementById('destinationSuggestions');
+    const destinationSearchButton = document.getElementById('destinationSearchButton');
+    let selectedDestination = null;
+    let searchTimer = null;
+
+    function priceLabel(value) {
+      return 'Rp ' + Number(value || 0).toLocaleString('id-ID');
+    }
+
+    function closeSuggestions() {
+      destinationSuggestions.innerHTML = '';
+      destinationSuggestions.classList.remove('show');
+    }
+
+    function openDestination(destination) {
+      if (!destination) return;
+      window.location.href = '../' + destination.href.replace(/^\/+/, '');
+    }
+
+    function renderSuggestions(items) {
+      destinationSuggestions.innerHTML = '';
+
+      if (!items.length) {
+        destinationSuggestions.innerHTML = '<div class="search-empty">Wisata tidak ditemukan</div>';
+        destinationSuggestions.classList.add('show');
+        return;
+      }
+
+      items.forEach((item) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'search-suggestion-card';
+        button.innerHTML = `
+          <img src="../${item.image}" alt="${item.name}">
+          <span class="search-card-info">
+            <strong>${item.name}</strong>
+            <small>${item.location} • ${priceLabel(item.price)}</small>
+          </span>
+        `;
+        button.addEventListener('click', () => openDestination(item));
+        destinationSuggestions.appendChild(button);
+      });
+
+      destinationSuggestions.classList.add('show');
+    }
+
+    let isSuggestionDragging = false;
+    let suggestionDragStarted = false;
+    let suggestionStartX = 0;
+    let suggestionScrollLeft = 0;
+
+    destinationSuggestions.addEventListener('pointerdown', (event) => {
+      if (!destinationSuggestions.classList.contains('show')) return;
+      isSuggestionDragging = true;
+      suggestionDragStarted = false;
+      suggestionStartX = event.clientX;
+      suggestionScrollLeft = destinationSuggestions.scrollLeft;
+      destinationSuggestions.classList.add('dragging');
+      destinationSuggestions.setPointerCapture(event.pointerId);
+    });
+
+    destinationSuggestions.addEventListener('pointermove', (event) => {
+      if (!isSuggestionDragging) return;
+      const distance = event.clientX - suggestionStartX;
+
+      if (Math.abs(distance) > 6) {
+        suggestionDragStarted = true;
+      }
+
+      destinationSuggestions.scrollLeft = suggestionScrollLeft - distance;
+    });
+
+    function stopSuggestionDrag(event) {
+      if (!isSuggestionDragging) return;
+      isSuggestionDragging = false;
+      destinationSuggestions.classList.remove('dragging');
+
+      if (destinationSuggestions.hasPointerCapture(event.pointerId)) {
+        destinationSuggestions.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    destinationSuggestions.addEventListener('pointerup', stopSuggestionDrag);
+    destinationSuggestions.addEventListener('pointercancel', stopSuggestionDrag);
+
+    destinationSuggestions.addEventListener('click', (event) => {
+      if (!suggestionDragStarted) return;
+      event.preventDefault();
+      event.stopPropagation();
+      suggestionDragStarted = false;
+    }, true);
+
+    async function fetchDestinations(query) {
+      const response = await fetch('../api/search_destinations.php?q=' + encodeURIComponent(query));
+      if (!response.ok) return [];
+      return response.json();
+    }
+
+    destinationSearch.addEventListener('input', () => {
+      const query = destinationSearch.value.trim();
+      selectedDestination = null;
+      clearTimeout(searchTimer);
+
+      if (query.length === 0) {
+        closeSuggestions();
+        return;
+      }
+
+      searchTimer = setTimeout(async () => {
+        const items = await fetchDestinations(query);
+        selectedDestination = items[0] || null;
+        renderSuggestions(items);
+      }, 180);
+    });
+
+    destinationSearch.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        openDestination(selectedDestination);
+      }
+    });
+
+    destinationSearchButton.addEventListener('click', async () => {
+      const query = destinationSearch.value.trim();
+      if (!query) return;
+      if (!selectedDestination) {
+        const items = await fetchDestinations(query);
+        selectedDestination = items[0] || null;
+      }
+      openDestination(selectedDestination);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.search-float')) {
+        closeSuggestions();
+      }
+    });
+
+    const profileMenuButton = document.getElementById('profileMenuButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+
+    profileMenuButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = profileDropdown.classList.toggle('show');
+      profileMenuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.nav-right')) {
+        profileDropdown.classList.remove('show');
+        profileMenuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    const heroOrderButton = document.getElementById('heroOrderButton');
+    const nearbySection = document.getElementById('wisata-terdekat');
+
+    if (heroOrderButton && nearbySection) {
+      heroOrderButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+        const targetTop = nearbySection.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 16;
+        window.scrollTo({
+          top: targetTop,
+          behavior: 'smooth'
+        });
+      });
     }
 
   </script>

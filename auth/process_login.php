@@ -5,7 +5,7 @@ require_once('../config/koneksi.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
-    $user_type = $_POST['user_type'] ?? 'user'; // 'user' atau 'admin'
+    $user_type = 'user';
     
     $errors = [];
     
@@ -19,27 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if (!empty($errors)) {
         $_SESSION['errors'] = $errors;
-        if ($user_type === 'admin') {
-            header("Location: ../admin/index.php");
-        } else {
-            header("Location: login.php");
-        }
+        header("Location: login.php");
         exit;
     }
     
-    // Cek login berdasarkan tipe user
-    if ($user_type === 'admin') {
-        $stmt = $conn->prepare("SELECT id, username, email, password FROM admins WHERE username = ?");
+    $stmt = $conn->prepare("SELECT id, username, email, password FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows !== 1) {
+        $stmt->close();
+        $stmt = $conn->prepare("SELECT id, username, email, password, role FROM admins WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        $table = 'admins';
-    } else {
-        $stmt = $conn->prepare("SELECT id, username, email, password FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $table = 'users';
+        $user_type = 'admin';
     }
     
     if ($result->num_rows === 1) {
@@ -47,16 +42,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Verifikasi password
         if (password_verify($password, $user['password'])) {
+            $session_token = session_id();
+
             // Set session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['user_type'] = $user_type;
+            $_SESSION['admin_role'] = $user_type === 'admin' ? ($user['role'] ?? 'ticket_admin') : null;
             $_SESSION['logged_in'] = true;
+            $_SESSION['avatar'] = $user['avatar'] ?? null;
+            $_SESSION['session_token'] = $session_token;
+
+            $sessionsTable = $conn->query("SHOW TABLES LIKE 'sessions'");
+            if ($user_type === 'user' && $sessionsTable && $sessionsTable->num_rows > 0) {
+                $ip_address = $_SERVER['REMOTE_ADDR'] ?? null;
+                $user_agent = substr($_SERVER['HTTP_USER_AGENT'] ?? '', 0, 255);
+
+                // Check whether sessions table has user_agent column
+                $hasUserAgent = false;
+                $columnCheck = $conn->query("SHOW COLUMNS FROM sessions LIKE 'user_agent'");
+                if ($columnCheck && $columnCheck->num_rows > 0) {
+                    $hasUserAgent = true;
+                }
+
+                if ($hasUserAgent) {
+                    $sessionStmt = $conn->prepare(
+                        "INSERT INTO sessions (user_id, user_type, session_token, ip_address, user_agent)
+                         VALUES (?, ?, ?, ?, ?)
+                         ON DUPLICATE KEY UPDATE
+                            user_id = VALUES(user_id),
+                            user_type = VALUES(user_type),
+                            last_activity = CURRENT_TIMESTAMP,
+                            ip_address = VALUES(ip_address),
+                            user_agent = VALUES(user_agent)"
+                    );
+                    if ($sessionStmt) {
+                        $sessionStmt->bind_param("issss", $user['id'], $user_type, $session_token, $ip_address, $user_agent);
+                        $sessionStmt->execute();
+                        $sessionStmt->close();
+                    }
+                } else {
+                    $sessionStmt = $conn->prepare(
+                        "INSERT INTO sessions (user_id, user_type, session_token, ip_address)
+                         VALUES (?, ?, ?, ?)
+                         ON DUPLICATE KEY UPDATE
+                            user_id = VALUES(user_id),
+                            user_type = VALUES(user_type),
+                            last_activity = CURRENT_TIMESTAMP,
+                            ip_address = VALUES(ip_address)"
+                    );
+                    if ($sessionStmt) {
+                        $sessionStmt->bind_param("isss", $user['id'], $user_type, $session_token, $ip_address);
+                        $sessionStmt->execute();
+                        $sessionStmt->close();
+                    }
+                }
+            }
             
             // Redirect berdasarkan tipe user
             if ($user_type === 'admin') {
-                header("Location: ../admin/home.php");
+                if (($_SESSION['admin_role'] ?? '') === 'super_admin') {
+                    header("Location: ../admin/dashboard.php");
+                } else {
+                    header("Location: ../admin/tickets.php");
+                }
             } else {
                 header("Location: ../dashboard/home.php");
             }
@@ -70,12 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $stmt->close();
     
-    // Redirect kembali ke halaman login
-    if ($user_type === 'admin') {
-        header("Location: ../admin/index.php");
-    } else {
-        header("Location: login.php");
-    }
+    header("Location: login.php");
     exit;
 }
 

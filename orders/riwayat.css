@@ -11,16 +11,16 @@
 .riwayat-table th {
   text-align: left;
   padding: 16px 18px;
-  background: #f8fbff;
-  color: #0157ad;
+  background: var(--panel-muted);
+  color: var(--primary);
   font-weight: 700;
-  border-bottom: 1px solid #e9eef5;
+  border-bottom: 1px solid var(--line);
 }
 
 .riwayat-table td {
   padding: 18px;
-  border-bottom: 1px solid #eef2f7;
-  color: #4c5a6a;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-mid);
 }
 
 .riwayat-table tr:last-child td {
@@ -30,16 +30,16 @@
 .btn-riwayat {
   padding: 10px 14px;
   border-radius: 10px;
-  border: 1px solid #0157ad;
-  background: #fff;
-  color: #0157ad;
+  border: 1px solid var(--primary);
+  background: var(--input-bg);
+  color: var(--primary);
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .btn-riwayat:hover {
-  background: #eaf3ff;
+  background: var(--primary-soft);
 }
 
 @media (max-width: 1024px) {

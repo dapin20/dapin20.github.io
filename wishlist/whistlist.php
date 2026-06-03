@@ -12,9 +12,10 @@ $wishlistPayload = array_map(function ($destination) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WisataKu - Wishlist</title>
+    <script src="../assets/js/theme.js?v=3.4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../user/account-theme.css?v=5.0" />
-    <link rel="stylesheet" href="./whistlist.css?v=5.0" />
+    <link rel="stylesheet" href="./whistlist.css?v=5.1" />
 </head>
 <body>
     <div class="profile-container">
@@ -23,20 +24,52 @@ $wishlistPayload = array_map(function ($destination) {
                 <p class="sidebar-eyebrow">Akun</p>
                 <h2 class="sidebar-title">Profil Pengguna</h2>
             </div>
-            <nav class="sidebar-menu">
-                <ul>
-                    <li><a href="../user/profile.php" class="menu-item"><span class="menu-icon">👤</span><span>Profil Saya</span></a></li>
-                    <li><a href="../orders/pesanan.php" class="menu-item"><span class="menu-icon">🎫</span><span>Pesanan Saya</span></a></li>
-                    <li><a href="../orders/riwayat.php" class="menu-item"><span class="menu-icon">🧾</span><span>Riwayat Transaksi</span></a></li>
-                    <li><a href="../orders/pembayaran.php" class="menu-item"><span class="menu-icon">💳</span><span>Metode Pembayaran</span></a></li>
-                    <li><a href="../dashboard/promo.php" class="menu-item"><span class="menu-icon">🏷</span><span>Promo & Deals</span></a></li>
-                    <li><a href="./whistlist.php" class="menu-item active"><span class="menu-icon">❤</span><span>Wishlist</span></a></li>
-                    <li><a href="../user/akun.php" class="menu-item"><span class="menu-icon">⚙</span><span>Pengaturan Akun</span></a></li>
-                    <li><a href="../help/bantuan.php" class="menu-item"><span class="menu-icon">❓</span><span>Bantuan & Dukungan</span></a></li>
-                </ul>
-            </nav>
-            <a href="../admin/index.php" class="btn-admin-link">Login Admin</a>
-            <button class="btn-logout" onclick="window.location.href='../auth/logout.php'">Keluar</button>
+                <nav class="sidebar-menu">
+  <ul>
+    <li><a href="../user/profile.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/user-circle.svg" width="24" height="24" alt="Profil">
+      </span>
+      <span>Profil Saya</span>
+    </a></li>
+
+    <li><a href="../orders/pesanan.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/ticket.svg" width="24" height="24" alt="Pesanan">
+      </span>
+      <span>Pesanan Saya</span>
+    </a></li>
+
+    <li><a href="../orders/riwayat.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/Note.svg" width="24" height="24" alt="Riwayat">
+      </span>
+      <span>Riwayat Transaksi</span>
+    </a></li>
+
+    <li><a href="../orders/pembayaran.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/credit-card.svg" width="24" height="24" alt="Pembayaran">
+      </span>
+      <span>Metode Pembayaran</span>
+    </a></li>
+
+    <li><a href="whistlist.php" class="menu-item active">
+      <span class="menu-icon">
+        <img src="../assets/icon/save.svg" width="24" height="24" alt="Favorite">
+      </span>
+      <span>Favorite Saya</span>
+    </a></li>
+
+    <li><a href="../help/bantuan.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/question.svg" width="24" height="24" alt="Bantuan">
+      </span>
+      <span>Bantuan & Dukungan</span>
+    </a></li>
+  </ul>
+</nav>
+            <button class="btn-logout" onclick="window.location.href='../auth/logout.php'"><span>Keluar</span></button>
         </aside>
 
         <main class="profile-content">

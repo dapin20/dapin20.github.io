@@ -126,6 +126,9 @@ function normalize_destination($destination) {
         'popular' => !empty($destination['popular']),
         'near' => !empty($destination['near']),
         'recommended' => !empty($destination['recommended']),
+        'owner_admin_id' => isset($destination['owner_admin_id']) && $destination['owner_admin_id'] !== ''
+            ? (int) $destination['owner_admin_id']
+            : null,
     ];
 }
 
@@ -210,3 +213,16 @@ function destination_payload($destination, $prefix = '') {
     ];
 }
 
+function destination_belongs_to_admin($destination, $adminId) {
+    return isset($destination['owner_admin_id']) && (int) $destination['owner_admin_id'] === (int) $adminId;
+}
+
+function destination_filter_by_admin($destinations, $adminRole, $adminId) {
+    if ($adminRole === 'super_admin') {
+        return array_values($destinations);
+    }
+
+    return array_values(array_filter($destinations, function ($destination) use ($adminId) {
+        return destination_belongs_to_admin($destination, $adminId);
+    }));
+}

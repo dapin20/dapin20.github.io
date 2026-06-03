@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="../assets/js/theme.js?v=3.4"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Daftar</title>
@@ -17,7 +18,7 @@
         <div class="wave"></div>
         <img src="../assets/logo/logo.png" alt="Logo WisataKu" />
         <h1><span class=>Wisata</span>Ku</h1>
-        <p>Jelajahi keindahan Malang Raya – Gunung, pantai selatan, dan budaya lokal.</p>
+        <p>Jelajahi keindahan Malang Raya � Gunung, pantai selatan, dan budaya lokal.</p>
       </div>
     </div>
 
@@ -71,7 +72,7 @@
       const toast = document.createElement('div');
       toast.className = `toast toast-${type}`;
       
-      const icon = type === 'success' ? '✓' : '⚠';
+      const icon = type === 'success' ? '?' : '?';
       toast.innerHTML = `<span class="toast-icon">${icon}</span><span class="toast-message">${message}</span>`;
       
       container.appendChild(toast);
@@ -104,7 +105,7 @@
         if (!empty($_SESSION['errors'])): ?>
           <div class="error-messages">
             <?php foreach ($_SESSION['errors'] as $error): ?>
-              <div class="error-item">⚠ <?php echo htmlspecialchars($error); ?></div>
+              <div class="error-item">? <?php echo htmlspecialchars($error); ?></div>
             <?php endforeach; ?>
           </div>
           <?php unset($_SESSION['errors']); ?>

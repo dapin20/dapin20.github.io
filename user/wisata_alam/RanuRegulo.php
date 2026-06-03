@@ -1,6 +1,12 @@
+<?php
+require_once(__DIR__ . '/../../config/koneksi.php');
+require_once(__DIR__ . '/../../config/profile_avatar_helper.php');
+$avatarSrc = getProfileAvatarSrc($conn, '../../');
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="../../assets/js/theme.js?v=3.4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WisataKu - Ranu Regulo Immersive Experience</title>
@@ -20,13 +26,12 @@
             <ul class="nav-links">
                 <li><a href="../../dashboard/home.php">Home</a></li>
                 <li><a href="#">Promo</a></li>
-                <li><a href="../../wishlist/whistlist.php">Favorite</a></li>
                 <li><a href="../../tentang.php">Tentang Kami</a></li>
             </ul>
 
             <div class="nav-right">
                 <a href="../../user/profile.php">
-                    <img src="../../assets/images/dapin kecil.jpg" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
+                    <img src="<?php echo htmlspecialchars($avatarSrc); ?>" alt="Profile" class="profile-icon" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--blue-light);">
                 </a>
             </div>
         </div>
@@ -51,16 +56,10 @@
                 
                 <div class="stats-bar">
                     <div class="stat-item">
-                        <span class="icon">⭐</span>
-                        <span class="label">4.6</span>
-                        <span class="value">(850 review)</span>
-                    </div>
-                    <div class="stat-item">
                         <span class="icon"><img src="../../assets/icon/map-pin-line2.svg" alt="Location" style="width: 16px; height: 16px;"/></span>
                         <span class="label">Senduro, Lumajang</span>
                     </div>
                     <div class="stat-item">
-                        <span class="icon">🏔</span>
                         <span class="label">Wisata Alam</span>
                     </div>
                 </div>
@@ -97,9 +96,7 @@
 
                     <button class="buy-btn" onclick="orderTicket()">Pesan Sekarang</button>
                     
-                    <p style="text-align:center; font-size:12px; color:var(--text-light); margin-top:16px;">
-                        ⚡ Konfirmasi instan via WhatsApp
-                    </p>
+                    <p style="text-align:center; font-size:12px; color:var(--text-light); margin-top:16px;">Pembayaran transfer bank dan verifikasi admin</p>
                 </div>
             </aside>
 
@@ -108,31 +105,53 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <h3 class="logo">WisataKu</h3>
-                <p>Jelajahi keindahan Malang Raya dengan kemudahan reservasi tiket secara online and terpercaya.</p>
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="logo-footer">WisataKu</span>
+                <p>Platform booking tiket wisata terpercaya di Malang Raya, dari destinasi alam hingga wisata edukasi.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/da.ppin" class="social-icon"><img src="../../assets/icon/instagram.svg" alt="Instagram" /></a>
+                    <a href="#" class="social-icon"><img src="../../assets/icon/youtube.svg" alt="YouTube" /></a>
+                    <a href="#" class="social-icon"><img src="../../assets/icon/twitter.svg" alt="Twitter" /></a>
+                    <a href="mailto:info@wisataku.id" class="social-icon"><img src="../../assets/icon/gmail.svg" alt="Email" /></a>
+                </div>
             </div>
             <div class="footer-col">
-                <h3>Navigasi</h3>
+                <h4>Navigasi</h4>
                 <ul>
                     <li><a href="../../dashboard/home.php">Beranda</a></li>
-                    <li><a href="WisataAlam.php">Wisata Alam</a></li>
-                    <li><a href="../../wishlist/whistlist.php">Favorit</a></li>
+                    <li><a href="../../dashboard/promo.php">Promo &amp; Deals</a></li>
+                    <li><a href="../../tentang.php">Tentang Kami</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Hubungi Kami</h3>
+                <h4>Destinasi</h4>
                 <ul>
-                    <li><img src="../../assets/icon/mail-line.svg" alt="Email" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> info@wisataku.id</li>
-                    <li><img src="../../assets/icon/phone-line.svg" alt="Phone" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"> +62 857-9287-4048</li>
+                    <li><a href="../../user/wisata_alam/Bromo.php">Gunung Bromo</a></li>
+                    <li><a href="../../user/wisata_alam/PantaiNgudel.php">Pantai Balekambang</a></li>
+                    <li><a href="../../user/wisata_alam/TumpakSewu.php">Tumpak Sewu</a></li>
+                    <li><a href="../../user/wisata_alam/RanuRegulo.php">Ranu Regulo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kontak</h4>
+                <ul>
+                    <li><span class="contact-item"><img src="../../assets/icon/mail-line.svg" alt="Email" /> info@wisataku.id</span></li>
+                    <li><span class="contact-item"><img src="../../assets/icon/phone-line.svg" alt="Phone" /> +62 857 9287 4948</span></li>
+                    <li><span class="contact-item"><img src="../../assets/icon/map-pin-line.svg" alt="Location" /> Malang, Jawa Timur</span></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2025 WisataKu - Malang Raya. All rights reserved.
+            <p>&copy; 2025 WisataKu. Semua rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Syarat &amp; Ketentuan</a>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -157,16 +176,34 @@
 
         function orderTicket() {
             const date = document.getElementById('bookingDate').value;
-            const amount = amountInput.value;
-            const total = amount * pricePerTicket;
-            
-            const message = `Halo Admin WisataKu, saya mau pesan ${amount} tiket Ranu Regulo untuk tanggal ${date}. Total tagihan: Rp ${total.toLocaleString('id-ID')}`;
-            window.location.href = `https://wa.me/+6285847739780?text=${encodeURIComponent(message)}`;
+            const amount = Math.max(1, parseInt(amountInput.value, 10) || 1);
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '../../orders/checkout.php';
+
+            const fields = {
+                destination_id: 'ranu-regulo',
+                destination_name: 'Ranu Regulo',
+                destination_href: 'user/wisata_alam/RanuRegulo.php',
+                price: '25000',
+                quantity: amount,
+                visit_date: date
+            };
+
+            Object.keys(fields).forEach((key) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = fields[key];
+                form.appendChild(input);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
         }
     </script>
 </body>
 </html>
-
 
 
 

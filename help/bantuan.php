@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Bantuan & Dukungan</title>
+  <script src="../assets/js/theme.js?v=3.4"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../user/account-theme.css?v=3.0" />
   <link rel="stylesheet" href="./bantuan.css?v=2.0" />
@@ -16,21 +17,52 @@
         <h2 class="sidebar-title">Profil Pengguna</h2>
       </div>
 
-      <nav class="sidebar-menu">
-        <ul>
-          <li><a href="../user/profile.php" class="menu-item"><span class="menu-icon">👤</span><span>Profil Saya</span></a></li>
-          <li><a href="../orders/pesanan.php" class="menu-item"><span class="menu-icon">🎫</span><span>Pesanan Saya</span></a></li>
-          <li><a href="../orders/riwayat.php" class="menu-item"><span class="menu-icon">🧾</span><span>Riwayat Transaksi</span></a></li>
-          <li><a href="../orders/pembayaran.php" class="menu-item"><span class="menu-icon">💳</span><span>Metode Pembayaran</span></a></li>
-          <li><a href="../dashboard/promo.php" class="menu-item"><span class="menu-icon">🏷</span><span>Promo & Deals</span></a></li>
-          <li><a href="../wishlist/whistlist.php" class="menu-item"><span class="menu-icon">❤</span><span>Wishlist</span></a></li>
-          <li><a href="../user/akun.php" class="menu-item"><span class="menu-icon">⚙</span><span>Pengaturan Akun</span></a></li>
-          <li><a href="./bantuan.php" class="menu-item active"><span class="menu-icon">❓</span><span>Bantuan & Dukungan</span></a></li>
-        </ul>
-      </nav>
+          <nav class="sidebar-menu">
+  <ul>
+    <li><a href="../user/profile.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/user-circle.svg" width="24" height="24" alt="Profil">
+      </span>
+      <span>Profil Saya</span>
+    </a></li>
 
-      <a href="../admin/index.php" class="btn-admin-link">Login Admin</a>
-      <button class="btn-logout" onclick="window.location.href='../auth/logout.php'">Keluar</button>
+    <li><a href="../orders/pesanan.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/ticket.svg" width="24" height="24" alt="Pesanan">
+      </span>
+      <span>Pesanan Saya</span>
+    </a></li>
+
+    <li><a href="../orders/riwayat.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/Note.svg" width="24" height="24" alt="Riwayat">
+      </span>
+      <span>Riwayat Transaksi</span>
+    </a></li>
+
+    <li><a href="../orders/pembayaran.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/credit-card.svg" width="24" height="24" alt="Pembayaran">
+      </span>
+      <span>Metode Pembayaran</span>
+    </a></li>
+
+    <li><a href="../wishlist/whistlist.php" class="menu-item">
+      <span class="menu-icon">
+        <img src="../assets/icon/save.svg" width="24" height="24" alt="Favorite">
+      </span>
+      <span>Favorite Saya</span>
+    </a></li>
+
+    <li><a href="../help/bantuan.php" class="menu-item active">
+      <span class="menu-icon">
+        <img src="../assets/icon/question.svg" width="24" height="24" alt="Bantuan">
+      </span>
+      <span>Bantuan & Dukungan</span>
+    </a></li>
+  </ul>
+</nav>
+      <button class="btn-logout" onclick="window.location.href='../auth/logout.php'"><span>Keluar</span></button>
     </aside>
 
     <main class="profile-content">
@@ -44,38 +76,45 @@
         <p class="page-hero-subtitle">Kami siap membantu Anda mengatasi masalah apa pun.</p>
       </div>
 
-      <!-- Search Bantuan -->
-      <div class="bantuan-search">
-        <input type="text" class="search-input" placeholder="Cari bantuan atau topik...">
-        <button class="search-btn">Cari</button>
-      </div>
-
       <!-- Kategori Bantuan -->
-      <section class="bantuan-section">
-        <h2 class="section-title">Kategori Populer</h2>
-        <div class="kategori-grid">
-          <a href="#" class="kategori-card">
-            <div class="kategori-icon">📋</div>
-            <h3>Pemesanan Tiket</h3>
-            <p>Panduan cara memesan tiket wisata</p>
-          </a>
-          <a href="#" class="kategori-card">
-            <div class="kategori-icon">💳</div>
-            <h3>Pembayaran</h3>
-            <p>Bantuan metode pembayaran & transaksi</p>
-          </a>
-          <a href="#" class="kategori-card">
-            <div class="kategori-icon">📦</div>
-            <h3>Status Pesanan</h3>
-            <p>Info status pesanan Anda</p>
-          </a>
-          <a href="#" class="kategori-card">
-            <div class="kategori-icon">🔒</div>
-            <h3>Keamanan Akun</h3>
-            <p>Lindungi akun Anda dengan aman</p>
-          </a>
-        </div>
-      </section>
+    <section class="bantuan-section">
+  <h2 class="section-title">Kategori Populer</h2>
+  <div class="kategori-grid">
+
+    <a href="#" class="kategori-card">
+      <div class="kategori-icon">
+        <img src="../assets/icon/ticket.svg" width="32" height="32" alt="Pemesanan Tiket">
+      </div>
+      <h3>Pemesanan Tiket</h3>
+      <p>Panduan cara memesan tiket wisata</p>
+    </a>
+
+    <a href="#" class="kategori-card">
+      <div class="kategori-icon">
+        <img src="../assets/icon/credit-card.svg" width="32" height="32" alt="Pembayaran">
+      </div>
+      <h3>Pembayaran</h3>
+      <p>Bantuan metode pembayaran & transaksi</p>
+    </a>
+
+    <a href="#" class="kategori-card">
+      <div class="kategori-icon">
+        <img src="../assets/icon/Note.svg" width="32" height="32" alt="Status Pesanan">
+      </div>
+      <h3>Status Pesanan</h3>
+      <p>Info status pesanan Anda</p>
+    </a>
+
+    <a href="#" class="kategori-card">
+      <div class="kategori-icon">
+        <img src="../assets/icon/lock.svg" width="32" height="32" alt="Keamanan Akun">
+      </div>
+      <h3>Keamanan Akun</h3>
+      <p>Lindungi akun Anda dengan aman</p>
+    </a>
+
+  </div>
+</section>
 
       <!-- FAQ Tanya Jawab -->
       <section class="bantuan-section">
@@ -143,7 +182,7 @@
               <p>Untuk mengubah password akun Anda:</p>
               <ol>
                 <li>Masuk ke akun WisataKu Anda</li>
-                <li>Klik menu "Pengaturan Akun"</li>
+                <li>Buka halaman profil pengguna</li>
                 <li>Pilih "Ubah Password"</li>
                 <li>Masukkan password lama Anda</li>
                 <li>Masukkan password baru (minimal 8 karakter)</li>
@@ -175,31 +214,29 @@
       <section class="bantuan-section">
         <h2 class="section-title">Hubungi Kami</h2>
         <div class="contact-grid">
-          <div class="contact-card">
-            <div class="contact-icon">💬</div>
+              <div class="contact-card">
+            <div class="contact-icon">
+              <img src="../assets/icon/chat-3-line.svg" width="32" height="32" alt="Live Chat" />
+            </div>
             <h3>Live Chat</h3>
-            <p>Hubungi tim support kami langsung</p>
+            <p>Hubungi tim support kami</p>
             <button class="btn-contact">Mulai Chat</button>
           </div>
           <div class="contact-card">
             <div class="contact-icon">
-              <img src="../assets/icon/mail-line.svg" alt="Email" />
+              <img src="../assets/icon/mail-line.svg" width="32" height="32" alt="Email" />
             </div>
             <h3>Email</h3>
             <p>rificiahool@gmail.com</p>
             <button class="btn-contact">Kirim Email</button>
           </div>
           <div class="contact-card">
-            <div class="contact-icon">📞</div>
+            <div class="contact-icon">
+              <img src="../assets/icon/phone-line.svg" width="32" height="32" alt="Telepon" />
+            </div>
             <h3>Telepon</h3>
             <p>+62 857-9287-4948</p>
             <button class="btn-contact">Hubungi</button>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon">📱</div>
-            <h3>WhatsApp</h3>
-            <p>Hubungi melalui WhatsApp</p>
-            <button class="btn-contact">Chat WhatsApp</button>
           </div>
         </div>
       </section>

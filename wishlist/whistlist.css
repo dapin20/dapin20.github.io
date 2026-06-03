@@ -9,8 +9,8 @@
   margin-top: 14px;
   padding: 8px 16px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #0157ad;
+  background: var(--primary-soft);
+  color: var(--primary);
   font-size: 12px;
   font-weight: 700;
 }
@@ -19,32 +19,29 @@
   padding: 26px 20px;
 }
 
+.wishlist-shell [hidden] {
+  display: none !important;
+}
+
 .favorite-stage {
   position: relative;
 }
 
 .favorite-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 18px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 6px 32px;
-  scrollbar-width: none;
-}
-
-.favorite-track::-webkit-scrollbar {
-  display: none;
+  overflow: visible;
+  padding: 6px 0;
 }
 
 .favorite-card {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  background: var(--panel);
   border-radius: 26px;
   overflow: hidden;
-  border: 1px solid #e8eef6;
+  border: 1px solid var(--line);
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -92,14 +89,14 @@
   margin: 0 0 10px;
   font-size: 18px;
   line-height: 1.35;
-  color: #172033;
+  color: var(--text-dark);
 }
 
 .favorite-location {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #6f7d90;
+  color: var(--text-soft);
   font-size: 13px;
   margin-bottom: 14px;
 }
@@ -117,13 +114,13 @@
 }
 
 .favorite-price {
-  color: #0157ad;
+  color: var(--primary);
   font-size: 16px;
   font-weight: 700;
 }
 
 .favorite-price span {
-  color: #6f7d90;
+  color: var(--text-soft);
   font-size: 12px;
   font-weight: 500;
 }
@@ -135,27 +132,7 @@
 }
 
 .favorite-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.14);
-  color: #0157ad;
-  font-size: 26px;
-  cursor: pointer;
-}
-
-.favorite-arrow.prev {
-  left: -4px;
-}
-
-.favorite-arrow.next {
-  right: -4px;
+  display: none;
 }
 
 .favorite-empty {
@@ -175,7 +152,7 @@
 .favorite-empty p {
   max-width: 400px;
   margin: 0;
-  color: #6f7d90;
+  color: var(--text-soft);
   line-height: 1.7;
 }
 
@@ -186,14 +163,10 @@
 
 @media (max-width: 900px) {
   .favorite-track {
-    padding: 0;
-  }
-
-  .favorite-arrow {
-    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
 
   .favorite-card {
-    flex-basis: 250px;
+    min-width: 0;
   }
 }

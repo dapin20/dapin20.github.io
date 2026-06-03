@@ -1,5 +1,7 @@
 <?php
 require_once('./_auth.php');
+require_once('../config/koneksi.php');
+require_once('../config/admin_ticket_helper.php');
 
 function admin_slugify($value) {
     $value = strtolower(trim($value));
@@ -8,6 +10,14 @@ function admin_slugify($value) {
 }
 
 $destinations = load_destinations();
+$ticketAdmins = [];
+$ticketAdminResult = $conn->query("SELECT id, username FROM admins WHERE role = 'ticket_admin' ORDER BY username ASC");
+if ($ticketAdminResult) {
+    while ($ticketAdmin = $ticketAdminResult->fetch_assoc()) {
+        $ticketAdmins[] = $ticketAdmin;
+    }
+}
+
 $destinationId = $_GET['id'] ?? null;
 $editing = false;
 $destination = [
@@ -27,6 +37,11 @@ $destination = [
 if ($destinationId) {
     $found = find_destination($destinationId);
     if ($found) {
+        if (!$isSuperAdmin && !destination_belongs_to_admin($found, $adminId)) {
+            header('Location: destinations.php');
+            exit;
+        }
+
         $destination = $found;
         $editing = true;
     }
@@ -41,9 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $image = trim($_POST['image'] ?? '');
     $href = trim($_POST['href'] ?? '');
     $category = trim($_POST['category'] ?? 'wisata_alam');
+    $postedOwnerAdminId = $_POST['owner_admin_id'] ?? '';
+    $ownerAdminId = $isSuperAdmin
+        ? ($postedOwnerAdminId !== '' ? (int) $postedOwnerAdminId : null)
+        : $adminId;
+    $payloadId = $id !== '' ? $id : admin_slugify($name);
+
+    $existing = find_destination($payloadId);
+    if (!$editing && $existing && !$isSuperAdmin && !destination_belongs_to_admin($existing, $adminId)) {
+        $payloadId = admin_slugify($name) . '-' . $adminId . '-' . time();
+    }
 
     $payload = normalize_destination([
-        'id' => $id !== '' ? $id : admin_slugify($name),
+        'id' => $payloadId,
         'name' => $name,
         'location' => $location,
         'price' => $price,
@@ -54,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'popular' => isset($_POST['popular']),
         'near' => isset($_POST['near']),
         'recommended' => isset($_POST['recommended']),
+        'owner_admin_id' => $ownerAdminId,
     ]);
 
     $updated = [];
@@ -73,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     save_destinations($updated);
+    sync_destination_to_database($conn, $payload);
     header('Location: destinations.php');
     exit;
 }
@@ -80,6 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="../assets/js/theme.js?v=3.4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin WisataKu - <?php echo $editing ? 'Edit' : 'Tambah'; ?> Wisata</title>
@@ -88,33 +116,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="admin-shell">
-        <aside class="admin-sidebar">
-            <div class="admin-brand">
-                <div class="admin-brand-badge">WK</div>
-                <div>
-                    <h2 class="admin-brand-title">Admin WisataKu</h2>
-                    <p class="admin-brand-copy">Panel pengelolaan destinasi dan harga.</p>
-                </div>
-            </div>
-
-            <nav class="admin-nav">
-                <a href="home.php">Home Admin</a>
-                <a href="dashboard.php">Dashboard</a>
-                <a href="destinations.php" class="active">Kelola Wisata</a>
-                <a href="../dashboard/home.php">Lihat Home User</a>
-            </nav>
-
-            <div class="admin-sidebar-footer">
-                <a href="../auth/logout.php" class="admin-btn danger">Logout</a>
-            </div>
-        </aside>
+        <?php render_admin_sidebar('destinations', 'Panel pengelolaan destinasi dan harga.'); ?>
 
         <main class="admin-content">
             <div class="admin-topbar">
                 <div>
                     <p class="admin-eyebrow">Form wisata</p>
                     <h1><?php echo $editing ? 'Edit Wisata' : 'Tambah Wisata Baru'; ?></h1>
-                    <p>Semua perubahan di sini langsung memengaruhi home user dan halaman favorite.</p>
+                    <p>Semua perubahan di sini langsung memengaruhi home user, favorite, dan daftar tiket wisata.</p>
                 </div>
                 <a href="destinations.php" class="admin-btn secondary">Kembali ke Daftar</a>
             </div>
@@ -163,6 +172,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="wisata_edukasi" <?php echo $destination['category'] === 'wisata_edukasi' ? 'selected' : ''; ?>>Wisata Edukasi</option>
                     </select>
                 </div>
+
+                <?php if ($isSuperAdmin): ?>
+                <div class="admin-field">
+                    <label for="owner_admin_id">Admin Tiket Pengelola</label>
+                    <select id="owner_admin_id" name="owner_admin_id">
+                        <option value="">Belum ditetapkan</option>
+                        <?php foreach ($ticketAdmins as $ticketAdmin): ?>
+                        <option value="<?php echo (int) $ticketAdmin['id']; ?>" <?php echo (int) ($destination['owner_admin_id'] ?? 0) === (int) $ticketAdmin['id'] ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($ticketAdmin['username']); ?>
+                        </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <?php endif; ?>
 
                 <div class="admin-field">
                     <label>Tampilkan di Section Home</label>

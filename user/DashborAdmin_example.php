@@ -30,6 +30,7 @@ $admin_email = $_SESSION['email'];
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="../assets/js/theme.js?v=3.4"></script>
     <title>Dashboard Admin - WisataKu</title>
 </head>
 <body>

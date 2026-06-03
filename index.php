@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script src="assets/js/theme.js?v=3.4"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WisataKu - Jelajahi Keindahan Malang Raya</title>
@@ -38,7 +39,6 @@ input, button, select, textarea, optgroup, option {
       <ul class="nav-links">
         <li><a href="index.php" class="active">Home</a></li>
         <li><a href="dashboard/promo.php">Promo &amp; Deals</a></li>
-        <li><a href="auth/login.php">Favorite</a></li>
         <li><a href="tentang.php">Tentang Kami</a></li>
       </ul>
 
@@ -59,7 +59,6 @@ input, button, select, textarea, optgroup, option {
       <a href="auth/login.php" onclick="closeMobileMenu()">Masuk</a>
       <a href="index.php" onclick="closeMobileMenu()">Home</a>
       <a href="dashboard/promo.php" onclick="closeMobileMenu()">Promo &amp; Deals</a>
-      <a href="auth/login.php" onclick="closeMobileMenu()">Favorite</a>
       <a href="tentang.php" onclick="closeMobileMenu()">Tentang Kami</a>
     </div>
   </div>
@@ -117,7 +116,7 @@ input, button, select, textarea, optgroup, option {
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Destinasi <span>Populer</span></h2>
-        <a href="#" class="see-all">Lihat Semua →</a>
+        <a href="#" class="see-all">Lihat Semua ?</a>
       </div>
 
       <div class="populer-magazine">
@@ -178,17 +177,17 @@ input, button, select, textarea, optgroup, option {
       </div>
       <div class="kategori-chips">
         <a href="auth/login.php" class="chip-card">
-          <div class="chip-icon">🏔</div>
+          <div class="chip-icon">??</div>
           <div class="chip-label">Wisata Alam</div>
           <div class="chip-desc">Pesona alam indah di Malang Raya</div>
         </a>
         <a href="auth/login.php" class="chip-card">
-          <div class="chip-icon">🎪</div>
+          <div class="chip-icon">??</div>
           <div class="chip-label">Wisata Buatan</div>
           <div class="chip-desc">Wahana modern & hiburan keluarga</div>
         </a>
         <a href="auth/login.php" class="chip-card">
-          <div class="chip-icon">🏛</div>
+          <div class="chip-icon">??</div>
           <div class="chip-label">Wisata Edukasi</div>
           <div class="chip-desc">Belajar sambil berwisata</div>
         </a>
@@ -201,10 +200,10 @@ input, button, select, textarea, optgroup, option {
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Destinasi <span>Dekat Anda</span></h2>
-        <a href="#" class="see-all">Lihat Semua →</a>
+        <a href="#" class="see-all">Lihat Semua ?</a>
       </div>
       <div class="scroll-wrapper">
-        <button class="scroll-btn prev" onclick="scrollCards('near', -1)">‹</button>
+        <button class="scroll-btn prev" onclick="scrollCards('near', -1)">�</button>
         <div class="card-scroll" id="near">
           <a href="auth/login.php" class="hotel-card">
             <div class="hotel-img-wrap">
@@ -218,7 +217,7 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Probolinggo</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 150.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.9</div>
+                <div class="hotel-rating">? 4.9</div>
               </div>
             </div>
           </a>
@@ -234,7 +233,7 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 30.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.6</div>
+                <div class="hotel-rating">? 4.6</div>
               </div>
             </div>
           </a>
@@ -250,7 +249,7 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 50.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.8</div>
+                <div class="hotel-rating">? 4.8</div>
               </div>
             </div>
           </a>
@@ -266,12 +265,12 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 45.000 <span>/ orang</span></div>
-                <div class="hotel-rating">★ 4.9</div>
+                <div class="hotel-rating">? 4.9</div>
               </div>
             </div>
           </a>
         </div>
-        <button class="scroll-btn next" onclick="scrollCards('near', 1)">›</button>
+        <button class="scroll-btn next" onclick="scrollCards('near', 1)">�</button>
       </div>
     </div>
   </section>
@@ -325,7 +324,7 @@ input, button, select, textarea, optgroup, option {
         <p>Platform pemesanan tiket wisata Malang Raya. Kami berkomitmen untuk memberikan kemudahan dalam menemukan dan memesan destinasi wisata terbaik di Malang.</p>
       </div>
       <div class="about-banner-action">
-        <a href="#" class="btn-white">Pelajari Lebih Lanjut →</a>
+        <a href="#" class="btn-white">Pelajari Lebih Lanjut ?</a>
       </div>
     </div>
   </div>
@@ -380,7 +379,7 @@ input, button, select, textarea, optgroup, option {
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 WisataKu. All rights reserved.</p>
+        <p>� 2025 WisataKu. All rights reserved.</p>
         <div class="footer-links">
           <a href="#">Kebijakan Privasi</a>
           <a href="#">Syarat &amp; Ketentuan</a>

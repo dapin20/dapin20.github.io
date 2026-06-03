@@ -5,26 +5,36 @@
 }
 
 .pesanan-card {
-  background-color: white;
+  background-color: var(--panel);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
   overflow: hidden;
-  border: 1px solid #e9eef5;
+  border: 1px solid var(--line);
+}
+
+.pesanan-empty {
+  padding: 28px;
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+  background: var(--panel-muted);
+  color: var(--text-soft);
+  text-align: center;
+  font-weight: 600;
 }
 
 .pesanan-card-header {
   padding: 20px 24px;
-  background-color: #fbfcfe;
+  background-color: var(--panel-muted);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #edf2f7;
+  border-bottom: 1px solid var(--line);
 }
 
 .pesanan-nama {
   font-size: 22px;
   font-weight: 700;
-  color: #0157AD;
+  color: var(--primary);
   margin: 0;
 }
 
@@ -43,7 +53,7 @@
 .detail-label {
   font-size: 12px;
   font-weight: 700;
-  color: #9aa5b5;
+  color: var(--text-soft);
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -51,20 +61,20 @@
 
 .detail-value {
   font-size: 15px;
-  color: #172033;
+  color: var(--text-dark);
   font-weight: 600;
 }
 
 .detail-value-price {
   font-size: 20px;
-  color: #0157AD;
+  color: var(--primary);
   font-weight: 700;
 }
 
 .pesanan-card-footer {
   padding: 18px 24px;
-  background-color: #fbfcfe;
-  border-top: 1px solid #edf2f7;
+  background-color: var(--panel-muted);
+  border-top: 1px solid var(--line);
   display: flex;
   gap: 12px;
   justify-content: flex-end;
@@ -80,33 +90,33 @@
 }
 
 .btn-detail {
-  background-color: #fff;
-  color: #0157AD;
-  border: 1px solid #0157AD;
+  background-color: var(--input-bg);
+  color: var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .btn-detail:hover {
-  background-color: #eaf3ff;
+  background-color: var(--primary-soft);
 }
 
 .btn-cancel {
-  background-color: #fff5f6;
-  color: #b42332;
+  background-color: var(--danger-bg);
+  color: var(--danger-text);
   border: 1px solid #e5b0b7;
 }
 
 .btn-cancel:hover {
-  background-color: #fde8ea;
+  background-color: var(--danger-bg);
 }
 
 .btn-pay {
-  background: #0157AD;
+  background: var(--primary);
   color: white;
-  border: 1px solid #0157AD;
+  border: 1px solid var(--primary);
 }
 
 .btn-pay:hover {
-  background: #0e3b73;
+  background: var(--primary-dark);
 }
 
 @media (max-width: 768px) {
