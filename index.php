@@ -176,18 +176,18 @@ input, button, select, textarea, optgroup, option {
         <h2 class="section-title">Kategori <span>Wisata</span></h2>
       </div>
       <div class="kategori-chips">
-        <a href="auth/login.php" class="chip-card">
-          <div class="chip-icon">??</div>
+        <a href="../user/wisata_alam/WisataAlam.php" class="chip-card">
+          <div class="chip-icon">🏔</div>
           <div class="chip-label">Wisata Alam</div>
           <div class="chip-desc">Pesona alam indah di Malang Raya</div>
         </a>
-        <a href="auth/login.php" class="chip-card">
-          <div class="chip-icon">??</div>
+        <a href="../user/wisata_buatan/WisataBuatan.php" class="chip-card">
+          <div class="chip-icon">🎪</div>
           <div class="chip-label">Wisata Buatan</div>
           <div class="chip-desc">Wahana modern & hiburan keluarga</div>
         </a>
-        <a href="auth/login.php" class="chip-card">
-          <div class="chip-icon">??</div>
+        <a href="../user/wisata_edukasi/WisataEdukasi.php" class="chip-card">
+          <div class="chip-icon">🏛</div>
           <div class="chip-label">Wisata Edukasi</div>
           <div class="chip-desc">Belajar sambil berwisata</div>
         </a>
@@ -203,7 +203,7 @@ input, button, select, textarea, optgroup, option {
         <a href="#" class="see-all">Lihat Semua ?</a>
       </div>
       <div class="scroll-wrapper">
-        <button class="scroll-btn prev" onclick="scrollCards('near', -1)">�</button>
+        <button class="scroll-btn prev" onclick="scrollCards('near', -1)">‹</button>
         <div class="card-scroll" id="near">
           <a href="auth/login.php" class="hotel-card">
             <div class="hotel-img-wrap">
@@ -217,7 +217,7 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Probolinggo</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 150.000 <span>/ orang</span></div>
-                <div class="hotel-rating">? 4.9</div>
+                <div class="hotel-rating">★ 4.9</div>
               </div>
             </div>
           </a>
@@ -233,7 +233,7 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 30.000 <span>/ orang</span></div>
-                <div class="hotel-rating">? 4.6</div>
+                <div class="hotel-rating">★ 4.6</div>
               </div>
             </div>
           </a>
@@ -249,7 +249,7 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 50.000 <span>/ orang</span></div>
-                <div class="hotel-rating">? 4.8</div>
+                <div class="hotel-rating">★ 4.8</div>
               </div>
             </div>
           </a>
@@ -265,12 +265,12 @@ input, button, select, textarea, optgroup, option {
               <div class="hotel-location"><img src="assets/icon/map-pin-line.svg" alt="Location" style="width: 16px; height: 16px; margin-right: 5px; display: inline-block;"/> Malang</div>
               <div class="hotel-meta">
                 <div class="hotel-price">Rp 45.000 <span>/ orang</span></div>
-                <div class="hotel-rating">? 4.9</div>
+                <div class="hotel-rating">★ 4.9</div>
               </div>
             </div>
           </a>
         </div>
-        <button class="scroll-btn next" onclick="scrollCards('near', 1)">�</button>
+        <button class="scroll-btn next" onclick="scrollCards('near', 1)">›</button>
       </div>
     </div>
   </section>
